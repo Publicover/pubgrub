@@ -1,4 +1,8 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
 
+<p><%= link_to 'Back to user', user_path(@user) %></p>
+<p><%= link_to 'Back to all users', users_path %></p>
+
 <%= render 'form' %>
+<%= link_to 'Cancel', user_path(@user) %>

@@ -15,20 +15,12 @@ class UserPolicy < ApplicationPolicy
     return true if record.id == user.id
   end
 
-  def new?
-    index?
-  end
-
-  def create?
-    return true if user.admin?
-  end
-
   def edit?
-    index?
+    show?
   end
 
   def update?
-    index?
+    show?
   end
 
   def destroy?
