@@ -1,2 +1,22 @@
 <h1>Meals#show</h1>
 <p>Find me in app/views/meals/show.html.erb</p>
+<div>
+  <p><%= @meal.name %></p>
+  <p><%= @meal.cuisine %></p>
+  <p>
+    <% if @meal.pic.attached? %>
+      <%= image_tag url_for(@meal.pic), class: 'sized-image' %>
+    <% else %>
+      Add a picture!
+    <% end %>
+  </p>
+
+</div>
+
+<p>
+  <%= link_to 'Edit this meal', edit_meal_path(@meal) %>
+</p>
+
+<p>
+  <%= link_to 'Back to meal index', meals_path %>
+</p>
