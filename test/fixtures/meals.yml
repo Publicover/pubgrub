@@ -9,3 +9,8 @@ beet_pasta:
   name: Beet Pasta
   cuisine: American
   user: dana
+
+mac_n_cheese:
+  name: Mac N Cheese
+  cuisine: American
+  user: dave
