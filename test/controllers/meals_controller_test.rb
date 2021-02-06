@@ -99,7 +99,6 @@ class MealsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should not get edit for another record' do
-      # assert_raises(Pundit::NotAuthorizedError) {}
       assert_raises(Pundit::NotAuthorizedError) {
         get edit_meal_path(meals(:steak))
       }

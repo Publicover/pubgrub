@@ -17,4 +17,11 @@ puts "Creating two meals..."
 Meal.create(name: 'Steak', cuisine: 'American', user_id: User.find_by(email: 'jim@pubgrub.com').id)
 Meal.create(name: 'Beet Pasta', cuisine: 'Mom', user_id: User.find_by(email: 'dana@pubgrub.com').id)
 
+puts "Creating four groceries..."
+
+Grocery.create!(name: 'Onion')
+Grocery.create!(name: 'Steak')
+Grocery.create!(name: 'Baked Potatoes')
+Grocery.create!(name: 'Asparagus')
+
 puts "Seeds complete."
