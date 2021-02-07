@@ -1,2 +1,12 @@
 <h1>Ingredients#show</h1>
 <p>Find me in app/views/ingredients/show.html.erb</p>
+
+<%= link_to 'Back to dashboard', root_path %>
+<%= link_to 'See the ingredients', ingredients_path %>
+<%= link_to 'See the meals', meals_path %>
+<%= link_to 'See the groceries', groceries_path %>
+
+<%= @ingredientmeal_name %>
+<%= @ingredient.grocery %>
+<%= @ingredient.measurement %>
+<%= @ingredient.quantity %>

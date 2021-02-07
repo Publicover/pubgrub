@@ -6,6 +6,7 @@
 <% if current_user.admin? %>
   <p><%= link_to 'See all groceries', groceries_path %></p>
   <p><%= link_to 'See all measurements', measurements_path %></p>
+  <p><%= link_to 'Create an ingredient', new_ingredient_path %></p>
 <% else %>
   hidden link
 <% end %>

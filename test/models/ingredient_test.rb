@@ -16,4 +16,8 @@ class IngredientTest < ActiveSupport::TestCase
   test 'should know meal' do
     assert_equal ingredients(:one).meal, meals(:beet_pasta)
   end
+
+  test 'should delgate meal name' do
+    assert_equal ingredients(:one).meal_name, meals(:beet_pasta).name
+  end
 end

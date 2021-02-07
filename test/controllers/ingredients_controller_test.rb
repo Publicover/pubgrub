@@ -33,6 +33,7 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       end
+      assert_redirected_to ingredients_path
     end
 
     test 'should get edit' do
@@ -48,12 +49,14 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
         }
       }
       assert_equal word, ingredients(:one).reload.grocery
+      assert_redirected_to ingredient_path(ingredients(:one))
     end
 
     test 'should destroy' do
       assert_difference('Ingredient.count', -1) do
         delete ingredient_path(ingredients(:one))
       end
+      assert_redirected_to ingredients_path
     end
   end
 
