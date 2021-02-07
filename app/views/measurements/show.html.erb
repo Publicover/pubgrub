@@ -1,2 +1,14 @@
 <h1>Measurements#show</h1>
 <p>Find me in app/views/measurements/show.html.erb</p>
+
+<h1>Groceries#show</h1>
+<p>Find me in app/views/groceries/show.html.erb</p>
+
+<p><%= link_to 'Back to Dashboard', root_path %></p>
+<p><%= link_to 'See all measurements', measurements_path %></p>
+<p><%= link_to 'See all ingredients', groceries_path %></p>
+<p><%= link_to 'See all meals', meals_path %></p>
+
+<p>
+  <%= @measurement.measure %>
+</p>

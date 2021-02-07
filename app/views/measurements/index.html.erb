@@ -1,2 +1,25 @@
 <h1>Measurements#index</h1>
 <p>Find me in app/views/measurements/index.html.erb</p>
+
+<p><%= link_to 'Back to Dashboard', root_path %></p>
+<p><%= link_to 'See all meals', meals_path %></p>
+<p><%= link_to 'See all groceries', groceries_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Measure
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td>
+          <%= link_to "#{measurement.measure}", measurement_path(measurement) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
