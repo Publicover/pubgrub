@@ -17,7 +17,7 @@ puts "Creating two meals..."
 Meal.create(name: 'Steak', cuisine: 'American', user_id: User.find_by(email: 'jim@pubgrub.com').id)
 Meal.create(name: 'Beet Pasta', cuisine: 'Mom', user_id: User.find_by(email: 'dana@pubgrub.com').id)
 
-puts "Creating four groceries..."
+puts "Creating eight groceries..."
 
 Grocery.create!(name: 'Onion')
 Grocery.create!(name: 'Steak')
@@ -27,5 +27,25 @@ Grocery.create!(name: 'Celery Stalks')
 Grocery.create!(name: 'Bell Pepper')
 Grocery.create!(name: "Uncle Ben's Rice")
 Grocery.create!(name: 'Sausage')
+
+puts "Creating measurements..."
+
+Measurement.create!(measure: 'Quarter Teaspoon')
+Measurement.create!(measure: 'Half Teaspoon')
+Measurement.create!(measure: 'Three-quarters Teaspoon')
+Measurement.create!(measure: 'Teaspoon')
+Measurement.create!(measure: 'Quarter Tablespoon')
+Measurement.create!(measure: 'Half Tablespoon')
+Measurement.create!(measure: 'Three-quarters Tablespoon')
+Measurement.create!(measure: 'Tablespoon')
+Measurement.create!(measure: 'Quarter Cup')
+Measurement.create!(measure: 'Half Cup')
+Measurement.create!(measure: 'Three-quarters Cup')
+Measurement.create!(measure: 'Cup')
+Measurement.create!(measure: 'Grams')
+Measurement.create!(measure: 'Pinch')
+Measurement.create!(measure: 'Quarter')
+Measurement.create!(measure: 'Half')
+Measurement.create!(measure: 'Three-quarters')
 
 puts "Seeds complete."
