@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1.00
+  grocery: Onion
+  measurement: nil
+  meal: beet_pasta
+
+two:
+  quantity: 3.5
+  grocery: Flour
+  measurement: Cup
+  meal: beet_pasta
