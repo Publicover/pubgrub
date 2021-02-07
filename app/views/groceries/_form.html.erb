@@ -1,0 +1,22 @@
+<%= form_for @grocery do |f| %>
+  <% if @grocery.errors.any? %>
+    <div id="error_explanation">
+      <p>
+        <%= pluralize(@grocery.errors.count, "error") %> prohibited
+        this article from being saved:
+      </p>
+      <% @grocery.errors.full_messages.each do |msg| %>
+        <li><center><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label 'Name' %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
