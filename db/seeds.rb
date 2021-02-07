@@ -23,5 +23,9 @@ Grocery.create!(name: 'Onion')
 Grocery.create!(name: 'Steak')
 Grocery.create!(name: 'Baked Potatoes')
 Grocery.create!(name: 'Asparagus')
+Grocery.create!(name: 'Celery Stalks')
+Grocery.create!(name: 'Bell Pepper')
+Grocery.create!(name: "Uncle Ben's Rice")
+Grocery.create!(name: 'Sausage')
 
 puts "Seeds complete."
