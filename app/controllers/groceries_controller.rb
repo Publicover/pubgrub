@@ -2,7 +2,7 @@ class GroceriesController < ApplicationController
   before_action :set_grocery, except: [:index, :new, :create]
 
   def index
-    @groceries = policy_scope(Grocery)
+    @groceries = policy_scope(Grocery).order(name: :asc)
     authorize @groceries
   end
 

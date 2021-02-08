@@ -12,3 +12,6 @@ import 'bootstrap'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("./nested-forms/addFields");
+require("./nested-forms/removeFields");

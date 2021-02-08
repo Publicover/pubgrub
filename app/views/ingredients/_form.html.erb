@@ -21,6 +21,11 @@
   </p>
 
   <p>
+    <%= f.label 'Measurement' %>
+    <%= f.collection_select :measurement, Measurement.all, :measure, :measure, prompt: true %>
+  </p>
+
+  <p>
     <%= f.label 'Quantity' %>
     <%= f.number_field :quantity, step: 0.1 %>
   </p>

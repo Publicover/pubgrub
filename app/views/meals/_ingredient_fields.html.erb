@@ -1,0 +1,25 @@
+<div class='nested-fields'>
+  <%= f.hidden_field :_destroy %>
+  <%= f.hidden_field :meal_id, value: @meal.id %>
+
+  <hr />
+  <p>
+    <%= f.label 'Grocery' %>
+    <%= f.collection_select :grocery, Grocery.all.order(name: :asc), :name, :name, prompt: true %>
+  </p>
+
+  <p>
+    <%= f.label 'Measurement' %>
+    <%= f.collection_select :measurement, Measurement.all, :measure, :measure, prompt: true %>
+  </p>
+
+  <p>
+    <%= f.label 'Quantity' %>
+    <%= f.number_field :quantity, step: 0.1 %>
+  </p>
+
+  <p>
+    <%= link_to 'Remove', '#', class: "remove_fields" %>
+  </p>
+  <hr />
+</div>
