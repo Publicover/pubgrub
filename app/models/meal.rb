@@ -6,4 +6,9 @@ class Meal < ApplicationRecord
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
   validates :name, :cuisine, presence: true
+
+  enum status: {
+    archived: 0,
+    current: 1
+  }
 end

@@ -12,4 +12,8 @@ class MealTest < ActiveSupport::TestCase
     assert_not meal.save
     assert_not_nil meal.errors[:line1]
   end
+
+  test 'can collect via enum' do
+    assert_equal Meal.where(status: :current).count, Meal.current.count
+  end
 end
