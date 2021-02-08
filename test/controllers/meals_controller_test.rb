@@ -93,6 +93,34 @@ class MealsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to meals_path
     end
 
+    test 'should create with ingredients' do
+      ingredient_count = Ingredient.count
+      nested_ingredients = {
+                              grocery: 'Milk',
+                              measurement: 'Cup',
+                              quantity: 2.5
+                            }, {
+                              grocery: 'Ice',
+                              measurement: 'Cup',
+                              quantity: 5.00
+                            }
+                            
+      assert_difference('Meal.count') do
+        post meals_path, params: {
+          meal: {
+            name: 'Ice Cream',
+            cuisine: 'American',
+            user_id: users(:jim).id,
+            ingredients_attributes: [
+              nested_ingredients
+            ]
+          }
+        }
+      end
+      assert_equal Meal.last.ingredients.count, Ingredient.count - ingredient_count
+      assert_equal Ingredient.count, ingredient_count + nested_ingredients.size
+    end
+
     test 'should get own edit' do
       get edit_meal_path(meals(:mac_n_cheese))
       assert_response :success

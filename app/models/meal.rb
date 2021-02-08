@@ -3,6 +3,7 @@ class Meal < ApplicationRecord
 
   belongs_to :user, inverse_of: :meals
   has_many :ingredients, inverse_of: :meal, dependent: :destroy
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
   validates :name, :cuisine, presence: true
 end

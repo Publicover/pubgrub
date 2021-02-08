@@ -12,10 +12,10 @@ class MealsController < ApplicationController
   def new
     @meal = Meal.new
     authorize @meal
+    @meal.ingredients.build
   end
 
   def create
-
     @meal = Meal.new(meal_params)
     authorize @meal
 

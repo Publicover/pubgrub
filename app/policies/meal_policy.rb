@@ -37,6 +37,6 @@ class MealPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:name, :cuisine, :pic, :user_id]
+    [:name, :cuisine, :pic, :user_id, ingredients_attributes: [:id, :grocery, :measurement, :meal_id, :quantity, :_destroy]]
   end
 end
