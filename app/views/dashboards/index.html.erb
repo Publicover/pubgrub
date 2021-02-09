@@ -11,3 +11,27 @@
 <% else %>
   <p>Links are hidden here.</p>
 <% end %>
+
+<div>
+  <%= @grocery_list.grocery_quantity %>
+</div>
+<br />
+<div>
+  <div>Our shopping list for the week:</div>
+  <dl>
+    <% @grocery_list.grocery_quantity.each do |k, v| %>
+      <% if v.is_a?(Hash) %>
+        <dt class='js-click'><%= k %>: </dt>
+        <% v.each do |key, val| %>
+          <div class='d-inline'>
+            <dd class='js-click'><span>&#x2219;</span><%= key %>: <%= val %></dd>
+          </div>
+        <% end %>
+      <% else %>
+        <div>
+          <dt class='js-click'><%= k %>: <%= v %></dt>
+        </div>
+      <% end %>
+    <% end %>
+  </dl>
+</div>

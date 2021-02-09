@@ -1,3 +1,5 @@
 class DashboardsController < ApplicationController
-  def index; end
+  def index
+    @grocery_list = GroceryList.current.last
+  end
 end

@@ -2,12 +2,15 @@ class GroceryList < ApplicationRecord
   before_save :collect_current_meals
   before_save :collect_current_ingredients
 
+  enum status: {
+    archived: 0,
+    current: 1
+  }
+
   def collect_current_meals
     assign_attributes(meal_ids: Meal.current.pluck(:id))
   end
 
-
-  # GroceryList.last.collect_current_ingredients
   def collect_current_ingredients
     weekly_ingredients = Hash.new
     meal_ids.each do |meal_id|
@@ -22,23 +25,23 @@ class GroceryList < ApplicationRecord
     assign_attributes(grocery_quantity: weekly_ingredients)
   end
 
-  def assign_when_not_key(ingredient, ary)
+  def assign_when_not_key(ingredient, hash)
     if ingredient.measurement.nil?
-      ary[ingredient.grocery] += ingredient.quantity
+      hash[ingredient.grocery] += ingredient.quantity
     else
-      if ary[ingredient.grocery].key?(ingredient.measurement)
-        ary[ingredient.grocery][ingredient.measurement] += ingredient.quantity
+      if hash[ingredient.grocery].key?(ingredient.measurement)
+        hash[ingredient.grocery][ingredient.measurement] += ingredient.quantity
       else
-        ary[ingredient.grocery][ingredient.measurement] = ingredient.quantity
+        hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
       end
     end
   end
 
-  def assign_when_key(ingredient, ary)
+  def assign_when_key(ingredient, hash)
     if ingredient.measurement.nil?
-      ary[ingredient.grocery] = ingredient.quantity
+      hash[ingredient.grocery] = ingredient.quantity
     else
-      ary[ingredient.grocery] = { ingredient.measurement => ingredient.quantity }
+      hash[ingredient.grocery] = { ingredient.measurement => ingredient.quantity }
     end
   end
 end

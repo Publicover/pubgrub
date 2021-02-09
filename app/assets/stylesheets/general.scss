@@ -64,3 +64,9 @@ td {
   max-width: 250px;
   max-height: 250px;
 }
+
+.strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2.5px;
+  color: black;
+}

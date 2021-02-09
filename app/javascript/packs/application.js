@@ -15,3 +15,4 @@ ActiveStorage.start()
 
 require("./nested-forms/addFields");
 require("./nested-forms/removeFields");
+require("./dashboard");
