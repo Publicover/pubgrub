@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class DashboardsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    GroceryList.create!
+    GroceryList.last.current!
+    puts GroceryList.last.inspect
+  end
+
   test 'should redirect if not logged in' do
     get root_path
     assert_redirected_to user_session_path

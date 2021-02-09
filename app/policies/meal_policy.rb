@@ -1,7 +1,7 @@
 class MealPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.current
     end
   end
 

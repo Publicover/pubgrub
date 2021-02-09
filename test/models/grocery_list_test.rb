@@ -41,4 +41,11 @@ class GroceryListTest < ActiveSupport::TestCase
     assert_equal list.grocery_quantity['Peppers'], "10.0"
   end
 
+  test 'will make new list the only current list on create' do
+    assert_equal GroceryList.count, GroceryList.archived.count
+    assert_equal 0, GroceryList.current.count
+    GroceryList.create!
+    assert_equal 1, GroceryList.current.count
+    assert_equal GroceryList.count, GroceryList.current.count + GroceryList.archived.count
+  end
 end

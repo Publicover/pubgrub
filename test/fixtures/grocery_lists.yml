@@ -3,7 +3,9 @@
 one:
   grocery_quantity: <%= { onion: 2, pepper: 3, flour: { cup: 2} }.to_json %>
   meal_ids: [1, 2, 3]
+  status: archived
 
 two:
   grocery_quantity: <%= { salt: { teaspoon: 1 }, ketchup: 1 }.to_json %>
   meal_ids: [1, 2, 3]
+  status: archived

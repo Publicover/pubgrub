@@ -1,6 +1,7 @@
 class GroceryList < ApplicationRecord
   before_save :collect_current_meals
   before_save :collect_current_ingredients
+  after_create :set_current_grocery_list
 
   enum status: {
     archived: 0,
@@ -43,5 +44,9 @@ class GroceryList < ApplicationRecord
     else
       hash[ingredient.grocery] = { ingredient.measurement => ingredient.quantity }
     end
+  end
+
+  def set_current_grocery_list
+    SetCurrentGroceryList.new.set_current_list
   end
 end
