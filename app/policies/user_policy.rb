@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -28,6 +30,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:email, :fname, :role, :password]
+    %i[email fname role password]
   end
 end

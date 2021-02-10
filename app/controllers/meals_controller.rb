@@ -1,13 +1,12 @@
 class MealsController < ApplicationController
-  before_action :set_meal, except: [:index, :new, :create]
+  before_action :set_meal, except: %i[index new create]
 
   def index
     @meals = policy_scope(Meal)
     authorize @meals
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @meal = Meal.new
@@ -27,8 +26,7 @@ class MealsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @meal.update(meal_params)
@@ -42,12 +40,12 @@ class MealsController < ApplicationController
 
   private
 
-  def set_meal
-    @meal = Meal.find(params[:id])
-    authorize @meal
-  end
+    def set_meal
+      @meal = Meal.find(params[:id])
+      authorize @meal
+    end
 
-  def meal_params
-    params.require(:meal).permit(policy(Meal).permitted_attributes)
-  end
+    def meal_params
+      params.require(:meal).permit(policy(Meal).permitted_attributes)
+    end
 end

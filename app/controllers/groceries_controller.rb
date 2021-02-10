@@ -1,13 +1,12 @@
 class GroceriesController < ApplicationController
-  before_action :set_grocery, except: [:index, :new, :create]
+  before_action :set_grocery, except: %i[index new create]
 
   def index
     @groceries = policy_scope(Grocery).order(name: :asc)
     authorize @groceries
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @grocery = Grocery.new
@@ -25,8 +24,7 @@ class GroceriesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @grocery.update(grocery_params)
@@ -40,12 +38,12 @@ class GroceriesController < ApplicationController
 
   private
 
-  def set_grocery
-    @grocery = Grocery.find(params[:id])
-    authorize @grocery
-  end
+    def set_grocery
+      @grocery = Grocery.find(params[:id])
+      authorize @grocery
+    end
 
-  def grocery_params
-    params.require(:grocery).permit(policy(Grocery).permitted_attributes)
-  end
+    def grocery_params
+      params.require(:grocery).permit(policy(Grocery).permitted_attributes)
+    end
 end

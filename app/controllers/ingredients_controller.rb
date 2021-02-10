@@ -1,13 +1,12 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, except: [:index, :new, :create]
+  before_action :set_ingredient, except: %i[index new create]
 
   def index
     @ingredients = Ingredient.all
     authorize @ingredients
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @ingredient = Ingredient.new
@@ -25,8 +24,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @ingredient.update(ingredient_params)
@@ -40,12 +38,12 @@ class IngredientsController < ApplicationController
 
   private
 
-  def set_ingredient
-    @ingredient = Ingredient.find(params[:id])
-    authorize @ingredient
-  end
+    def set_ingredient
+      @ingredient = Ingredient.find(params[:id])
+      authorize @ingredient
+    end
 
-  def ingredient_params
-    params.require(:ingredient).permit(policy(Ingredient).permitted_attributes)
-  end
+    def ingredient_params
+      params.require(:ingredient).permit(policy(Ingredient).permitted_attributes)
+    end
 end

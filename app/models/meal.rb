@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Meal < ApplicationRecord
   has_one_attached :pic
 

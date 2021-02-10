@@ -6,9 +6,9 @@ class GroceryTest < ActiveSupport::TestCase
     assert_difference('Grocery.count') do
       Grocery.create!(name: name)
     end
-    grocery = Grocery.create(name: name)
-    assert_not grocery.save
-    assert_not_nil grocery.errors[:line1]
+    assert_raises(ActiveRecord::RecordNotUnique) {
+      grocery = Grocery.create(name: name)
+    }
   end
 
   test 'should titleize name before save' do

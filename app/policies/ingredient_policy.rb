@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IngredientPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -36,6 +38,6 @@ class IngredientPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:grocery, :measurement, :quantity, :meal_id]
+    %i[grocery measurement quantity meal_id]
   end
 end

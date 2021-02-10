@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MeasurementPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

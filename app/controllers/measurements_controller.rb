@@ -1,13 +1,12 @@
 class MeasurementsController < ApplicationController
-  before_action :set_measurement, except: [:index, :new, :create]
+  before_action :set_measurement, except: %i[index new create]
 
   def index
     @measurements = Measurement.all
     authorize @measurements
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @measurement = Measurement.new
@@ -25,8 +24,7 @@ class MeasurementsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @measurement.update(measurement_params)
@@ -40,12 +38,12 @@ class MeasurementsController < ApplicationController
 
   private
 
-  def set_measurement
-    @measurement = Measurement.find(params[:id])
-    authorize @measurement
-  end
+    def set_measurement
+      @measurement = Measurement.find(params[:id])
+      authorize @measurement
+    end
 
-  def measurement_params
-    params.require(:measurement).permit(policy(Measurement).permitted_attributes)
-  end
+    def measurement_params
+      params.require(:measurement).permit(policy(Measurement).permitted_attributes)
+    end
 end

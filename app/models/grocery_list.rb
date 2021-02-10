@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroceryList < ApplicationRecord
   before_save :collect_current_meals
   before_save :collect_current_ingredients
@@ -13,7 +15,7 @@ class GroceryList < ApplicationRecord
   end
 
   def collect_current_ingredients
-    weekly_ingredients = Hash.new
+    weekly_ingredients = {}
     meal_ids.each do |meal_id|
       Meal.find(meal_id).ingredients.each do |ingredient|
         if weekly_ingredients.key?(ingredient.grocery)
@@ -29,21 +31,19 @@ class GroceryList < ApplicationRecord
   def assign_when_not_key(ingredient, hash)
     if ingredient.measurement.nil?
       hash[ingredient.grocery] += ingredient.quantity
+    elsif hash[ingredient.grocery].key?(ingredient.measurement)
+      hash[ingredient.grocery][ingredient.measurement] += ingredient.quantity
     else
-      if hash[ingredient.grocery].key?(ingredient.measurement)
-        hash[ingredient.grocery][ingredient.measurement] += ingredient.quantity
-      else
-        hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
-      end
+      hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
     end
   end
 
   def assign_when_key(ingredient, hash)
-    if ingredient.measurement.nil?
-      hash[ingredient.grocery] = ingredient.quantity
-    else
-      hash[ingredient.grocery] = { ingredient.measurement => ingredient.quantity }
-    end
+    hash[ingredient.grocery] = if ingredient.measurement.nil?
+                                 ingredient.quantity
+                               else
+                                 { ingredient.measurement => ingredient.quantity }
+                               end
   end
 
   def set_current_grocery_list

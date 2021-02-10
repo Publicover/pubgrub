@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:index, :new, :create]
+  before_action :set_user, except: %i[index new create]
 
   def index
     @users = policy_scope(User)
     authorize @users
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -25,8 +24,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user.update(user_params)
@@ -40,12 +38,12 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-    authorize @user
-  end
+    def set_user
+      @user = User.find(params[:id])
+      authorize @user
+    end
 
-  def user_params
-    params.require(:user).permit(policy(User).permitted_attributes)
-  end
+    def user_params
+      params.require(:user).permit(policy(User).permitted_attributes)
+    end
 end

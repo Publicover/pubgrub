@@ -48,4 +48,8 @@ Measurement.create!(measure: 'Quarter')
 Measurement.create!(measure: 'Half')
 Measurement.create!(measure: 'Three-quarters')
 
+puts 'Creating a GroceryList...'
+
+GroceryList.create!
+
 puts "Seeds complete."
