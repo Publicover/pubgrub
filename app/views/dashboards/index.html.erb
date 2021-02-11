@@ -1,5 +1,10 @@
-<h1>Dashboards#index</h1>
-<p>Find me in app/views/dashboards/index.html.erb</p>
+<div>
+  <h1>Dashboards#index</h1>
+</div>
+<div>
+  <p>Find me in app/views/dashboards/index.html.erb</p>
+</div>
+
 
 <p><%= link_to 'See all users', users_path %></p>
 <p><%= link_to 'See all meals', meals_path %></p>
@@ -12,26 +17,12 @@
   <p>Links are hidden here.</p>
 <% end %>
 
-<div>
-  <%= @grocery_list.grocery_quantity %>
-</div>
 <br />
+
 <div>
-  <div>Our shopping list for the week:</div>
-  <dl>
-    <% @grocery_list.grocery_quantity.each do |k, v| %>
-      <% if v.is_a?(Hash) %>
-        <dt class='js-click'><%= k %>: </dt>
-        <% v.each do |key, val| %>
-          <div class='d-inline'>
-            <dd class='js-click'><span>&#x2219;</span><%= key %>: <%= val %></dd>
-          </div>
-        <% end %>
-      <% else %>
-        <div>
-          <dt class='js-click'><%= k %>: <%= v %></dt>
-        </div>
-      <% end %>
-    <% end %>
-  </dl>
+  <%= render 'grocery_list' %>
+</div>
+
+<div>
+  <%= render 'meal_cards' %>
 </div>
