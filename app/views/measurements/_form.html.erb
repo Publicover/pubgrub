@@ -1,24 +1,28 @@
-<%= form_for @measurement do |f| %>
-  <% if @measurement.errors.any? %>
-    <div id="error_explanation">
-      <p>
-        <%= pluralize(@measurement.errors.count, "error") %> prohibited
-        this article from being saved:
-      </p>
-      <% @measurement.errors.full_messages.each do |msg| %>
-        <li><center><%= msg %></li>
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @measurement do |f| %>
+      <% if @measurement.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@measurement.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @measurement.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-  <p>A measure can be anything that isn't a grocery item:</p>
-  <p>Think of 'cup', 'quarter teaspoon' or something similar.</p>
-  <p>
-    <%= f.label 'Measure' %>
-    <%= f.text_field :measure %>
-  </p>
+      <p>A measure can be anything that isn't a grocery item:</p>
+      <p>Think of 'cup', 'quarter teaspoon' or something similar.</p>
+      <p>
+        <%= f.label 'Measure' %>
+        <%= f.text_field :measure %>
+      </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+      <p>
+        <%= f.submit %>
+      </p>
 
-<% end %>
+    <% end %>
+  </div>
+</div>

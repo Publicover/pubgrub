@@ -1,17 +1,20 @@
-<div>Our shopping list for the week:</div>
-<div>
-  <ul>
-    <% @grocery_list.grocery_quantity.each do |k, v| %>
-      <% if v.is_a?(Hash) %>
-        <li class='js-click'><%= k %></li>
-          <ul>
-            <% v.each do |key, val| %>
-              <li class='js-click'><%= key %>: <%= val %></li>
-            <% end %>
-          </ul>
-      <% else %>
-          <li class='js-click'><%= k %>: <%= v %></li>
+<div class='d-flex justify-content-center'>Our shopping list for the week:</div>
+<br />
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <ul>
+      <% @grocery_list.grocery_quantity.each do |k, v| %>
+        <% if v.is_a?(Hash) %>
+          <li class='js-click'><%= k %></li>
+            <ul>
+              <% v.each do |key, val| %>
+                <li class='js-click'><%= key %>: <%= val %></li>
+              <% end %>
+            </ul>
+        <% else %>
+            <li class='js-click'><%= k %>: <%= v %></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
 </div>

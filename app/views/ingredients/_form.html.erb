@@ -1,37 +1,41 @@
-<%= form_for @ingredient do |f| %>
-  <% if @ingredient.errors.any? %>
-    <div id="error_explanation">
-      <p>
-        <%= pluralize(@ingredient.errors.count, "error") %> prohibited
-        this article from being saved:
-      </p>
-      <% @ingredient.errors.full_messages.each do |msg| %>
-        <li><center><%= msg %></li>
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @ingredient do |f| %>
+      <% if @ingredient.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@ingredient.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @ingredient.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label 'Meal' %>
-    <%= f.collection_select :meal_id, Meal.all, :id, :name, prompt: true %>
-  </p>
+      <p>
+        <%= f.label 'Meal' %>
+        <%= f.collection_select :meal_id, Meal.all, :id, :name, prompt: true %>
+      </p>
 
-  <p>
-    <%= f.label 'Grocery' %>
-    <%= f.collection_select :grocery, Grocery.all, :name, :name, prompt: true %>
-  </p>
+      <p>
+        <%= f.label 'Grocery' %>
+        <%= f.collection_select :grocery, Grocery.all, :name, :name, prompt: true %>
+      </p>
 
-  <p>
-    <%= f.label 'Measurement' %>
-    <%= f.collection_select :measurement, Measurement.all, :measure, :measure, prompt: true %>
-  </p>
+      <p>
+        <%= f.label 'Measurement' %>
+        <%= f.collection_select :measurement, Measurement.all, :measure, :measure, prompt: true %>
+      </p>
 
-  <p>
-    <%= f.label 'Quantity' %>
-    <%= f.number_field :quantity, step: 0.1 %>
-  </p>
+      <p>
+        <%= f.label 'Quantity' %>
+        <%= f.number_field :quantity, step: 0.1 %>
+      </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+      <p>
+        <%= f.submit %>
+      </p>
 
-<% end %>
+    <% end %>
+  </div>
+</div>

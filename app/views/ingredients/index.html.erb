@@ -1,38 +1,19 @@
-<h1>Ingredients#index</h1>
-<p>Find me in app/views/ingredients/index.html.erb</p>
-
 <table>
   <thead>
     <tr>
-      <th>
-        Meal
-      </th>
-      <th>
-        Grocery
-      </th>
-      <th>
-        Measurement
-      </th>
-      <th>
-        Quantity
-      </th>
+      <th>Meal</th>
+      <th>Grocery</th>
+      <th>Measurement</th>
+      <th>Quantity</th>
     </tr>
   </thead>
   <tbody>
     <% @ingredients.each do |ingredient| %>
       <tr>
-        <td>
-          <%= link_to "#{ingredient.meal_name}", ingredient_path(ingredient) %>
-        </td>
-        <td>
-          <%= ingredient.grocery %>
-        </td>
-        <td>
-          <%= ingredient.measurement %>
-        </td>
-        <td>
-          <%= ingredient.quantity %>
-        </td>
+        <td><%= link_to "#{ingredient.meal_name}", ingredient_path(ingredient) %></td>
+        <td><%= ingredient.grocery %></td>
+        <td><%= ingredient.measurement %></td>
+        <td><%= ingredient.quantity %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,3 +1,39 @@
-<div class='middle'>
-  <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: 'middle' %>
-</div>
+<nav class='navbar navbar-expand-sm navbar-light bg-light'>
+  <div>
+    <%= link_to 'PUBGRUB', root_path, class: 'navbar-brand mb-0 h1' %>
+  </div>
+
+  <button type="button" class="btn-sm navbar-toggler navbar-toggler-right"
+          data-toggle="collapse" data-target="#myNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class='collapse navbar-collapse' id='myNavbar'>
+    <ul class='navbar-nav mr-auto'>
+      <li class='nav-item nav-link <%= active_if(meals_path) %>'>
+        <%= link_to 'Meals', meals_path, class: 'nav-link' %>
+      </li>
+      <li class='nav-item nav-link <%= active_if(new_meal_path) %>'>
+        <%= link_to 'Create a meal', new_meal_path, class: 'nav-link ' %>
+      </li>
+      <% if current_user.admin? %>
+        <li class='nav-item nav-link <%= active_if(groceries_path) %>'>
+          <%= link_to 'See all groceries', groceries_path, class: 'nav-link ' %>
+        </li>
+        <li class='nav-item nav-link <%= active_if(measurements_path) %>'>
+          <%= link_to 'See all measurements', measurements_path, class: 'nav-link ' %>
+        </li>
+        <li class='nav-item nav-link  <%= active_if(ingredients_path) %>'>
+          <%= link_to 'See all ingerdients', ingredients_path, class: 'nav-link' %>
+        </li>
+        <li class='nav-item nav-link <%= active_if(new_ingredient_path) %>'>
+          <%= link_to 'Create an ingredient', new_ingredient_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+
+    </ul>
+    <span class='nav-item'>
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link mr-sm-2' %>
+    </span>
+  </div>
+</nav>

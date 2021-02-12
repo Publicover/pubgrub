@@ -9,4 +9,8 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def active_if(view_path)
+    'active' if current_page?(view_path)
+  end
 end

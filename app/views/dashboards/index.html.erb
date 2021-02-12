@@ -1,28 +1,9 @@
-<div>
-  <h1>Dashboards#index</h1>
-</div>
-<div>
-  <p>Find me in app/views/dashboards/index.html.erb</p>
-</div>
-
-
-<p><%= link_to 'See all users', users_path %></p>
-<p><%= link_to 'See all meals', meals_path %></p>
-<p><%= link_to 'Create a meal', new_meal_path %></p>
-<% if current_user.admin? %>
-  <p><%= link_to 'See all groceries', groceries_path %></p>
-  <p><%= link_to 'See all measurements', measurements_path %></p>
-  <p><%= link_to 'Create an ingredient', new_ingredient_path %></p>
-<% else %>
-  <p>Links are hidden here.</p>
-<% end %>
-
+<h3>Meals for this week:</h3>
 <br />
-
-<div>
-  <%= render 'grocery_list' %>
-</div>
-
-<div>
-  <%= render 'meal_cards' %>
+You are <%= current_user.email %>
+You're on <%= request.env['PATH_INFO'] %>
+<%= render 'grocery_list' %>
+<br />
+<div class='row'>
+  <%= render 'partials/meal_cards' %>
 </div>
