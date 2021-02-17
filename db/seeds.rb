@@ -8,14 +8,66 @@
 
 puts "Creating three users..."
 
-User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password')
-User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password')
+jim = User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password')
+dana = User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password')
 User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, password: 'password')
 
-puts "Creating two meals..."
+# puts "Creating two meals..."
+#
+# Meal.create(name: 'Steak', cuisine: 'American', user_id: User.find_by(email: 'jim@pubgrub.com').id)
+# Meal.create(name: 'Beet Pasta', cuisine: 'Mom', user_id: User.find_by(email: 'dana@pubgrub.com').id)
 
-Meal.create(name: 'Steak', cuisine: 'American', user_id: User.find_by(email: 'jim@pubgrub.com').id)
-Meal.create(name: 'Beet Pasta', cuisine: 'Mom', user_id: User.find_by(email: 'dana@pubgrub.com').id)
+
+# split meal into entree and sides:
+
+# create cuisine categories
+#   validate unique
+# create entrees
+#   validates unique, belongs_to user and cuisines
+#   enum: sides: 0 with_zero, 1, with_one...
+# create side_categories
+#   validates unique
+# create sides
+#   validates unique, belongs_to user and cuisines
+# change ingredients to be polymorphic
+# test it all
+
+puts 'Creating five cuisine categories...'
+
+american = Cuisine.create!(name: 'American')
+cajun = Cuisine.create!(name: 'Cajun')
+asian_food = Cuisine.create!(name: 'Asian')
+geman = Cuisine.create!(name: 'German')
+caribbean = Cuisine.create!(name: 'Caribbean')
+
+puts "Creating eight entreees..."
+
+Entree.create!(name: 'Steak', cuisine_id: american.id, user_id: jim.id)
+Entree.create!(name: 'Jambalaya', cuisine_id: cajun.id, user_id: dana.id)
+Entree.create!(name: 'Beef Stew', cuisine_id: american.id, user_id: dana.id)
+Entree.create!(name: 'Gochujang Chicken', cuisine_id: asian_food.id, user_id: dana.id)
+Entree.create!(name: 'Sausage and Potatoes', cuisine_id: german.id, user_id: dana.id)
+Entree.create!(name: 'Coconut Peanut Chicken', cuisine_id: indian.id, user_id: dana.id)
+Entree.create!(name: 'Caribbean Chicken', cuisine_id: caribbean.id, user_id: dana.id)
+Entree.create!(name: 'Chicken Schnitzel', cuisine_id: german.id, user_id: dana.id)
+
+puts "Creating four side categories..."
+
+starch = SideCategory.create!(name: 'Starch')
+asian = SideCategory.create!(name: 'Asian')
+vege = SideCategory.create!(name: 'Vegetable')
+bread = SideCategory.create!(name: 'Bread')
+
+puts "Creating eight sides..."
+
+Side.create!(name: 'Baked Potato', side_category_id: starch.id)
+Side.create!(name: 'Mashed Potatoes', side_category_id: starch.id)
+Side.create!(name: 'Sesame Green Breans', side_category_id: asian.id)
+Side.create!(name: 'Edamame', side_category_id: asian.id)
+Side.create!(name: 'Mixed Frozen Vege', side_category_id: vege.id)
+Side.create!(name: 'Asparagus', side_category_id: vege.id)
+Side.create!(name: 'French Bread', side_category_id: bread.id)
+Side.create!(name: 'Garlic Bread', side_category_id: bread.id)
 
 puts "Creating eight groceries..."
 

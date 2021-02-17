@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :groceries
   resources :measurements
   resources :ingredients
+  resources :cuisines
 end
