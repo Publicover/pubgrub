@@ -22,11 +22,11 @@ User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, passw
 
 # create cuisine categories
 #   validate unique
-# create entrees
-#   validates unique, belongs_to user and cuisines
-#   enum: sides: 0 with_zero, 1, with_one...
 # create side_categories
 #   validates unique
+# create entrees
+#   validates unique, belongs_to user, cuisines and side categories
+#   enum: sides: 0 with_zero, 1, with_one...
 # create sides
 #   validates unique, belongs_to user and cuisines
 # change ingredients to be polymorphic

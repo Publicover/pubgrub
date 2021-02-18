@@ -1,0 +1,26 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @cuisine do |f| %>
+      <% if @cuisine.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@cuisine.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @cuisine.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+      </p>
+
+      <p>
+        <%= f.submit %>
+      </p>
+
+    <% end %>
+  </div>
+</div>
