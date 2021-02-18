@@ -16,4 +16,9 @@ class CuisineTest < ActiveSupport::TestCase
       Cuisine.create(name: new_name)
     }
   end
+
+  test 'should know entrees' do
+    assert_not_nil cuisines(:american).entrees
+    assert_equal cuisines(:american).entrees.count, Entree.where(cuisine_id: cuisines(:american).id).count
+  end
 end

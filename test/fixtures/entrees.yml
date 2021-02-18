@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Steak
+  number_of_sides: 2
+  side_category_ids: [1, 2]
+  cuisine: american
+  user: jim
+
+two:
+  name: Jambalaya
+  number_of_sides: 0
+  side_category_ids: []
+  cuisine: american
+  user: jim

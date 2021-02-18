@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :meals, inverse_of: :user, dependent: :destroy
+  has_many :entrees, inverse_of: :user, dependent: :destroy
 
   enum role: {
     admin: 0,

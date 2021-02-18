@@ -1,0 +1,9 @@
+entree_one_pic:
+  name: pic
+  record: one (Entree)
+  blob: entree_one_pic_blob
+
+entree_two_pic:
+  name: pic
+  record: two (Entree)
+  blob: entree_two_pic_blob

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_075517) do
+ActiveRecord::Schema.define(version: 2021_02_18_131333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 2021_02_18_075517) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_cuisines_on_name", unique: true
+  end
+
+  create_table "entrees", force: :cascade do |t|
+    t.string "name"
+    t.integer "number_of_sides"
+    t.integer "present_sides", default: [], array: true
+    t.integer "side_category_ids", default: [], array: true
+    t.integer "status", default: 0
+    t.bigint "cuisine_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cuisine_id"], name: "index_entrees_on_cuisine_id"
+    t.index ["name"], name: "index_entrees_on_name", unique: true
+    t.index ["user_id"], name: "index_entrees_on_user_id"
   end
 
   create_table "groceries", force: :cascade do |t|
@@ -114,6 +129,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_075517) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "entrees", "cuisines"
+  add_foreign_key "entrees", "users"
   add_foreign_key "ingredients", "meals"
   add_foreign_key "meals", "users"
 end
