@@ -1,6 +1,10 @@
 require "test_helper"
 
 class GroceryTest < ActiveSupport::TestCase
+  test 'should have correct columns' do
+    assert Grocery.column_names.include?('name')
+  end
+
   test 'should be unique' do
     name = Faker::Lorem.word
     assert_difference('Grocery.count') do

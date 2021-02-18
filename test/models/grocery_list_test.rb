@@ -5,6 +5,12 @@ class GroceryListTest < ActiveSupport::TestCase
     GroceryList.all.each { |list| list.update(meal_ids: Meal.current.pluck(:id))  }
   end
 
+  test 'should have correct columns' do
+    assert GroceryList.column_names.include?('grocery_quantity')
+    assert GroceryList.column_names.include?('meal_ids')
+    assert GroceryList.column_names.include?('status')
+  end
+
   test 'grocery lists have meal_ids' do
     assert_not_nil GroceryList.last.meal_ids
     assert_equal GroceryList.last.meal_ids.size, Meal.current.count

@@ -1,6 +1,10 @@
 require "test_helper"
 
 class SideCategoryTest < ActiveSupport::TestCase
+  test 'should have correct columns' do
+    assert SideCategory.column_names.include?('name')
+  end
+
   test 'should titleize name before save' do
     name = Faker::Lorem.sentence(word_count: 5)
     SideCategory.create(name: name)

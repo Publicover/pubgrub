@@ -1,6 +1,16 @@
 require "test_helper"
 
 class EntreeTest < ActiveSupport::TestCase
+  test 'should have correct columns' do
+    assert Entree.column_names.include?('name')
+    assert Entree.column_names.include?('number_of_sides')
+    assert Entree.column_names.include?('present_sides')
+    assert Entree.column_names.include?('side_category_ids')
+    assert Entree.column_names.include?('status')
+    assert Entree.column_names.include?('cuisine_id')
+    assert Entree.column_names.include?('user_id')
+  end
+
   test 'should titleize name before save' do
     name = Faker::Lorem.sentence(word_count: 5)
     Entree.create(name: name, number_of_sides: 0, side_category_ids: [],

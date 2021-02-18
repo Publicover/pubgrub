@@ -1,6 +1,10 @@
 require "test_helper"
 
 class CuisineTest < ActiveSupport::TestCase
+  test 'should have correct columns' do
+    assert Cuisine.column_names.include?('name')
+  end
+
   test 'should titleize name before save' do
     name = Faker::Lorem.sentence(word_count: 5)
     Cuisine.create(name: name)
