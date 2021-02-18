@@ -1,0 +1,2 @@
+module SideCategoriesHelper
+end

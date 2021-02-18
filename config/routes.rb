@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :measurements
   resources :ingredients
   resources :cuisines
+  resources :side_categories
 end
