@@ -1,4 +1,6 @@
 class Entree < ApplicationRecord
+  include Ingredientable
+  
   has_one_attached :pic
 
   before_save :tileize_name

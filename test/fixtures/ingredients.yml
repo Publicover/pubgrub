@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# clearly adding the ingredientable_ids myself isn't ideal, but I can't get the following to work:
+# ingredientable _ id : < % = Entree.find(ActiveRecord::FixtureSet.identify('two')) % >
+# looks like fixture load order is the problem.
+
 one:
   quantity: 1.00
   grocery: Onion
   measurement: nil
-  meal: beet_pasta
+  ingredientable_id: 980190962
+  ingredientable_type: Entree
 
 two:
   quantity: 3.5
   grocery: Flour
   measurement: Cup
-  meal: beet_pasta
+  ingredientable_id: 298486374
+  ingredientable_type: Entree

@@ -25,16 +25,16 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
 
-    test 'should create' do
-      assert_difference('Ingredient.count') do
-        post ingredients_path, params: {
-          ingredient: {
-            grocery: 'Cumin', quantity: 1.25, measurement: 'Teaspoon', meal_id: @meal.id
-          }
-        }
-      end
-      assert_redirected_to ingredients_path
-    end
+    # test 'should create' do
+    #   assert_difference('Ingredient.count') do
+    #     post ingredients_path, params: {
+    #       ingredient: {
+    #         grocery: 'Cumin', quantity: 1.25, measurement: 'Teaspoon', meal_id: @meal.id
+    #       }
+    #     }
+    #   end
+    #   assert_redirected_to ingredients_path
+    # end
 
     test 'should get edit' do
       get edit_ingredient_path(ingredients(:one))
@@ -83,15 +83,15 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    test 'should not create' do
-      assert_raises(Pundit::NotAuthorizedError) {
-        post ingredients_path, params: {
-          ingredient: {
-            grocery: 'thing', quantity: 1.00, meal_id: @meal.id
-          }
-        }
-      }
-    end
+    # test 'should not create' do
+    #   assert_raises(Pundit::NotAuthorizedError) {
+    #     post ingredients_path, params: {
+    #       ingredient: {
+    #         grocery: 'thing', quantity: 1.00, meal_id: @meal.id
+    #       }
+    #     }
+    #   }
+    # end
 
     test 'should not get edit' do
       assert_raises(Pundit::NotAuthorizedError) {
