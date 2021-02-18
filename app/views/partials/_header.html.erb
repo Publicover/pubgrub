@@ -35,6 +35,9 @@
         <li class='nav-item nav-link <%= active_if(cuisines_path) %>'>
           <%= link_to 'See Cuisines', cuisines_path, class: 'nav-link' %>
         </li>
+        <li class='nav-item nav-link <%= active_if(side_categories_path) %>'>
+          <%= link_to 'See Side Categories', side_categories_path, class: 'nav-link' %>
+        </li>
       <% end %>
     </ul>
     <span class='nav-item'>

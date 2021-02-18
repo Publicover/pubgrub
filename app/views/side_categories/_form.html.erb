@@ -1,0 +1,26 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @side_category do |f| %>
+      <% if @side_category.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@side_category.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @side_category.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+      </p>
+
+      <p>
+        <%= f.submit %>
+      </p>
+
+    <% end %>
+  </div>
+</div>
