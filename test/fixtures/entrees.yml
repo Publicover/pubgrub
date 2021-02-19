@@ -4,6 +4,7 @@ one:
   name: Steak
   number_of_sides: 2
   side_category_ids: [1, 2]
+  status: current
   cuisine: american
   user: jim
 
@@ -11,5 +12,103 @@ two:
   name: Jambalaya
   number_of_sides: 0
   side_category_ids: []
+  status: current
   cuisine: american
   user: jim
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+beet_pasta:
+  name: Beet Pasta
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dana
+  status: current
+
+mac_n_cheese:
+  name: Mac N Cheese
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current
+
+job_test_1:
+  name: Job Test 1
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: archived
+
+job_test_2:
+  name: Job Test 2
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current
+
+job_test_3:
+  name: Job Test 3
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: archived
+
+job_test_4:
+  name: Job Test 4
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current
+
+job_test_5:
+  name: Job Test 5
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: archived
+
+job_test_6:
+  name: Job Test 6
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current
+
+job_test_7:
+  name: Job Test 7
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: archived
+
+job_test_8:
+  name: Job Test 8
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current
+
+job_test_9:
+  name: Job Test 9
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: archived
+
+job_test_10:
+  name: Job Test 10
+  cuisine: american
+  number_of_sides: 0
+  side_category_ids: []
+  user: dave
+  status: current

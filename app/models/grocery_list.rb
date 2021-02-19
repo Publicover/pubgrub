@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GroceryList < ApplicationRecord
-  before_save :collect_current_meals
+  before_save :collect_current_entrees
   before_save :collect_current_ingredients
   after_create :set_current_grocery_list
 
@@ -10,14 +10,14 @@ class GroceryList < ApplicationRecord
     current: 1
   }
 
-  def collect_current_meals
-    assign_attributes(meal_ids: Meal.current.pluck(:id))
+  def collect_current_entrees
+    assign_attributes(entree_ids: Entree.current.pluck(:id))
   end
 
   def collect_current_ingredients
     weekly_ingredients = {}
-    meal_ids.each do |meal_id|
-      Meal.find(meal_id).ingredients.each do |ingredient|
+    entree_ids.each do |entree_id|
+      Entree.find(entree_id).ingredients.each do |ingredient|
         if weekly_ingredients.key?(ingredient.grocery)
           assign_when_not_key(ingredient, weekly_ingredients)
         else

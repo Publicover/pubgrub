@@ -7,7 +7,6 @@
 one:
   quantity: 1.00
   grocery: Onion
-  measurement: nil
   ingredientable_id: 980190962
   ingredientable_type: Entree
 

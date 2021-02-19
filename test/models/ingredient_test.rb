@@ -18,4 +18,8 @@ class IngredientTest < ActiveSupport::TestCase
   test 'should know entree' do
     assert_equal ingredients(:one).ingredientable, entrees(:one)
   end
+
+  test 'should delegate entree name' do
+    assert_equal ingredients(:one).ingredientable_name, entrees(:one).name
+  end
 end
