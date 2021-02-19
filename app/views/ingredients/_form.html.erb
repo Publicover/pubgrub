@@ -12,9 +12,15 @@
           <% end %>
         </div>
       <% end %>
+
       <p>
-        <%= f.label 'Meal' %>
-        <%= f.collection_select :meal_id, Meal.all, :id, :name, prompt: true %>
+        <%= f.label 'Entree or side?' %>
+        <%= f.select :ingredientable_type, [['Entree', 'Entree'], ['Side', 'Side']] %>
+      </p>
+
+      <p>
+        <%= f.label 'Entree' %>
+        <%= f.collection_select :ingredientable_id, Entree.all, :id, :name, prompt: true %>
       </p>
 
       <p>
