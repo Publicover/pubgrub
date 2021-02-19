@@ -15,21 +15,7 @@ class IngredientTest < ActiveSupport::TestCase
     assert_not_nil ingredient.errors[:line1]
   end
 
-  # test 'should validate meal' do
-  #   ingredient = Ingredient.create(grocery: 'Steak', quantity: 1.00)
-  #   assert_not ingredient.save
-  #   assert_not_nil ingredient.errors[:line1]
-  # end
-
-  # test 'should know meal' do
-  #   assert_equal ingredients(:one).meal, meals(:beet_pasta)
-  # end
-
-  # test 'should delgate meal name' do
-  #   assert_equal ingredients(:one).meal_name, meals(:beet_pasta).name
-  # end
-
   test 'should know entree' do
-    assert_equal ingredients(:one).entree, meals(:steak)
+    assert_equal ingredients(:one).ingredientable, entrees(:one)
   end
 end
