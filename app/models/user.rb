@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :meals, inverse_of: :user, dependent: :destroy
   has_many :entrees, inverse_of: :user, dependent: :destroy
 
   enum role: {

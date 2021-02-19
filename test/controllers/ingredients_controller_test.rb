@@ -2,7 +2,7 @@ require "test_helper"
 
 class IngredientsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @meal = meals(:beet_pasta)
+    @entree = entrees(:beet_pasta)
   end
 
   class AsAdmin < IngredientsControllerTest
@@ -29,7 +29,7 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
     #   assert_difference('Ingredient.count') do
     #     post ingredients_path, params: {
     #       ingredient: {
-    #         grocery: 'Cumin', quantity: 1.25, measurement: 'Teaspoon', meal_id: @meal.id
+    #         grocery: 'Cumin', quantity: 1.25, measurement: 'Teaspoon', meal_id: @entree.id
     #       }
     #     }
     #   end
@@ -87,7 +87,7 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
     #   assert_raises(Pundit::NotAuthorizedError) {
     #     post ingredients_path, params: {
     #       ingredient: {
-    #         grocery: 'thing', quantity: 1.00, meal_id: @meal.id
+    #         grocery: 'thing', quantity: 1.00, meal_id: @entree.id
     #       }
     #     }
     #   }

@@ -53,4 +53,8 @@ class EntreeTest < ActiveSupport::TestCase
     refute_equal ingredient_count, 0
     assert_equal entrees(:one).ingredients.count, ingredient_count
   end
+
+  test 'should collect by enum' do
+    assert_equal Entree.current.count, Entree.where(status: :current).count
+  end
 end
