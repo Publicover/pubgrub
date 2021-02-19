@@ -1,6 +1,7 @@
 class Entree < ApplicationRecord
   include Ingredientable
-  
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
+
   has_one_attached :pic
 
   before_save :tileize_name

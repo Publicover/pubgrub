@@ -44,4 +44,13 @@ class EntreeTest < ActiveSupport::TestCase
   test 'should know cuisine' do
     assert_equal entrees(:one).cuisine_id, cuisines(:american).id
   end
+
+  test 'should know ingredients' do
+    ingredient_count = Ingredient.where(
+                                    ingredientable_id: entrees(:one).id,
+                                    ingredientable_type: 'Entree')
+                                  .count
+    refute_equal ingredient_count, 0
+    assert_equal entrees(:one).ingredients.count, ingredient_count
+  end
 end

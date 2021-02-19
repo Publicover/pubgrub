@@ -7,5 +7,5 @@ class Ingredient < ApplicationRecord
 
   validates :grocery, presence: true
 
-  delegate :name, to: :ingredientable
+  # delegate :name, to: :ingredientable
 end
