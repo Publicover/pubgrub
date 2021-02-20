@@ -2,7 +2,7 @@ class EntreesController < ApplicationController
   before_action :set_entree, except: [:index, :new, :create]
 
   def index
-    @entrees = policy_scope(Entree)
+    @entrees = policy_scope(Entree).order(created_at: :desc)
     authorize @entrees
   end
 
@@ -12,11 +12,14 @@ class EntreesController < ApplicationController
   def new
     @entree = Entree.new
     authorize @entree
+    @side_categories = SideCategory.all
   end
 
   def create
+    binding.pry
     @entree = Entree.new(entree_params)
     authorize @entree
+    @side_categories = SideCategory.all
 
     if @entree.save
       redirect_to entrees_path, notice: 'Created successfully.'
