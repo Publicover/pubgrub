@@ -1,2 +1,24 @@
-<h1>Entrees#show</h1>
-<p>Find me in app/views/entrees/show.html.erb</p>
+<div>
+  <h3><%= @entree.name %></h3>
+  <p><%= @entree.cuisine %></p>
+  <p>
+    <% if @entree.pic.attached? %>
+      <%= image_tag url_for(@entree.pic), class: 'sized-image' %>
+    <% else %>
+      Add a picture!
+    <% end %>
+  </p>
+  <p>
+    Ingredients:
+  </p>
+  <hr />
+  <% @entree.ingredients.each do |ingredient| %>
+    <p>
+      <%= ingredient.grocery %><br />
+      <%= ingredient.measurement unless ingredient.measurement.nil? %><br />
+      <%= ingredient.quantity unless ingredient.quantity.nil? %><br />
+    </p>
+
+  <% end %>
+  <hr />
+</div>
