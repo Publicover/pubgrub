@@ -70,14 +70,14 @@ schnitzel = Entree.create!(name: 'Chicken Schnitzel', cuisine_id: german.id, use
 
 puts "Creating eight sides..."
 
-Side.create!(name: 'Baked Potato', side_category_id: starch.id)
-Side.create!(name: 'Mashed Potatoes', side_category_id: starch.id)
-Side.create!(name: 'Sesame Green Breans', side_category_id: asian.id)
-Side.create!(name: 'Edamame', side_category_id: asian.id)
-Side.create!(name: 'Mixed Frozen Vege', side_category_id: vege.id)
-Side.create!(name: 'Asparagus', side_category_id: vege.id)
-Side.create!(name: 'French Bread', side_category_id: bread.id)
-Side.create!(name: 'Garlic Bread', side_category_id: bread.id)
+Side.create!(name: 'Baked Potato', user_id: jim.id, side_category_id: starch.id)
+Side.create!(name: 'Mashed Potatoes', user_id: jim.id, side_category_id: starch.id)
+Side.create!(name: 'Sesame Green Breans', user_id: jim.id, side_category_id: asian.id)
+Side.create!(name: 'Edamame', user_id: jim.id, side_category_id: asian.id)
+Side.create!(name: 'Mixed Frozen Vege', user_id: jim.id, side_category_id: vege.id)
+Side.create!(name: 'Asparagus', user_id: jim.id, side_category_id: vege.id)
+Side.create!(name: 'French Bread', user_id: jim.id, side_category_id: bread.id)
+Side.create!(name: 'Garlic Bread', user_id: jim.id, side_category_id: bread.id)
 
 puts "Creating twenty-three ingredients..."
 

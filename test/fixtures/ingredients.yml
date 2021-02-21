@@ -16,3 +16,10 @@ two:
   measurement: Cup
   ingredientable_id: 298486374
   ingredientable_type: Entree
+
+three:
+  quantity: 250
+  grocery: Green Beans
+  measurement: grams
+  ingredientable_id: 980190962
+  ingredientable_type: Side
