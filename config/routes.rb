@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :cuisines
   resources :side_categories
   resources :entrees
+  resources :sides
 end
