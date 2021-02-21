@@ -9,6 +9,8 @@ class Side < ApplicationRecord
   belongs_to :user, inverse_of: :sides
   belongs_to :side_category, inverse_of: :sides
 
+  delegate :name, to: :side_category, prefix: true
+
   enum status: {
     archived: 0,
     current: 1

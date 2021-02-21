@@ -1,0 +1,55 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @side do |f| %>
+      <% if @side.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@side.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @side.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+      </p>
+
+      <p>
+        <%= f.label 'Pic' %>
+        <%= f.file_field :pic %>
+      </p>
+
+      <p>
+        <%= f.label 'Side Category' %>
+        <%= f.collection_select :side_category_id, SideCategory.all, :id, :name, prompt: true %>
+      </p>
+
+
+      <p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :status, value: :archived %>
+      </p>
+
+      <p>
+        Don't see a grocery for this meal? <%= link_to 'Add it real quick', new_grocery_path %> before continuing.
+      </p>
+
+
+      <fieldset>
+        <p>
+          <%= f.fields_for :ingredients do |ingredients_form| %>
+            <%= render 'ingredient_fields', f: ingredients_form, entree: @side %>
+          <% end %>
+          <%= link_to_add_fields 'Add Ingredients', f, :ingredients %>
+        </p>
+      </fieldset>
+
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
+</div>

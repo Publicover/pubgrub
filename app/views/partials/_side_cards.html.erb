@@ -1,0 +1,24 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <% @sides.each do |side| %>
+      <div class='card mx-auto hvr-grow-shadow'>
+        <% if side.pic.attached? %>
+          <%= image_tag url_for(side.pic), class: 'sized-image' %>
+        <% else %>
+          <%= link_to 'Add a pic', edit_side_path(side), class: 'card-text mx-auto' %>
+        <% end %>
+        <div class='card-body d-flex flex-column'>
+          <h5 class='card-title mt-auto'><%= side.name %></h5>
+          <p class='card-text mx-auto'><%= side.side_category_name %></p>
+          <p class='card-text mt-auto'>Calories per serving: XX</p>
+          <p><%= link_to 'Delete this', side_path(side), method: :delete %></p>
+          <p>
+            <% if side.user_id == current_user.id %>
+              <%= link_to 'Update this side', edit_side_path(side) %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

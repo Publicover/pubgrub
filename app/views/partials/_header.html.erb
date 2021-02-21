@@ -11,10 +11,13 @@
   <div class='collapse navbar-collapse' id='myNavbar'>
     <ul class='navbar-nav mr-auto'>
       <li class='nav-item nav-link <%= active_if(entrees_path) %>'>
-        <%= link_to 'Entrees', entrees_path, class: 'nav-link' %>
+        <%= link_to 'See all entrees', entrees_path, class: 'nav-link' %>
       </li>
       <li class='nav-item nav-link <%= active_if(new_entree_path) %>'>
         <%= link_to 'Create an entree', new_entree_path, class: 'nav-link ' %>
+      </li>
+      <li class='nav-item nav-link <%= active_if(sides_path) %>'>
+        <%= link_to 'See all sides', sides_path, class: 'nav-link' %>
       </li>
       <% if current_user.admin? %>
         <li class='nav-item nav-link <%= active_if(groceries_path) %>'>

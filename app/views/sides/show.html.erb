@@ -1,2 +1,27 @@
-<h1>Sides#show</h1>
-<p>Find me in app/views/sides/show.html.erb</p>
+<div>
+  <%= link_to 'Back to all sides', sides_path %>
+</div>
+<div>
+  <h3><%= @side.name %></h3>
+  <p><%= @side.side_category_name %></p>
+  <p>
+    <% if @side.pic.attached? %>
+      <%= image_tag url_for(@side.pic), class: 'sized-image' %>
+    <% else %>
+      Add a picture!
+    <% end %>
+  </p>
+  <p>
+    Ingredients:
+  </p>
+  <hr />
+  <% @side.ingredients.each do |ingredient| %>
+    <p>
+      <%= ingredient.grocery %><br />
+      <%= ingredient.measurement unless ingredient.measurement.nil? %><br />
+      <%= ingredient.quantity unless ingredient.quantity.nil? %><br />
+    </p>
+
+  <% end %>
+  <hr />
+</div>

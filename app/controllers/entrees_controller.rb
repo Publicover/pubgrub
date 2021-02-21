@@ -16,7 +16,6 @@ class EntreesController < ApplicationController
   end
 
   def create
-    binding.pry
     @entree = Entree.new(entree_params)
     authorize @entree
     @side_categories = SideCategory.all
@@ -29,9 +28,11 @@ class EntreesController < ApplicationController
   end
 
   def edit
+    @side_categories = SideCategory.all
   end
 
   def update
+    @side_categories = SideCategory.all
     @entree.update(entree_params)
     redirect_to entree_path(@entree), notice: 'Update successful.'
   end

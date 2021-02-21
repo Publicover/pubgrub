@@ -10,6 +10,11 @@
           <p class='card-text mx-auto'><%= entree.side_category_ids %></p>
           <p class='card-text mt-auto'>Calories per serving: XX</p>
           <p><%= link_to 'Delete this', entree_path(entree), method: :delete %></p>
+          <p>
+            <% if entree.user_id == current_user.id %>
+              <%= link_to 'Update this entree', edit_entree_path(entree) %>
+            <% end %>
+          </p>
         </div>
       </div>
     <% end %>

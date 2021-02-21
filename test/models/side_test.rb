@@ -2,7 +2,6 @@ require "test_helper"
 
 class SideTest < ActiveSupport::TestCase
   test 'should have correct columns' do
-    puts sides(:one).id
     assert Side.column_names.include?('name')
     assert Side.column_names.include?('status')
     assert Side.column_names.include?('user_id')
@@ -40,5 +39,9 @@ class SideTest < ActiveSupport::TestCase
     ).count
     refute_equal ingredient_count, 0
     assert_equal sides(:one).ingredients.count, ingredient_count
+  end
+
+  test 'should delegate side category name' do
+    assert_equal sides(:one).side_category_name, side_categories(:vegetable).name
   end
 end
