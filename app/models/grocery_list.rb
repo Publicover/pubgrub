@@ -16,16 +16,14 @@ class GroceryList < ApplicationRecord
 
   def collect_current_ingredients
     weekly_ingredients = {}
-    entree_ids.each do |entree_id|
-      Entree.find(entree_id).ingredients.each do |ingredient|
-        if weekly_ingredients.key?(ingredient.grocery)
-          assign_when_not_key(ingredient, weekly_ingredients)
-        else
-          assign_when_key(ingredient, weekly_ingredients)
-        end
-      end
+    Ingredient.current_with_entree.each do |ingredient|
+      assign_all_ingredients(ingredient, weekly_ingredients)
+    end
+    Ingredient.current_with_side.each do |ingredient|
+      assign_all_ingredients(ingredient, weekly_ingredients)
     end
     assign_attributes(grocery_quantity: weekly_ingredients)
+
   end
 
   def assign_when_not_key(ingredient, hash)
@@ -48,5 +46,13 @@ class GroceryList < ApplicationRecord
 
   def set_current_grocery_list
     SetCurrentGroceryList.new.set_current_list
+  end
+
+  def assign_all_ingredients(ingredient, hash)
+    if hash.key?(ingredient.grocery)
+      assign_when_not_key(ingredient, hash)
+    else
+      assign_when_key(ingredient, hash)
+    end
   end
 end

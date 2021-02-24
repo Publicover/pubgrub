@@ -7,7 +7,10 @@ class RandomizeCurrentEntreesJobTest < ActiveJob::TestCase
     assert_enqueued_jobs 1
   end
 
-  test 'should change current meals' do
+  test 'should change current entree and sides' do
+    Entree.all.each do |entree|
+      entree.update(side_category_ids: SideCategory.pluck(:id).sample(2))
+    end
     current_entrees_count = Entree.current.count
     current_entree_ids = Entree.current.pluck(:id)
 

@@ -16,4 +16,28 @@ class Entree < ApplicationRecord
     archived: 0,
     current: 1
   }
+
+  def self.clear_present_sides
+    current.each do |entree|
+      entree.present_sides = []
+      entree.save
+    end
+  end
+
+  def sides
+    return nil if present_sides.blank?
+
+    Side.find(present_sides)
+  end
+
+  def assign_new_sides
+    return if number_of_sides.zero?
+
+    side_ids = Array.new
+    side_category_ids&.each do |id|
+      category = SideCategory.find(id)
+      side_ids << category.sides.pluck(:id).sample
+    end
+    update(present_sides: side_ids)
+  end
 end

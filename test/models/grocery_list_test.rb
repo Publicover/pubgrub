@@ -16,7 +16,7 @@ class GroceryListTest < ActiveSupport::TestCase
     assert_equal GroceryList.last.entree_ids.size, Entree.current.count
   end
 
-  test 'list will populate meal_ids on create' do
+  test 'list will populate entree_ids on create' do
     list = GroceryList.create!
     assert_equal list.entree_ids.size, Entree.current.count
     assert_equal list.entree_ids - Entree.current.pluck(:id), []
@@ -33,6 +33,11 @@ class GroceryListTest < ActiveSupport::TestCase
                             cuisine_id: cuisines(:american).id,
                             number_of_sides: 1,
                             status: :current)
+    side = Side.create!(name: 'Whole Buncha Chips',
+                        user_id: users(:jim).id,
+                        side_category: side_categories(:starch),
+                        status: :current)
+
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Milk', measurement: 'Teaspoon', quantity: 1.5)
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Milk', measurement: 'Teaspoon', quantity: 4)
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Milk', measurement: 'Cup', quantity: 5)
@@ -40,6 +45,11 @@ class GroceryListTest < ActiveSupport::TestCase
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Red Peppers', measurement: 'Entire', quantity: 3)
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Peppers', quantity: 5)
     Ingredient.create!(ingredientable_id: entree.id, ingredientable_type: 'Entree', grocery: 'Peppers', quantity: 5)
+    Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Bag of Chips', measurement: 'small', quantity: 1)
+    Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Bag of Chips', measurement: 'small', quantity: 1)
+    Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Then a Big Bag of Chips', quantity: 1)
+    Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Dip', measurement: 'HUGE', quantity: 1)
+
     list = GroceryList.create!
     assert list.grocery_quantity['Milk'].is_a?(Hash)
     assert_equal list.grocery_quantity['Milk'].size, 2
@@ -47,6 +57,9 @@ class GroceryListTest < ActiveSupport::TestCase
     assert_equal list.grocery_quantity['Milk']['Cup'], "5.0"
     assert_equal list.grocery_quantity['Peppers'], "10.0"
     assert_equal list.grocery_quantity['Red Peppers']['Entire'], "3.0"
+    assert_equal list.grocery_quantity['Bag of Chips']['small'], "2.0"
+    assert_equal list.grocery_quantity['Then a Big Bag of Chips'], "1.0"
+    assert_equal list.grocery_quantity['Dip']['HUGE'], "1.0"
   end
 
   test 'will make new list the only current list on create' do

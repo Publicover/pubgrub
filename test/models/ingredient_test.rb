@@ -22,4 +22,12 @@ class IngredientTest < ActiveSupport::TestCase
   test 'should delegate entree name' do
     assert_equal ingredients(:one).ingredientable_name, entrees(:one).name
   end
+
+  test 'should get ingredients for all current entrees' do
+    assert_not_nil Ingredient.current_with_entree
+  end
+
+  test 'should get ingredients for all current sides' do
+    assert_not_nil Ingredient.current_with_side
+  end
 end

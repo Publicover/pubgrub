@@ -57,4 +57,36 @@ class EntreeTest < ActiveSupport::TestCase
   test 'should collect by enum' do
     assert_equal Entree.current.count, Entree.where(status: :current).count
   end
+
+  test 'should clear present sides' do
+    # make all entrees current
+    Entree.all.each { |entree| entree.update(status: :current)}
+    # give all of them something in present_sides
+    Entree.all.each { |entree| entree.update(present_sides: [1, 2, 3, 4])}
+    # make sure it worked (since they all start blank)
+    assert_not_nil Entree.where('present_sides IS NULL OR present_sides = ?', '{}').count
+    assert_equal Entree.current.count, Entree.where.not('present_sides IS NULL OR present_sides = ?', '{}').count
+    # clear present_sides in all current entrees
+    Entree.clear_present_sides
+    # assert that all entrees have clear present_sides
+    assert_equal Entree.count, Entree.where('present_sides IS NULL OR present_sides = ?', '{}').count
+  end
+
+  test 'should associate present sides' do
+    entree = entrees(:one)
+    entree.present_sides = [sides(:one).id, sides(:two).id]
+    assert_equal entree.sides.count, 2
+  end
+
+  test 'should assign sides' do
+    entree = entrees(:one)
+    entree.update(side_category_ids: [sides(:one).side_category_id, sides(:two).side_category_id])
+    entree.assign_new_sides
+    refute_equal entree.reload.present_sides, []
+    assert_equal entree.reload.number_of_sides, entree.reload.sides.count
+    entree.present_sides.each_with_index do |side_id, index|
+      side = Side.find(side_id)
+      assert_equal side.reload.side_category_id, entree.reload.side_category_ids[index]
+    end
+  end
 end

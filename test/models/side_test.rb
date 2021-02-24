@@ -44,4 +44,10 @@ class SideTest < ActiveSupport::TestCase
   test 'should delegate side category name' do
     assert_equal sides(:one).side_category_name, side_categories(:vegetable).name
   end
+
+  test 'can flip enum' do
+    assert_not sides(:one).current?
+    sides(:one).current!
+    assert sides(:one).reload.current?
+  end
 end

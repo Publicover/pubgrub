@@ -5,3 +5,9 @@ starch:
 
 vegetable:
   name: Vegetable
+
+desert:
+  name: desert
+
+potato:
+  name: potato
