@@ -25,7 +25,8 @@ class Entree < ApplicationRecord
   end
 
   def sides
-    return nil if present_sides.blank?
+    return [] if present_sides.blank?
+    return [] if number_of_sides.zero?
 
     Side.find(present_sides)
   end
@@ -36,6 +37,7 @@ class Entree < ApplicationRecord
     side_ids = Array.new
     side_category_ids&.each do |id|
       category = SideCategory.find(id)
+      next if category.sides.nil?
       side_ids << category.sides.pluck(:id).sample
     end
     update(present_sides: side_ids)

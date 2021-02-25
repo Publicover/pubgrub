@@ -19,3 +19,8 @@ four:
   name: Rice Pilaf
   user: jim
   side_category: starch
+
+five:
+  name: 'Potato Au Gratin'
+  user: jim
+  side_category: potato

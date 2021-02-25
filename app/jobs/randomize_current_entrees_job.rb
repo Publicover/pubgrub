@@ -11,8 +11,12 @@ class RandomizeCurrentEntreesJob < ApplicationJob
       entree.current!
     end
     Entree.current.each do |entree|
-      entree.assign_new_sides
-      entree.sides.each { |side| side.current! } unless entree.sides.nil?
+      if entree.number_of_sides.zero?
+        next
+      else
+        entree.assign_new_sides
+        entree.sides.each { |side| side.current! }
+      end
     end
   end
 end

@@ -9,7 +9,8 @@ class RandomizeCurrentEntreesJobTest < ActiveJob::TestCase
 
   test 'should change current entree and sides' do
     Entree.all.each do |entree|
-      entree.update(side_category_ids: SideCategory.pluck(:id).sample(2))
+      entree.update(side_category_ids: SideCategory.pluck(:id).sample(2),
+                    number_of_sides: 2)
     end
     current_entrees_count = Entree.current.count
     current_entree_ids = Entree.current.pluck(:id)
@@ -17,5 +18,16 @@ class RandomizeCurrentEntreesJobTest < ActiveJob::TestCase
     RandomizeCurrentEntreesJob.perform_now
     assert_equal 7, Entree.current.count
     assert_not_equal current_entree_ids, Entree.current.pluck(:id)
+  end
+
+  test 'should handle entrees with no sides' do
+    Entree.all.each do |entree|
+      entree.update(number_of_sides: 0, side_category_ids: [])
+    end
+    assert_not_nil Side.current.count
+
+    RandomizeCurrentEntreesJob.perform_now
+    assert_equal 7, Entree.current.count
+    assert_equal 0, Side.current.count
   end
 end
