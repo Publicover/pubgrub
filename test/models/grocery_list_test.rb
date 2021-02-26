@@ -49,8 +49,10 @@ class GroceryListTest < ActiveSupport::TestCase
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Bag of Chips', measurement: 'small', quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Then a Big Bag of Chips', quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Dip', measurement: 'HUGE', quantity: 1)
+    Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Green Peppers', measurement: 'Bag', quantity: 1)
 
     list = GroceryList.create!
+    puts list.grocery_quantity
     assert list.grocery_quantity['Milk'].is_a?(Hash)
     assert_equal list.grocery_quantity['Milk'].size, 2
     assert_equal list.grocery_quantity['Milk']['Teaspoon'], "5.5"

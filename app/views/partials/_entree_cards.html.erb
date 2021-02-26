@@ -2,20 +2,29 @@
   <div class='row'>
     <% @entrees.each do |entree| %>
       <div class='card mx-auto hvr-grow-shadow'>
+        <h5 class='card-header mt-auto'><%= entree.name %></h5>
         <% if entree.pic.attached? %>
-          <%= image_tag url_for(entree.pic), class: 'sized-image' %>
+          <%= image_tag url_for(entree.pic), class: 'sized-image card-image-top' %>
         <% end %>
         <div class='card-body d-flex flex-column'>
-          <h5 class='card-title mt-auto'><%= entree.name %></h5>
-          <p class='card-text mx-auto'><%= entree.side_category_ids %></p>
-          <p class='card-text mt-auto'>Calories per serving: XX</p>
-          <p><%= link_to 'Delete this', entree_path(entree), method: :delete %></p>
-          <p>
-            <% if entree.user_id == current_user.id %>
-              <%= link_to 'Update this entree', edit_entree_path(entree) %>
-            <% end %>
-          </p>
+
+          <div class='card-text mt-auto'>Calories per serving: XX</div>
+
         </div>
+        <% unless entree.number_of_sides.zero? %>
+          <ul class='list-group list-group-flush'>
+            <% entree.sides.each do |side| %>
+              <li class="list-group-item"><%= link_to "#{side.name}", side_path(side) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% if entree.user_id == current_user.id %>
+          <div class='card-body d-flex flex-column'>
+            <div class='card-text mt-auto'>
+              <%= link_to 'Update', edit_entree_path(entree), class: 'card-link' %>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

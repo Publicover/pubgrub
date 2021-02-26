@@ -26,7 +26,7 @@ class GroceryList < ApplicationRecord
 
   end
 
-  def assign_when_not_key(ingredient, hash)
+  def assign_when_key(ingredient, hash)
     if ingredient.measurement.nil?
       hash[ingredient.grocery] += ingredient.quantity
     elsif hash[ingredient.grocery].key?(ingredient.measurement)
@@ -36,7 +36,7 @@ class GroceryList < ApplicationRecord
     end
   end
 
-  def assign_when_key(ingredient, hash)
+  def assign_when_not_key(ingredient, hash)
     hash[ingredient.grocery] = if ingredient.measurement.nil?
                                  ingredient.quantity
                                else
@@ -50,9 +50,9 @@ class GroceryList < ApplicationRecord
 
   def assign_all_ingredients(ingredient, hash)
     if hash.key?(ingredient.grocery)
-      assign_when_not_key(ingredient, hash)
-    else
       assign_when_key(ingredient, hash)
+    else
+      assign_when_not_key(ingredient, hash)
     end
   end
 end

@@ -4,7 +4,11 @@
   <div class='d-flex justify-content-center'>
     <ul>
       <% @grocery_list.grocery_quantity.each do |k, v| %>
-        <% if v.is_a?(Hash) %>
+        <% if v.is_a?(Hash) && v.size == 1 && v.key?("Whole")%>
+          <li class='js-click'>
+            <%= k %>: <%= v.values[0] %>
+          </li>
+        <% elsif v.is_a?(Hash) %>
           <li class='js-click'><%= k %></li>
             <ul>
               <% v.each do |key, val| %>
