@@ -1,13 +1,12 @@
 class SidesController < ApplicationController
-  before_action :set_side, except: [:index, :new, :create]
+  before_action :set_side, except: %i[index new create]
 
   def index
     @sides = policy_scope(Side).order(created_at: :desc)
     authorize @sides
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @side = Side.new
@@ -25,8 +24,7 @@ class SidesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @side.update(side_params)
@@ -40,12 +38,12 @@ class SidesController < ApplicationController
 
   private
 
-  def set_side
-    @side = Side.find(params[:id])
-    authorize @side
-  end
+    def set_side
+      @side = Side.find(params[:id])
+      authorize @side
+    end
 
-  def side_params
-    params.require(:side).permit(policy(Side).permitted_attributes)
-  end
+    def side_params
+      params.require(:side).permit(policy(Side).permitted_attributes)
+    end
 end

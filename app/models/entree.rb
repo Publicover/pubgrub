@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Entree < ApplicationRecord
   include Ingredientable
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
@@ -34,10 +36,11 @@ class Entree < ApplicationRecord
   def assign_new_sides
     return if number_of_sides.zero?
 
-    side_ids = Array.new
+    side_ids = []
     side_category_ids&.each do |id|
       category = SideCategory.find(id)
       next if category.sides.nil?
+
       side_ids << category.sides.pluck(:id).sample
     end
     update(present_sides: side_ids)
@@ -47,7 +50,7 @@ class Entree < ApplicationRecord
     category = SideCategory.find(side_category_ids[0])
     return if category.sides.nil?
 
-    side_ids = Array.new
+    side_ids = []
     potential_side_ids = category.sides.pluck(:id)
     number_of_sides.times do
       potential_side_id = potential_side_ids.sample

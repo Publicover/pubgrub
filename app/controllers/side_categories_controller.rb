@@ -1,13 +1,12 @@
 class SideCategoriesController < ApplicationController
-  before_action :set_side_category, except: [:index, :new, :create]
+  before_action :set_side_category, except: %i[index new create]
 
   def index
     @side_categories = policy_scope(SideCategory)
     authorize @side_categories
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @side_category = SideCategory.new
@@ -25,8 +24,7 @@ class SideCategoriesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @side_category.update(side_category_params)
@@ -45,12 +43,12 @@ class SideCategoriesController < ApplicationController
 
   private
 
-  def set_side_category
-    @side_category = SideCategory.find(params[:id])
-    authorize @side_category
-  end
+    def set_side_category
+      @side_category = SideCategory.find(params[:id])
+      authorize @side_category
+    end
 
-  def side_category_params
-    params.require(:side_category).permit(policy(SideCategory).permitted_attributes)
-  end
+    def side_category_params
+      params.require(:side_category).permit(policy(SideCategory).permitted_attributes)
+    end
 end

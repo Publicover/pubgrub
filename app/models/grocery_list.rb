@@ -23,7 +23,6 @@ class GroceryList < ApplicationRecord
       assign_all_ingredients(ingredient, weekly_ingredients)
     end
     assign_attributes(grocery_quantity: weekly_ingredients)
-
   end
 
   def assign_when_key(ingredient, hash)

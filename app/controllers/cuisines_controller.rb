@@ -1,13 +1,12 @@
 class CuisinesController < ApplicationController
-  before_action :set_cuisine, except: [:index, :new, :create]
+  before_action :set_cuisine, except: %i[index new create]
 
   def index
     @cuisines = policy_scope(Cuisine)
     authorize @cuisines
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @cuisine = Cuisine.new
@@ -25,8 +24,7 @@ class CuisinesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @cuisine.update(cuisine_params)
@@ -45,12 +43,12 @@ class CuisinesController < ApplicationController
 
   private
 
-  def set_cuisine
-    @cuisine = Cuisine.find(params[:id])
-    authorize @cuisine
-  end
+    def set_cuisine
+      @cuisine = Cuisine.find(params[:id])
+      authorize @cuisine
+    end
 
-  def cuisine_params
-    params.require(:cuisine).permit(policy(Cuisine).permitted_attributes)
-  end
+    def cuisine_params
+      params.require(:cuisine).permit(policy(Cuisine).permitted_attributes)
+    end
 end

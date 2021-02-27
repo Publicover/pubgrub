@@ -1,13 +1,12 @@
 class EntreesController < ApplicationController
-  before_action :set_entree, except: [:index, :new, :create]
+  before_action :set_entree, except: %i[index new create]
 
   def index
     @entrees = policy_scope(Entree).order(created_at: :desc)
     authorize @entrees
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @entree = Entree.new
@@ -44,12 +43,12 @@ class EntreesController < ApplicationController
 
   private
 
-  def set_entree
-    @entree = Entree.find(params[:id])
-    authorize @entree
-  end
+    def set_entree
+      @entree = Entree.find(params[:id])
+      authorize @entree
+    end
 
-  def entree_params
-    params.require(:entree).permit(policy(Entree).permitted_attributes)
-  end
+    def entree_params
+      params.require(:entree).permit(policy(Entree).permitted_attributes)
+    end
 end

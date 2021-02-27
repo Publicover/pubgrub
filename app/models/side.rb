@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Side < ApplicationRecord
   include Ingredientable
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
