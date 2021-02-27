@@ -42,4 +42,18 @@ class Entree < ApplicationRecord
     end
     update(present_sides: side_ids)
   end
+
+  def assign_new_sides_from_one_category
+    category = SideCategory.find(side_category_ids[0])
+    return if category.sides.nil?
+
+    side_ids = Array.new
+    potential_side_ids = category.sides.pluck(:id)
+    number_of_sides.times do
+      potential_side_id = potential_side_ids.sample
+      side_ids << potential_side_id
+      potential_side_ids.delete(potential_side_id)
+    end
+    update(present_sides: side_ids)
+  end
 end

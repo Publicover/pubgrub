@@ -173,6 +173,10 @@ Measurement.create!(measure: 'bunch')
 Measurement.create!(measure: 'Pound')
 Measurement.create!(measure: 'Clove')
 
+puts "Running RandomizeCurrentEntreesJob..."
+
+RandomizeCurrentEntreesJob.new.perform_now
+
 puts 'Creating a GroceryList...'
 
 GroceryList.create!

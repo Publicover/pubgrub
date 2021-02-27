@@ -89,4 +89,17 @@ class EntreeTest < ActiveSupport::TestCase
       assert_equal side.reload.side_category_id, entree.reload.side_category_ids[index]
     end
   end
+
+  test 'should assign sides when there is a single side_category_ids value' do
+    entree = entrees(:one)
+    entree.update(side_category_ids: [side_categories(:starch).id, side_categories(:starch).id])
+    entree.update(number_of_sides: 2)
+    entree.assign_new_sides_from_one_category
+    refute_equal entree.reload.present_sides, []
+    assert_equal entree.reload.number_of_sides, entree.reload.present_sides.size
+    entree.present_sides.each do |side_id|
+      side = Side.find(side_id)
+      assert_equal side.reload.side_category_id, entree.reload.side_category_ids[0]
+    end
+  end
 end
