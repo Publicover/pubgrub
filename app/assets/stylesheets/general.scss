@@ -7,6 +7,18 @@ body {
   margin: 33px;
 }
 
+ul {
+  column-count: 3;
+}
+
+ul ul {
+  column-count: 1;
+}
+
+li {
+  padding: 0 5px 0 5px;
+}
+
 .navbar {
   padding: 2%;
 }
