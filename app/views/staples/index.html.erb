@@ -1,2 +1,20 @@
-<h1>Staples#index</h1>
-<p>Find me in app/views/staples/index.html.erb</p>
+<%= render 'partials/staple_cards' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Measurement</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @staples.each do |staple| %>
+      <tr>
+        <td><%= staple.name %></td>
+        <td><%= staple.measurement %></td>
+        <td><%= staple.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

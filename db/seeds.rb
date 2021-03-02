@@ -173,6 +173,14 @@ Measurement.create!(measure: 'bunch')
 Measurement.create!(measure: 'Pound')
 Measurement.create!(measure: 'Clove')
 
+puts "Creating five staples..."
+
+Staple.create!(name: 'Twinings Tea', measurement: 'box', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+Staple.create!(name: 'English Breakfast Tea', measurement: 'box', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+Staple.create!(name: 'Kid Bread', measurement: 'Loaf', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+Staple.create!(name: 'Adult Bread', measurement: 'Loaf', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+Staple.create!(name: 'Russian Bread', measurement: 'Bag', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+
 puts "Running RandomizeCurrentEntreesJob..."
 
 RandomizeCurrentEntreesJob.new.perform_now

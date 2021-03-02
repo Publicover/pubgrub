@@ -1,6 +1,8 @@
 class Staple < ApplicationRecord
   before_save :tileize_name
-  
+
+  has_one_attached :pic
+
   belongs_to :user, inverse_of: :staples
 
   validates :name, presence: true

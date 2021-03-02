@@ -1,0 +1,45 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @staple do |f| %>
+      <% if @staple.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@staple.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @staple.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+      </p>
+
+      <p>
+        <%= f.label 'Pic' %>
+        <%= f.file_field :pic %>
+      </p>
+
+      <p>
+        <%= f.label 'Measurement' %>
+        <%= f.collection_select :measurement, Measurement.all, :measure, :measure, prompt: true %>
+      </p>
+
+      <p>
+        <%= f.label 'Quantity' %>
+        <%= f.number_field :quantity %>
+      </p>
+
+      <p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :status, value: :in_stock %>
+      </p>
+
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
+</div>

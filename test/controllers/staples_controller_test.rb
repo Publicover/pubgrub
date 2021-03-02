@@ -23,10 +23,16 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
   test 'should create' do
     assert_difference('Staple.count') do
       post staples_path, params: { staple: {
-          name: 'Thing', measurement: 'Whole', quantity: 1, user_id: users(:jim).id, status: :in_stock
+          name: 'Thing',
+          pic: fixture_file_upload('steak.jpg', 'image/jpg'),
+          measurement: 'Whole',
+          quantity: 1,
+          user_id: users(:jim).id,
+          status: :in_stock
         }
       }
     end
+    assert_equal 'steak.jpg', Staple.last.pic.filename.to_s
     assert_redirected_to staples_path
   end
 

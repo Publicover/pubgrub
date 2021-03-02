@@ -40,6 +40,6 @@ class StaplesController < ApplicationController
   end
 
   def staple_params
-    params.require(:staple).permit(:name, :measurment, :quantity, :user_id, :status)
+    params.require(:staple).permit(:name, :pic, :measurment, :quantity, :user_id, :status)
   end
 end
