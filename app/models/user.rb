@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :entrees, inverse_of: :user, dependent: :destroy
   has_many :sides, inverse_of: :user, dependent: :destroy
+  has_many :staples, inverse_of: :user, dependent: :destroy
 
   enum role: {
     admin: 0,

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Coffee
+  measurement: Bag
+  quantity: 1
+  status: :in_stock
+  user: jim
+
+two:
+  name: Tea
+  measurement: Box
+  quantity: 1
+  status: 1
+  user: jim

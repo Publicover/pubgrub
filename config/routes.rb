@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :side_categories
   resources :entrees
   resources :sides
+  resources :staples
 end
