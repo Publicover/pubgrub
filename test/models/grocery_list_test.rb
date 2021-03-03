@@ -50,6 +50,8 @@ class GroceryListTest < ActiveSupport::TestCase
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Then a Big Bag of Chips', quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Dip', measurement: 'HUGE', quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery: 'Green Peppers', measurement: 'Bag', quantity: 1)
+    Staple.create!(name: 'Pretzel Sticks', quantity: 1, user_id: users(:jim).id, status: :out_of_stock)
+    Staple.create!(name: 'Lunch Meat', measurement: 'Bag', quantity: 1, user_id: users(:jim).id, status: :out_of_stock)
 
     list = GroceryList.create!
     assert list.grocery_quantity['Milk'].is_a?(Hash)
@@ -61,6 +63,8 @@ class GroceryListTest < ActiveSupport::TestCase
     assert_equal list.grocery_quantity['Bag of Chips']['small'], "2.0"
     assert_equal list.grocery_quantity['Then a Big Bag of Chips'], {"Whole"=>"1.0"}
     assert_equal list.grocery_quantity['Dip']['HUGE'], "1.0"
+    assert_equal list.grocery_quantity['Pretzel Sticks'], {"Whole"=>1}
+    assert_equal list.grocery_quantity['Lunch Meat']['Bag'], 1
   end
 
   test 'will make new list the only current list on create' do

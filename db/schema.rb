@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_082102) do
 
   create_table "staples", force: :cascade do |t|
     t.string "name"
-    t.string "measurement"
+    t.string "measurement", default: "Whole"
     t.integer "quantity"
     t.integer "status"
     t.bigint "user_id", null: false

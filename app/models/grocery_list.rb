@@ -22,6 +22,9 @@ class GroceryList < ApplicationRecord
     Ingredient.current_with_side.each do |ingredient|
       assign_all_ingredients(ingredient, weekly_ingredients)
     end
+    Staple.out_of_stock.each do |staple|
+      assign_all_staples(staple, weekly_ingredients)
+    end
     assign_attributes(grocery_quantity: weekly_ingredients)
   end
 
@@ -53,5 +56,31 @@ class GroceryList < ApplicationRecord
     else
       assign_when_not_key(ingredient, hash)
     end
+  end
+
+  def assign_all_staples(staple, hash)
+    if hash.key?(staple.name)
+      assign_staple_when_key(staple, hash)
+    else
+      assign_staple_when_not_key(staple, hash)
+    end
+  end
+
+  def assign_staple_when_key(staple, hash)
+    if staple.measurement.nil?
+      hash[staple.name] += staple.quantity
+    elsif hash[staple.name].key?(staple.measurement)
+      hash[staple.name][staple.measurement] += staple.quantity
+    else
+      hash[staple.name][staple.measurement] = staple.quantity
+    end
+  end
+
+  def assign_staple_when_not_key(staple, hash)
+    hash[staple.name] = if staple.measurement.nil?
+                                 staple.quantity
+                               else
+                                 { staple.measurement => staple.quantity }
+                               end
   end
 end
