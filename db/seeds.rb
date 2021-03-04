@@ -32,39 +32,39 @@ german_cat = SideCategory.create!(name: 'German')
 
 puts "Creating eight entreees..."
 
-steak = Entree.create!(name: 'Steak', cuisine_id: american.id, user_id: jim.id, status: 0, present_sides: [],
+steak = Entree.create!(name: 'Steak', cuisine_id: american.id, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 2, side_category_ids: [starch.id, bread.id])
-jambalaya = Entree.create!(name: 'Jambalaya', cuisine_id: cajun.id, user_id: dana.id, status: 0, present_sides: [],
+jambalaya = Entree.create!(name: 'Jambalaya', cuisine_id: cajun.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-stew = Entree.create!(name: 'Beef Stew', cuisine_id: american.id, user_id: dana.id, status: 0, present_sides: [],
+stew = Entree.create!(name: 'Beef Stew', cuisine_id: american.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-goj_chx = Entree.create!(name: 'Gochujang Chicken', cuisine_id: asian_food.id, user_id: dana.id, status: 0, present_sides: [],
+goj_chx = Entree.create!(name: 'Gochujang Chicken', cuisine_id: asian_food.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-saus = Entree.create!(name: 'Sausage and Potatoes', cuisine_id: german.id, user_id: dana.id, status: 0, present_sides: [],
+saus = Entree.create!(name: 'Sausage and Potatoes', cuisine_id: german.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-cpc = Entree.create!(name: 'Coconut Peanut Chicken', cuisine_id: asian_food.id, user_id: dana.id, status: 0, present_sides: [],
+cpc = Entree.create!(name: 'Coconut Peanut Chicken', cuisine_id: asian_food.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-carib_chx = Entree.create!(name: 'Caribbean Chicken', cuisine_id: caribbean.id, user_id: dana.id, status: 0, present_sides: [],
+carib_chx = Entree.create!(name: 'Caribbean Chicken', cuisine_id: caribbean.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 2, side_category_ids: [caribbean.id, caribbean.id])
-schnitzel = Entree.create!(name: 'Chicken Schnitzel', cuisine_id: german.id, user_id: dana.id, status: 0, present_sides: [],
+schnitzel = Entree.create!(name: 'Chicken Schnitzel', cuisine_id: german.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 2, side_category_ids: [vege.id, german_cat.id])
-freezer_meal = Entree.create!(name: 'Frozen Pan Dinner', cuisine_id: german.id, user_id: jim.id, status: 0, present_sides: [],
+freezer_meal = Entree.create!(name: 'Frozen Pan Dinner', cuisine_id: german.id, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
-takeout = Entree.create!(name: 'Takeout!', cuisine_id: german.id, user_id: jim.id, status: 0, present_sides: [],
+takeout = Entree.create!(name: 'Takeout!', cuisine_id: german.id, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: 0, present_sides: [],
           number_of_sides: 0, side_category_ids: [])
-general = Entree.create!(name: "General Tso's Chicken", cuisine_id: asian.id, user_id: dana.id, status: 0, present_sides: [],
+general = Entree.create!(name: "General Tso's Chicken", cuisine_id: asian.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
           number_of_sides: 0, side_category_ids: [])
 
 puts "Creating eight sides..."
 
-bp = Side.create!(name: 'Baked Potato', user_id: jim.id, side_category_id: starch.id)
-mp = Side.create!(name: 'Mashed Potatoes', user_id: jim.id, side_category_id: starch.id)
-ses = Side.create!(name: 'Sesame Green Breans', user_id: jim.id, side_category_id: asian.id)
-ed = Side.create!(name: 'Edamame', user_id: jim.id, side_category_id: asian.id)
-mx = Side.create!(name: 'Mixed Frozen Vege', user_id: jim.id, side_category_id: vege.id)
-asp = Side.create!(name: 'Asparagus', user_id: jim.id, side_category_id: vege.id)
-fb = Side.create!(name: 'French Bread', user_id: jim.id, side_category_id: bread.id)
-gb = Side.create!(name: 'Garlic Bread', user_id: jim.id, side_category_id: bread.id)
+bp = Side.create!(name: 'Baked Potato', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: starch.id)
+mp = Side.create!(name: 'Mashed Potatoes', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: starch.id)
+ses = Side.create!(name: 'Sesame Green Breans', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: asian.id)
+ed = Side.create!(name: 'Edamame', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: asian.id)
+mx = Side.create!(name: 'Mixed Frozen Vege', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: vege.id)
+asp = Side.create!(name: 'Asparagus', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: vege.id)
+fb = Side.create!(name: 'French Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
+gb = Side.create!(name: 'Garlic Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
 
 puts "Creating thirty-seven ingredients..."
 
