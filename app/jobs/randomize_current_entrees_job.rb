@@ -20,5 +20,6 @@ class RandomizeCurrentEntreesJob < ApplicationJob
       end
       entree.sides.each(&:current!)
     end
+    GroceryList.create!
   end
 end

@@ -30,4 +30,10 @@ class RandomizeCurrentEntreesJobTest < ActiveJob::TestCase
     assert_equal 7, Entree.current.count
     assert_equal 0, Side.current.count
   end
+
+  test 'should create new grocery list at the end' do
+    assert_difference('GroceryList.count') do
+      RandomizeCurrentEntreesJob.perform_now
+    end
+  end
 end

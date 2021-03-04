@@ -19,7 +19,7 @@
       <p class="alert middle"><%= alert %></p>
     <% end %>
 
-    <%= render 'partials/header' unless request.env['PATH_INFO'] == '/users/sign_in' %>
+    <%= render 'partials/header' unless request.env['PATH_INFO'] == '/users/sign_in' || request.env['PATH_INFO'] == '/users/sign_up'%>
     <%= render 'partials/page_heading' unless request.env['PATH_INFO'] == '/' %>
     <div class='container'>
       <%= yield %>

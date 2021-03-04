@@ -8,9 +8,11 @@
 
 puts "Creating three users..."
 
-jim = User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password')
-dana = User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password')
-User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, password: 'password')
+if Rails.env.development?
+  jim = User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password')
+  dana = User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password')
+  User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, password: 'password')
+end
 
 puts 'Creating five cuisine categories...'
 
