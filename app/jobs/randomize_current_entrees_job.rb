@@ -15,11 +15,10 @@ class RandomizeCurrentEntreesJob < ApplicationJob
 
       if entree.side_category_ids.uniq == 1
         entree.assign_new_sides_from_one_category
-        entree.sides.each(&:current!)
       else
         entree.assign_new_sides
-        entree.sides.each(&:current!)
       end
+      entree.sides.each(&:current!)
     end
   end
 end

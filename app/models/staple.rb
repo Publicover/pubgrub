@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Staple < ApplicationRecord
   before_save :tileize_name
 

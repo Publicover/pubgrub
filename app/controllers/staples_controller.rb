@@ -1,12 +1,11 @@
 class StaplesController < ApplicationController
-  before_action :set_staple, except: [:index, :new, :create]
+  before_action :set_staple, except: %i[index new create]
 
   def index
     @staples = Staple.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @staple = Staple.new
@@ -22,8 +21,7 @@ class StaplesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @staple.update(staple_params)
