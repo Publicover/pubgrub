@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_082102) do
+ActiveRecord::Schema.define(version: 2021_03_05_124846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_082102) do
     t.string "ingredientable_type", null: false
     t.bigint "ingredientable_id", null: false
     t.string "measurement", default: "Whole"
+    t.integer "status", default: 1
     t.index ["ingredientable_type", "ingredientable_id"], name: "index_ingredients_on_ingredientable"
   end
 

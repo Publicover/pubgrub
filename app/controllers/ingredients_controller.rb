@@ -4,6 +4,7 @@ class IngredientsController < ApplicationController
   def index
     @ingredients = Ingredient.all
     authorize @ingredients
+    @ingredient = Ingredient.first
   end
 
   def show; end
@@ -34,6 +35,18 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient.destroy
     redirect_to ingredients_path
+  end
+
+  def update_status
+    if @ingredient.in_stock?
+      @ingredient.update(status: :out_of_stock)
+    elsif @ingredient.out_of_stock?
+      @ingredient.update(status: :in_stock)
+    end
+    respond_to do |format|
+      format.html { redirect_to ingredients_path }
+      format.js
+    end
   end
 
   private

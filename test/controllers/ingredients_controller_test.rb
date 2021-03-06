@@ -58,6 +58,15 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
       end
       assert_redirected_to ingredients_path
     end
+
+    test 'link should change status' do
+      ingredient = ingredients(:one)
+      assert ingredient.out_of_stock?
+      get update_status_ingredient_path(ingredient)
+      assert ingredient.reload.in_stock?
+      get update_status_ingredient_path(ingredient)
+      assert ingredient.reload.out_of_stock?
+    end
   end
 
   class AsMember < IngredientsControllerTest

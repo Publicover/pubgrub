@@ -20,4 +20,9 @@ class Ingredient < ApplicationRecord
        AND ingredients.ingredientable_type = 'Side'"
     )
   }
+
+  enum status: {
+    in_stock: 0,
+    out_of_stock: 1
+  }
 end

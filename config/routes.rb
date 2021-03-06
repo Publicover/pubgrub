@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :meals
   resources :groceries
   resources :measurements
-  resources :ingredients
+  resources :ingredients do
+    member do
+      get :update_status, as: 'update_status'
+    end
+  end
   resources :cuisines
   resources :side_categories
   resources :entrees

@@ -37,7 +37,11 @@ class IngredientPolicy < ApplicationPolicy
     index?
   end
 
+  def update_status?
+    index?
+  end
+
   def permitted_attributes
-    %i[grocery measurement quantity meal_id]
+    %i[grocery measurement quantity meal_id status]
   end
 end

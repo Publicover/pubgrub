@@ -1,0 +1,18 @@
+<%= form_for @ingredient, url: update_status_ingredient_path, remote: true do |f| %>
+  <% if @ingredient.errors.any? %>
+    <div id="error_explanation">
+      <p>
+        <%= pluralize(@ingredient.errors.count, "error") %> prohibited
+        this article from being saved:
+      </p>
+      <% @ingredient.errors.full_messages.each do |msg| %>
+        <li><center><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+  <%= hidden_field :status, value: true %>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

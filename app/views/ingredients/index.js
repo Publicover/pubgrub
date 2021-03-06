@@ -17,7 +17,6 @@
         <td><%= ingredient.grocery %></td>
         <td><%= ingredient.measurement %></td>
         <td><%= ingredient.quantity %></td>
-        <td><%= ingredient.status %></td>
       </tr>
     <% end %>
   </tbody>
