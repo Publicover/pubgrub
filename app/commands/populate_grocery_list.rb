@@ -15,14 +15,22 @@ class PopulateGroceryList
     weekly_ingredients
   end
 
+  def assign_all_ingredients(ingredient, hash)
+    if hash.key?(ingredient.grocery)
+      assign_when_key(ingredient, hash)
+    else
+      assign_when_not_key(ingredient, hash)
+    end
+  end
+
   def assign_when_key(ingredient, hash)
-    if ingredient.measurement.nil?
-      hash[ingredient.grocery] += ingredient.quantity
-    elsif hash[ingredient.grocery].key?(ingredient.measurement)
+    if hash[ingredient.grocery].key?(ingredient.measurement)
       hash[ingredient.grocery][ingredient.measurement] += ingredient.quantity
     else
       hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
     end
+    # binding.pry
+    hash[ingredient.grocery][:ingredient_id] = ingredient.id
   end
 
   def assign_when_not_key(ingredient, hash)
@@ -31,14 +39,7 @@ class PopulateGroceryList
                                else
                                  { ingredient.measurement => ingredient.quantity }
                                end
-  end
-
-  def assign_all_ingredients(ingredient, hash)
-    if hash.key?(ingredient.grocery)
-      assign_when_key(ingredient, hash)
-    else
-      assign_when_not_key(ingredient, hash)
-    end
+    hash[ingredient.grocery][:ingredient_id] = ingredient.id
   end
 
   def assign_all_staples(staple, hash)
@@ -57,6 +58,7 @@ class PopulateGroceryList
     else
       hash[staple.name][staple.measurement] = staple.quantity
     end
+    hash[staple.name][:staple_id] = staple.id
   end
 
   def assign_staple_when_not_key(staple, hash)
@@ -65,5 +67,6 @@ class PopulateGroceryList
                         else
                           { staple.measurement => staple.quantity }
                         end
+    hash[staple.name][:staple_id] = staple.id
   end
 end

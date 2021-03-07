@@ -32,6 +32,8 @@ class RandomizeCurrentEntreesJobTest < ActiveJob::TestCase
   end
 
   test 'should create new grocery list at the end' do
+    category_ids = SideCategory.pluck(:id).sample(2)
+    entrees(:one).update(side_category_ids: category_ids)
     assert_difference('GroceryList.count') do
       RandomizeCurrentEntreesJob.perform_now
     end

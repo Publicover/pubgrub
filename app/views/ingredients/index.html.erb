@@ -1,5 +1,11 @@
-<%= @ingredient.inspect %>
+<div class=<%="#{@ingredient.status}"%>>
+  <%= @ingredient.inspect %>
+</div>
 <%= link_to 'update @ingredient', update_status_ingredient_path(@ingredient) %>
+
+
+<%= render 'grocery_list' %>
+
 
 <table>
   <thead>

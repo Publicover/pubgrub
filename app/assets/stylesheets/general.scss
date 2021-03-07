@@ -146,3 +146,14 @@ td {
   font-size: 50px;
   color: blue;
 }
+
+.in_stock {
+  color: black;
+  text-decoration: line-through;
+  text-decoration-thickness: 2.5px;
+  color: black;
+
+  a {
+    color: black;
+  }
+}

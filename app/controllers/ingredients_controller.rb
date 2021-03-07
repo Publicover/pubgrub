@@ -5,6 +5,11 @@ class IngredientsController < ApplicationController
     @ingredients = Ingredient.all
     authorize @ingredients
     @ingredient = Ingredient.first
+    @grocery_list = GroceryList.current.last
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def show; end
@@ -45,7 +50,7 @@ class IngredientsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to ingredients_path }
-      format.js
+      format.js 
     end
   end
 

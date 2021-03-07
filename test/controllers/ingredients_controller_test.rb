@@ -11,6 +11,7 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should get index' do
+      GroceryList.create
       get ingredients_path
       assert_response :success
     end

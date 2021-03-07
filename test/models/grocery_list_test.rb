@@ -54,16 +54,17 @@ class GroceryListTest < ActiveSupport::TestCase
     Staple.create!(name: 'Lunch Meat', measurement: 'Bag', quantity: 1, user_id: users(:jim).id, status: :out_of_stock)
 
     list = GroceryList.create!
+    # this will be 3 because it's two measurements and the id
     assert list.grocery_quantity['Milk'].is_a?(Hash)
-    assert_equal list.grocery_quantity['Milk'].size, 2
+    assert_equal list.grocery_quantity['Milk'].size, 3
     assert_equal list.grocery_quantity['Milk']['Teaspoon'], "5.5"
     assert_equal list.grocery_quantity['Milk']['Cup'], "5.0"
-    assert_equal list.grocery_quantity['Peppers'], {"Whole"=>"10.0"}
+    assert_equal list.grocery_quantity['Peppers']['Whole'], "10.0"
     assert_equal list.grocery_quantity['Red Peppers']['Entire'], "3.0"
     assert_equal list.grocery_quantity['Bag of Chips']['small'], "2.0"
-    assert_equal list.grocery_quantity['Then a Big Bag of Chips'], {"Whole"=>"1.0"}
+    assert_equal list.grocery_quantity['Then a Big Bag of Chips']['Whole'], "1.0"
     assert_equal list.grocery_quantity['Dip']['HUGE'], "1.0"
-    assert_equal list.grocery_quantity['Pretzel Sticks'], {"Whole"=>1}
+    assert_equal list.grocery_quantity['Pretzel Sticks']['Whole'], 1
     assert_equal list.grocery_quantity['Lunch Meat']['Bag'], 1
   end
 
