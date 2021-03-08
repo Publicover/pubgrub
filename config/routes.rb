@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'dashboards#index'
 
+  get 'grocery_lists/finished_shopping'
+
   resources :users, except: [:new, :create]
   resources :meals
   resources :groceries

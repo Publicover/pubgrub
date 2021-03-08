@@ -13,13 +13,17 @@ class RandomizeCurrentEntreesJob < ApplicationJob
     Entree.current.each do |entree|
       next if entree.number_of_sides.zero?
 
-      if entree.side_category_ids.uniq == 1
-        entree.assign_new_sides_from_one_category
-      else
-        entree.assign_new_sides
-      end
+      sort_sides(entree)
       entree.sides.each(&:current!)
     end
     GroceryList.create!
+  end
+
+  def sort_sides(entree)
+    if entree.side_category_ids.uniq == 1
+      entree.assign_new_sides_from_one_category
+    else
+      entree.assign_new_sides
+    end
   end
 end

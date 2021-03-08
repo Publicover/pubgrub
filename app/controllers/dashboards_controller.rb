@@ -14,5 +14,4 @@ class DashboardsController < ApplicationController
   #     @ingredient.update(status: :in_stock)
   #   end
   # end
-
 end

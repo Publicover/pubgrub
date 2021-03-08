@@ -1,7 +1,10 @@
+<div class='row'>
+  <div class='col d-flex justify-content-center'>
+    <h3><%= link_to "This week's shopping list", ingredients_path %></h3>
+  </div>
+</div>
+<br />
 <h3>Meals for this week:</h3>
 <div class='row'>
   <%= render 'partials/entree_cards' %>
 </div>
-<br />
-<%= render 'grocery_list' %>
-<br />

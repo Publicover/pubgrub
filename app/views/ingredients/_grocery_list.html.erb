@@ -1,12 +1,7 @@
-<br /><button>I'm done shopping</button><br />
-<div class='d-flex justify-content-center'>Our shopping list for the week:</div>
-<br />
-<div class='container-fluid'>
-  <div class='d-flex justify-content-center'>
-    <ul>
-      <% @grocery_list.grocery_quantity.each do |k, v| %>
-        <%= render 'ingredient_k_v', k: k, v: v %>
-      <% end %>
-    </ul>
-  </div>
+<div class='row d-flex justify-content-center'>
+  <ul>
+    <% @grocery_list.grocery_quantity.each do |k, v| %>
+      <%= render 'ingredient_k_v', k: k, v: v %>
+    <% end %>
+  </ul>
 </div>

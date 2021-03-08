@@ -50,7 +50,7 @@ class IngredientsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to ingredients_path }
-      format.js 
+      format.js
     end
   end
 
