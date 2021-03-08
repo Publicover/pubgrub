@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   resources :side_categories
   resources :entrees
   resources :sides
-  resources :staples
+  resources :staples do
+    member do
+      get :update_status, as: 'update_status'
+    end
+  end
 end

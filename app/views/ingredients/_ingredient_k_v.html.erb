@@ -15,5 +15,11 @@
   <% end %>
 <% else %>
   <% staple = Staple.find(v["staple_id"]) %>
-  <li><%= k %>: <%= link_to "#{v}", update_status_ingredient_path(staple) %></li>
+    <li class=<%= "#{staple.status}" %>><%= link_to "#{staple.name}", update_status_staple_path(staple) %></li>
+    <ul>
+      <% v.each do |key, val| %>
+        <% next if key == 'staple_id' %>
+        <li class=<%= "#{staple.status}" %>><%= key %>: <%= val %></li>
+      <% end %>
+    </ul>
 <% end %>

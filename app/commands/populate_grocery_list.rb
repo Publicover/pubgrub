@@ -29,7 +29,6 @@ class PopulateGroceryList
     else
       hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
     end
-    # binding.pry
     hash[ingredient.grocery][:ingredient_id] = ingredient.id
   end
 

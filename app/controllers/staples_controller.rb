@@ -2,7 +2,7 @@ class StaplesController < ApplicationController
   before_action :set_staple, except: %i[index new create]
 
   def index
-    @staples = Staple.all
+    @staples = Staple.all.order(name: :asc)
   end
 
   def show; end
@@ -33,11 +33,22 @@ class StaplesController < ApplicationController
     redirect_to staples_path, notice: 'Destroyed successfully.'
   end
 
-  def set_staple
-    @staple = Staple.find(params[:id])
+  def update_status
+    if @staple.out_of_stock?
+      @staple.update(status: :in_stock)
+    elsif @staple.in_stock?
+      @staple.update(status: :out_of_stock)
+    end
+    redirect_to ingredients_path
   end
 
-  def staple_params
-    params.require(:staple).permit(:name, :pic, :measurment, :quantity, :user_id, :status)
-  end
+  private
+
+    def set_staple
+      @staple = Staple.find(params[:id])
+    end
+
+    def staple_params
+      params.require(:staple).permit(:name, :pic, :measurment, :quantity, :user_id, :status)
+    end
 end
