@@ -16,3 +16,6 @@ ActiveStorage.start()
 require("./nested-forms/addFields");
 require("./nested-forms/removeFields");
 require("./dashboard");
+
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;

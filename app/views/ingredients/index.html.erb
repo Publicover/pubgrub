@@ -5,7 +5,43 @@
     </div>
   </div>
   <br />
-  <%= render 'grocery_list' %>
+  <div class='row d-flex justify-content-center'>
+    <ul>
+      <% @grocery_list.grocery_quantity.each do |k, v| %>
+
+        <% if v["ingredient_id"].present? %>
+          <% ingredient = Ingredient.find(v["ingredient_id"]) %>
+
+          <% if v.key?("Whole") && v.key?("ingredient_id") %>
+            <div  id=<%= "js-ingredient-#{v['ingredient_id']}" %>>
+                <%= render 'simple_k_v', ingredient: ingredient, k: k, v: v %>
+            </div>
+          <% else %>
+            <li class=<%= "#{ingredient.status}" %>><%= link_to "#{k}", update_status_ingredient_path(ingredient) %></li>
+            <ul>
+              <% v.each do |key, val| %>
+                <% next if key == "ingredient_id" %>
+                <li class=<%= "#{ingredient.status}" %>><%= key %>: <%= val %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        <% else %>
+          <% staple = Staple.find(v["staple_id"]) %>
+            <li class=<%= "#{staple.status}" %>>
+              <%= link_to "#{staple.name}", update_status_staple_path(staple) %>
+            </li>
+            <ul>
+              <% v.each do |key, val| %>
+                <% next if key == 'staple_id' %>
+                <li class=<%= "#{staple.status}" %>><%= key %>: <%= val %></li>
+              <% end %>
+            </ul>
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <div class='row'>

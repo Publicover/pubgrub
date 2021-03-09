@@ -1,8 +1,8 @@
 <% if v["ingredient_id"].present? %>
   <% ingredient = Ingredient.find(v["ingredient_id"]) %>
   <% if v.key?("Whole") && v.key?("ingredient_id") %>
-    <li class=<%= "#{ingredient.status}" %>>
-      <%= link_to "#{k}", update_status_ingredient_path(ingredient)  %>: <%= v.values[0] %>
+    <li id=<%= "js-ingredient-#{v['ingredient_id']}" %> class=<%= "#{ingredient.status}" %>>
+      <%= render 'simple_k_v', ingredient: ingredient, k: k, v: v %>
     </li>
   <% else %>
     <li class=<%= "#{ingredient.status}" %>><%= link_to "#{k}", update_status_ingredient_path(ingredient) %></li>

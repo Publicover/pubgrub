@@ -1,0 +1,2 @@
+var key = "<%= j(params['id']) %>";
+$("#magic-div-" + key).html("<%= j(render partial: 'groceries/show_grocery') %>");

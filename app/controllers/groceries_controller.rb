@@ -6,7 +6,11 @@ class GroceriesController < ApplicationController
     authorize @groceries
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
 
   def new
     @grocery = Grocery.new

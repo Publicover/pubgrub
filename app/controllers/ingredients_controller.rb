@@ -1,15 +1,12 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, except: %i[index new create]
+  before_action :set_grocery_list, only: %i[index update_status]
 
   def index
     @ingredients = Ingredient.all
     authorize @ingredients
-    @ingredient = Ingredient.first
-    @grocery_list = GroceryList.current.last
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
+    # @ingredient = Ingredient.first
+    # @grocery_list = GroceryList.current.last
   end
 
   def show; end
@@ -50,7 +47,7 @@ class IngredientsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to ingredients_path }
-      format.js
+      format.js { render layout: false}
     end
   end
 
@@ -59,6 +56,10 @@ class IngredientsController < ApplicationController
     def set_ingredient
       @ingredient = Ingredient.find(params[:id])
       authorize @ingredient
+    end
+
+    def set_grocery_list
+      @grocery_list = GroceryList.current.last
     end
 
     def ingredient_params

@@ -1,17 +1,18 @@
+
 <table>
   <thead>
     <tr>
-      <th>
-        Name
-      </th>
+      <th>Name</th>
+      <th>Created At</th>
     </tr>
   </thead>
   <tbody>
     <% @groceries.each do |grocery| %>
       <tr>
-        <td>
-          <%= link_to "#{grocery.name}", grocery_path(grocery) %>
-        </td>
+        <td><%= grocery.name %></td>
+        <td><%= grocery.created_at %></td>
+        <td><%= link_to 'Show', grocery_path(grocery), remote: true, params: { groc_id: grocery.id } %></td>
+        <td id='magic-div-<%= "#{grocery.id}" %>'></td>
       </tr>
     <% end %>
   </tbody>
