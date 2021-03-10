@@ -1,12 +1,10 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, except: %i[index new create]
-  before_action :set_grocery_list, only: %i[index update_status]
+  before_action :set_grocery_list, only: %i[index update_single_status update_multiple_status]
 
   def index
     @ingredients = Ingredient.all
     authorize @ingredients
-    # @ingredient = Ingredient.first
-    # @grocery_list = GroceryList.current.last
   end
 
   def show; end
@@ -39,15 +37,19 @@ class IngredientsController < ApplicationController
     redirect_to ingredients_path
   end
 
-  def update_status
-    if @ingredient.in_stock?
-      @ingredient.update(status: :out_of_stock)
-    elsif @ingredient.out_of_stock?
-      @ingredient.update(status: :in_stock)
-    end
+  def update_single_status
+    @ingredient.flip_status
     respond_to do |format|
       format.html { redirect_to ingredients_path }
-      format.js { render layout: false}
+      format.js { render layout: false }
+    end
+  end
+
+  def update_multiple_status
+    @ingredient.flip_status
+    respond_to do |format|
+      format.html { redirect_to ingredients_path }
+      format.js { render layout: false }
     end
   end
 

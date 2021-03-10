@@ -37,7 +37,11 @@ class IngredientPolicy < ApplicationPolicy
     index?
   end
 
-  def update_status?
+  def update_single_status?
+    index?
+  end
+
+  def update_multiple_status?
     index?
   end
 

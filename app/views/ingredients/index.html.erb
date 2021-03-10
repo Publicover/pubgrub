@@ -8,31 +8,11 @@
   <div class='row d-flex justify-content-center'>
     <ul>
       <% @grocery_list.grocery_quantity.each do |k, v| %>
-
         <% if v["ingredient_id"].present? %>
-          <% ingredient = Ingredient.find(v["ingredient_id"]) %>
-
-          <% if v.key?("Whole") && v.key?("ingredient_id") %>
-            <div  id=<%= "js-ingredient-#{v['ingredient_id']}" %>>
-              <%= render 'simple_k_v', ingredient: ingredient, k: k, v: v %>
-            </div>
-          <% else %>
-            <li class=<%= "#{ingredient.status}" %>><%= link_to "#{k}", update_status_ingredient_path(ingredient) %></li>
-            <ul>
-              <% v.each do |key, val| %>
-                <% next if key == "ingredient_id" %>
-                <li class=<%= "#{ingredient.status}" %>><%= key %>: <%= val %></li>
-              <% end %>
-            </ul>
-          <% end %>
-
+          <%= render 'ingredient_k_v', k: k, v: v %>
         <% else %>
-          <% staple = Staple.find(v["staple_id"]) %>
-          <div id=<%= "js-staple-#{v["staple_id"]}" %>>
-            <%= render 'staple_k_v', staple: staple, v: v %>
-          </div>
+          <%= render 'staple_k_v', v: v %>
         <% end %>
-
       <% end %>
     </ul>
   </div>

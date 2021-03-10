@@ -1,0 +1,7 @@
+<li class=<%= "#{ingredient.status}" %>><%= link_to "#{k}", update_multiple_status_ingredient_path(ingredient), remote: true %></li>
+<ul>
+  <% v.each do |key, val| %>
+    <% next if key == "ingredient_id" %>
+    <li class=<%= "#{ingredient.status}" %>><%= key %>: <%= val %></li>
+  <% end %>
+</ul>

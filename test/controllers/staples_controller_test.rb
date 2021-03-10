@@ -61,9 +61,9 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
   test 'should flip status' do
     staple = staples(:one)
     assert staple.in_stock?
-    get update_status_staple_path(staple)
+    get update_staple_status_staple_path(staple)
     assert staple.reload.out_of_stock?
-    get update_status_staple_path(staple)
+    get update_staple_status_staple_path(staple)
     assert staple.reload.in_stock?
   end
 end

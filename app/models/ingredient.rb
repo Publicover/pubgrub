@@ -25,4 +25,12 @@ class Ingredient < ApplicationRecord
     in_stock: 0,
     out_of_stock: 1
   }
+
+  def flip_status
+    if in_stock?
+      update(status: :out_of_stock)
+    elsif out_of_stock?
+      update(status: :in_stock)
+    end
+  end
 end

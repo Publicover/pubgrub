@@ -60,12 +60,21 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to ingredients_path
     end
 
-    test 'link should change status' do
+    test 'link should change simple status' do
       ingredient = ingredients(:one)
       assert ingredient.out_of_stock?
-      get update_status_ingredient_path(ingredient)
+      get update_single_status_ingredient_path(ingredient)
       assert ingredient.reload.in_stock?
-      get update_status_ingredient_path(ingredient)
+      get update_single_status_ingredient_path(ingredient)
+      assert ingredient.reload.out_of_stock?
+    end
+
+    test 'link should change complex status' do
+      ingredient = ingredients(:one)
+      assert ingredient.out_of_stock?
+      get update_single_status_ingredient_path(ingredient)
+      assert ingredient.reload.in_stock?
+      get update_single_status_ingredient_path(ingredient)
       assert ingredient.reload.out_of_stock?
     end
   end

@@ -1,10 +1,14 @@
-<li class=<%= "#{staple.status}" %>>
-  <%= link_to "#{staple.name}", update_staple_status_staple_path(staple), remote: true %>
-</li>
+<% staple = Staple.find(v["staple_id"]) %>
 
-<ul>
-  <% v.each do |key, val| %>
-    <% next if key == 'staple_id' %>
-    <li class=<%= "#{staple.status}" %>><%= key %>: <%= val %></li>
-  <% end %>
-</ul>
+<div id=<%= "js-staple-#{v["staple_id"]}" %>>
+  <li class=<%= "#{staple.status}" %>>
+    <%= link_to "#{staple.name}", update_staple_status_staple_path(staple), remote: true %>
+  </li>
+
+  <ul>
+    <% v.each do |key, val| %>
+      <% next if key == 'staple_id' %>
+      <li class=<%= "#{staple.status}" %>><%= key %>: <%= val %></li>
+    <% end %>
+  </ul>
+</div>

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :measurements
   resources :ingredients do
     member do
-      get :update_status, as: 'update_status'
+      get :update_single_status, as: 'update_single_status'
+      get :update_multiple_status, as: 'update_multiple_status'
     end
   end
   resources :cuisines

@@ -45,7 +45,6 @@ class StaplesController < ApplicationController
       format.html { redirect_to ingredients_path }
       format.js { render layout: false }
     end
-
   end
 
   private
