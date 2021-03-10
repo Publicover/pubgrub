@@ -6,6 +6,9 @@ one:
   quantity: 1
   status: :in_stock
   user: jim
+  calories_per_gram: 0
+  calories_per_package: 0
+  grams_per_package: 100
 
 two:
   name: Tea
@@ -13,3 +16,6 @@ two:
   quantity: 1
   status: 1
   user: jim
+  calories_per_gram: 0
+  calories_per_package: 0
+  grams_per_package: 100

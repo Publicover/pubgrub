@@ -116,36 +116,38 @@ Ingredient.create!(grocery: 'Garlic Bread', quantity: 1, measurement: 'loaf', in
 
 puts "Creating thirty groceries..."
 
-Grocery.create!(name: 'Steak')
-Grocery.create!(name: "Uncle Ben's rice")
-Grocery.create!(name: 'Kidney Beans')
-Grocery.create!(name: 'celery')
-Grocery.create!(name: 'red pepper')
-Grocery.create!(name: 'stew beef')
-Grocery.create!(name: 'carrots')
-Grocery.create!(name: 'onion')
-Grocery.create!(name: 'Full Chicken')
-Grocery.create!(name: 'Gochujang Paste')
-Grocery.create!(name: 'Small potatoes')
-Grocery.create!(name: 'peanuts')
-Grocery.create!(name: 'chicken breast')
-Grocery.create!(name: 'coconut milk')
-Grocery.create!(name: 'plantain')
-Grocery.create!(name: 'cumin')
-Grocery.create!(name: 'coconut sugar')
-Grocery.create!(name: 'Panko')
-Grocery.create!(name: 'Soy Sauce')
-Grocery.create!(name: 'Rice Wine')
-Grocery.create!(name: 'Cornstarch')
-Grocery.create!(name: 'Vegetable Oil')
-Grocery.create!(name: 'Garlic')
-Grocery.create!(name: 'Ginger')
-Grocery.create!(name: 'Dried Chilis')
-Grocery.create!(name: 'Rice Wine Vinegar')
-Grocery.create!(name: 'Sugar')
-Grocery.create!(name: 'Hoisin Sauce')
-Grocery.create!(name: 'Scallions')
-Grocery.create!(name: 'Sesame Seeds')
+# grams_per_package: calories_per_package: calories_per_gram:
+
+Grocery.create!(name: 'Steak', calories_per_gram: 1.17)
+Grocery.create!(name: "Uncle Ben's rice", grams_per_package: 250, calories_per_package: 380, calories_per_gram: 1.52)
+Grocery.create!(name: 'Kidney Beans', grams_per_package: 250, calories_per_package: 277, calories_per_gram: 1.1)
+Grocery.create!(name: 'celery', calories_per_gram: 0.14)
+Grocery.create!(name: 'red pepper', calories_per_gram: 0.31)
+Grocery.create!(name: 'stew beef', calories_per_gram: 2.5)
+Grocery.create!(name: 'carrots', calories_per_gram: 0.41)
+Grocery.create!(name: 'onion', calories_per_gram: 0.4)
+Grocery.create!(name: 'Full Chicken', calories_per_gram: 1.8)
+Grocery.create!(name: 'Gochujang Paste', calories_per_gram: 2.23)
+Grocery.create!(name: 'Small potatoes', calories_per_gram: 0.77)
+Grocery.create!(name: 'peanuts', grams_per_package: 300, calories_per_package: 185400, calories_per_gram: 6.18)
+Grocery.create!(name: 'chicken breast', calories_per_gram: 1.65)
+Grocery.create!(name: 'coconut milk', calories_per_gram: 2)
+Grocery.create!(name: 'plantain', calories_per_gram: 1.22)
+Grocery.create!(name: 'cumin', calories_per_gram: 3.75)
+Grocery.create!(name: 'coconut sugar', calories_per_gram: 1.36)
+Grocery.create!(name: 'Panko', calories_per_gram: 3.95)
+Grocery.create!(name: 'Soy Sauce', calories_per_gram: 0.53)
+Grocery.create!(name: 'Rice Wine', calories_per_gram: 1.34)
+Grocery.create!(name: 'Cornstarch', calories_per_gram: 3.82)
+Grocery.create!(name: 'Vegetable Oil', calories_per_gram: 8.84)
+Grocery.create!(name: 'Garlic', calories_per_gram: 1.5)
+Grocery.create!(name: 'Ginger', calories_per_gram: 0.8)
+Grocery.create!(name: 'Dried Chilis', calories_per_gram: 0.4)
+Grocery.create!(name: 'Rice Wine Vinegar', calories_per_gram: 0)
+Grocery.create!(name: 'Sugar', calories_per_gram: 3.87)
+Grocery.create!(name: 'Hoisin Sauce', calories_per_gram: 2.2)
+Grocery.create!(name: 'Scallions', calories_per_gram: 0.32)
+Grocery.create!(name: 'Sesame Seeds', calories_per_gram: 5.73)
 
 
 puts "Creating measurements..."
@@ -177,11 +179,25 @@ Measurement.create!(measure: 'Clove')
 
 puts "Creating five staples..."
 
-Staple.create!(name: 'Twinings Tea', measurement: 'box', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
-Staple.create!(name: 'English Breakfast Tea', measurement: 'box', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
-Staple.create!(name: 'Kid Bread', measurement: 'Loaf', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
-Staple.create!(name: 'Adult Bread', measurement: 'Loaf', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
-Staple.create!(name: 'Russian Bread', measurement: 'Bag', quantity: 1, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: :in_stock)
+Staple.create!(name: 'Twinings Tea', measurement: 'box', quantity: 1,
+               user_id: User.find_by(email: 'jim@pubgrub.com').id,
+               status: :in_stock, calories_per_gram: 0)
+Staple.create!(name: 'English Breakfast Tea',
+               measurement: 'box', quantity: 1,
+               user_id: User.find_by(email: 'jim@pubgrub.com').id,
+               status: :in_stock, calories_per_gram: 0)
+Staple.create!(name: 'Kid Bread', measurement: 'Loaf', quantity: 1,
+               user_id: User.find_by(email: 'jim@pubgrub.com').id,
+               status: :in_stock, calories_per_gram: 2.65,
+               grams_per_package: 500, calories_per_package: 1325)
+Staple.create!(name: 'Adult Bread', measurement: 'Loaf', quantity: 1,
+               user_id: User.find_by(email: 'jim@pubgrub.com').id,
+               status: :in_stock, calories_per_gram: 2.68,
+               grams_per_package: 500, calories_per_package: 1340)
+Staple.create!(name: 'Russian Bread', measurement: 'Bag', quantity: 1,
+               user_id: User.find_by(email: 'jim@pubgrub.com').id,
+               status: :in_stock, calories_per_gram: 3.95,
+               grams_per_package: 100, calories_per_package: 3.95)
 
 puts "Running RandomizeCurrentEntreesJob..."
 

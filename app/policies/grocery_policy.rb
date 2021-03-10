@@ -38,6 +38,6 @@ class GroceryPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:name]
+    [:name, :calories_per_gram, :calories_per_package, :grams_per_package]
   end
 end

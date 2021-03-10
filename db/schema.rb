@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_124846) do
+ActiveRecord::Schema.define(version: 2021_03_10_102128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_124846) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "calories_per_gram", precision: 5, scale: 2
+    t.integer "calories_per_package"
+    t.integer "grams_per_package"
     t.index ["name"], name: "index_groceries_on_name", unique: true
   end
 
@@ -125,6 +128,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_124846) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "calories_per_gram", precision: 5, scale: 2
+    t.integer "calories_per_package"
+    t.integer "grams_per_package"
     t.index ["name"], name: "index_staples_on_name", unique: true
     t.index ["user_id"], name: "index_staples_on_user_id"
   end

@@ -28,7 +28,10 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
           measurement: 'Whole',
           quantity: 1,
           user_id: users(:jim).id,
-          status: :in_stock
+          status: :in_stock,
+          grams_per_package: 100,
+          calories_per_package: 510,
+          calories_per_gram: 5.1
         }
       }
     end

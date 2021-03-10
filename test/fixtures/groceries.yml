@@ -2,12 +2,18 @@
 
 one:
   name: Onion
+  calories_per_gram: 1.5
 
 two:
   name: Sausage
+  calories_per_gram: 3.1
+  calories_per_package: 310
+  grams_per_package: 100
 
 three:
   name: Steak
+  calories_per_gram: 2.3
 
 four:
   name: Potato
+  calories_per_gram: 3.4

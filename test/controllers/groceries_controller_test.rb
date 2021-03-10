@@ -25,7 +25,10 @@ class GroceriesControllerTest < ActionDispatch::IntegrationTest
       assert_difference('Grocery.count') do
         post groceries_path, params: {
           grocery: {
-            name: 'Candy'
+            name: 'Candy',
+            calories_per_gram: 5.1,
+            calories_per_package: 510,
+            grams_per_package: 100
           }
         }
       end
