@@ -33,13 +33,19 @@ class StaplesController < ApplicationController
     redirect_to staples_path, notice: 'Destroyed successfully.'
   end
 
-  def update_status
+  def update_staple_status
+    @grocery_list = GroceryList.current.last
+
     if @staple.out_of_stock?
       @staple.update(status: :in_stock)
     elsif @staple.in_stock?
       @staple.update(status: :out_of_stock)
     end
-    redirect_to ingredients_path
+    respond_to do |format|
+      format.html { redirect_to ingredients_path }
+      format.js { render layout: false }
+    end
+
   end
 
   private

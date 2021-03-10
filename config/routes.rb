@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :sides
   resources :staples do
     member do
-      get :update_status, as: 'update_status'
+      get :update_staple_status, as: 'update_staple_status'
     end
   end
 end

@@ -1,0 +1,10 @@
+<li class=<%= "#{staple.status}" %>>
+  <%= link_to "#{staple.name}", update_staple_status_staple_path(staple), remote: true %>
+</li>
+
+<ul>
+  <% v.each do |key, val| %>
+    <% next if key == 'staple_id' %>
+    <li class=<%= "#{staple.status}" %>><%= key %>: <%= val %></li>
+  <% end %>
+</ul>

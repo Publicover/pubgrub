@@ -1,0 +1,5 @@
+var staple_id = "<%= j(params[:id]) %>"
+"<%= j(val = @grocery_list.grocery_quantity[@staple.name]) %>"
+$("#js-staple-" + staple_id).html(
+  "<%= j(render partial: 'ingredients/staple_k_v', locals: { staple: @staple, v: val }) %>"
+)
