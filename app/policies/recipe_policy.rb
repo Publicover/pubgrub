@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GroceryPolicy < ApplicationPolicy
+class RecipePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -8,36 +8,37 @@ class GroceryPolicy < ApplicationPolicy
   end
 
   def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def new?
     return true if user.admin?
+    return true if record.user_id == user.id
 
     false
   end
 
-  def show?
-    index?
-  end
-
-  def new?
-    index?
-  end
-
   def create?
-    index?
+    new?
   end
 
   def edit?
-    index?
+    new?
   end
 
   def update?
-    index?
+    new?
   end
 
   def destroy?
-    index?
+    new?
   end
 
   def permitted_attributes
-    %i[name calories_per_gram calories_per_package grams_per_package]
+    %i[name user_id entree_id body]
   end
 end

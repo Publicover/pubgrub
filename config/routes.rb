@@ -23,4 +23,5 @@ Rails.application.routes.draw do
       get :update_staple_status, as: 'update_staple_status'
     end
   end
+  resources :recipes
 end

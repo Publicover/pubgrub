@@ -4,9 +4,10 @@ class Entree < ApplicationRecord
   include Ingredientable
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
-  has_one_attached :pic
-
   before_save :tileize_name
+
+  has_one_attached :pic
+  has_one :recipe, inverse_of: :entree, dependent: :destroy
 
   belongs_to :cuisine, inverse_of: :entrees
   belongs_to :user, inverse_of: :entrees
