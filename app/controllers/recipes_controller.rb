@@ -33,7 +33,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_path, notice: 'Update successful.'
+    redirect_to recipes_path, notice: 'Delete successful.'
   end
 
   private

@@ -1,2 +1,27 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Instructions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%=recipe.name %></td>
+        <td><%=recipe.user.fname %></td>
+        <td><%= link_to 'Show', recipe_path(recipe) %></td>
+        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+        <td><%= link_to 'Destroy', recipe_path(recipe), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<div class='row'>
+  <div class='col d-flex justify-content-center'>
+
+    <p><%= link_to 'Create another recipe', new_recipe_path %></p>
+  </div>
+</div>

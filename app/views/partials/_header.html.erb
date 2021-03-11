@@ -44,6 +44,12 @@
         <li class='nav-item nav-link <%= active_if(side_categories_path) %>'>
           <%= link_to 'See Side Categories', side_categories_path, class: 'nav-link' %>
         </li>
+        <li class='nav-item nav-link <%= active_if(recipes_path) %>'>
+          <%= link_to 'See all Recipes', recipes_path, class: 'nav-link' %>
+        </li>
+        <li class='nav-item nav-link <%= active_if(recipes_path) %>'>
+          <%= link_to 'Create a recipe', new_recipe_path, class: 'nav-link' %>
+        </li>
       <% end %>
     </ul>
     <span class='nav-item'>

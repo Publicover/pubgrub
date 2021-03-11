@@ -1,2 +1,7 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<p>
+  The entree for this recipe must exist in the database before you create this recipe.
+  If it doesn't exist yet, <%= link_to 'pop over real quick', new_entree_path %> to
+  create it.
+</p>
+
+<%= render 'form' %>

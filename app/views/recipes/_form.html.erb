@@ -1,0 +1,28 @@
+Hi, <%= current_user.fname %>. Your id is <%= current_user.id %>.
+
+<%= form_for @recipe do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <p>
+        <%= pluralize(@recipe.errors.count, "error") %> prohibited
+        this article from being saved:
+      </p>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><center><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label 'Entree' %>
+    <%= f.collection_select :entree_id, Entree.all, :id, :name, prompt: true %>
+  </p>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+
+<% end %>
