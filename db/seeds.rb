@@ -73,8 +73,8 @@ Ingredient.create!(grocery: "Uncle Ben's rice", quantity: 1, measurement: 'bag',
 Ingredient.create!(grocery: 'kidney beans', quantity: 1, measurement: "can", ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery: 'celery', quantity: 1, measurement: 'stalk', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery: 'red pepper', quantity: 1, ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'stew beef', quantity: 1, measurement: 'pound', ingredientable_id: stew.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'carrots', quantity: 1, measurement: 'bunch', ingredientable_id: stew.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery: 'stew beef', quantity: 2, measurement: 'pound', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 907)
+Ingredient.create!(grocery: 'carrots', quantity: 4, measurement: 'bunch', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 240)
 Ingredient.create!(grocery: 'onion', quantity: 1, ingredientable_id: stew.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery: 'Full Chicken', quantity: 1, ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery: 'Gochujang Paste', quantity: 5, measurement: 'Tablespoons', ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
@@ -148,6 +148,8 @@ Grocery.create!(name: 'Sugar', calories_per_gram: 3.87)
 Grocery.create!(name: 'Hoisin Sauce', calories_per_gram: 2.2)
 Grocery.create!(name: 'Scallions', calories_per_gram: 0.32)
 Grocery.create!(name: 'Sesame Seeds', calories_per_gram: 5.73)
+Grocery.create!(name: 'Olive Oil', calories_per_gram: 9)
+
 
 
 puts "Creating measurements..."

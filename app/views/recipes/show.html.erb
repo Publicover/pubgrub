@@ -1,5 +1,25 @@
 <div class='row'>
   <div class='col d-flex justify-content-center'>
-    <%= @recipe.name %>
+    <p><%= @recipe.name %></p>
+  </div>
+</div>
+<div class='row'>
+  <table>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <tbody>
+        <td><%= ingredient.pretty_quantity %></td>
+        <td><%= ingredient.measurement %></td>
+        <td><%= ingredient.grocery %></td>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+<div class='row'>
+  <div class='col d-flex justify-content-center'>
+    <div class='row'>
+      <div class='col d-flex'>
+        <%= @recipe.body %>
+      </div>
+    </div>
   </div>
 </div>

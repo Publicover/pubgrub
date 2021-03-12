@@ -19,3 +19,6 @@ require("./dashboard");
 
 import jquery from 'jquery';
 window.$ = window.jquery = jquery;
+
+require("trix")
+require("@rails/actiontext")

@@ -33,4 +33,8 @@ class Ingredient < ApplicationRecord
       update(status: :in_stock)
     end
   end
+
+  def pretty_quantity
+    quantity == quantity.to_i ? quantity.to_i : quantity
+  end
 end

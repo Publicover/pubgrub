@@ -15,4 +15,8 @@ class RecipeTest < ActiveSupport::TestCase
     end
     assert_equal Recipe.last.name, entrees(:one).name
   end
+
+  test 'should know ingredients' do
+    assert_equal recipes(:one).ingredients, entrees(:one).ingredients
+  end
 end

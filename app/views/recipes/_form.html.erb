@@ -18,6 +18,9 @@ Hi, <%= current_user.fname %>. Your id is <%= current_user.id %>.
     <%= f.collection_select :entree_id, Entree.all, :id, :name, prompt: true %>
   </p>
 
+  <%= f.label 'Body' %>
+  <%= f.rich_text_area :body %>
+
   <%= f.hidden_field :user_id, value: current_user.id %>
 
   <p>

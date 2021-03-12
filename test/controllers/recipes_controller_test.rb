@@ -26,6 +26,7 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
         post recipes_path, params: {
           recipe: {
             name: 'Steak',
+            body: 'Testing here this thing here.',
             user_id: users(:jim).id,
             entree_id: entrees(:one).id
           }
@@ -39,18 +40,16 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
 
-    # can't do an update on the name since there's a callback
-    
-    # test 'should update' do
-    #   word = Faker::Lorem.word
-    #   patch recipe_path(recipes(:one)), params: {
-    #     recipe: {
-    #       name: 'word'
-    #     }
-    #   }
-    #   assert_equal 'word', recipes(:one).reload.name
-    #   assert_redirected_to recipe_path(recipes(:one))
-    # end
+    test 'should update' do
+      word = Faker::Lorem.word
+      patch recipe_path(recipes(:one)), params: {
+        recipe: {
+          body: 'testing another thing'
+        }
+      }
+      assert_equal 'testing another thing', recipes(:one).reload.body.to_plain_text
+      assert_redirected_to recipe_path(recipes(:one))
+    end
 
     test 'should destroy' do
       assert_difference('Recipe.count', -1) do
