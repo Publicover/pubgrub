@@ -4,56 +4,118 @@
   </div>
 
   <button type="button" class="btn-sm navbar-toggler navbar-toggler-right"
-          data-toggle="collapse" data-target="#myNavbar">
+          data-toggle="collapse" data-target="#mainNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class='collapse navbar-collapse' id='myNavbar'>
+  <div class='collaps navbar-collapse' id='mainNavbar'>
     <ul class='navbar-nav mr-auto'>
-      <li class='nav-item nav-link <%= active_if(entrees_path) %>'>
-        <%= link_to 'See all entrees', entrees_path, class: 'nav-link' %>
+      <li class='nav-item dropdown'>
+        <a class="nav-link dropdown-toggle
+                <%= active_if(entrees_path) %>
+                <%= active_if(new_entree_path) %>"
+           href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Entrees
+        </a>
+        <div class='dropdown-menu'>
+          <%= link_to 'See all Entrees', entrees_path, class: 'dropdown-item' %>
+          <%= link_to 'Create an Entree', new_entree_path, class: 'dropdown-item' %>
+        </div>
       </li>
-      <li class='nav-item nav-link <%= active_if(new_entree_path) %>'>
-        <%= link_to 'Create an entree', new_entree_path, class: 'nav-link ' %>
+      <li class='nav-item dropdown'>
+        <a class="nav-link dropdown-toggle
+                <%= active_if(sides_path) %>
+                <%= active_if(new_side_path) %>"
+           href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Sides
+        </a>
+        <div class='dropdown-menu'>
+          <%= link_to 'See all Sides', sides_path, class: 'dropdown-item' %>
+          <%= link_to 'Create a new Side', new_side_path, class: 'dropdown-item' %>
+        </div>
       </li>
-      <li class='nav-item nav-link <%= active_if(sides_path) %>'>
-        <%= link_to 'See all sides', sides_path, class: 'nav-link' %>
-      </li>
-      <li class='nav-item nav-link <%= active_if(staples_path) %>'>
-        <%= link_to 'See all Staples', staples_path, class: 'nav-link' %>
+      <li class='nav-item dropdown'>
+        <a class="nav-link dropdown-toggle
+                <%= active_if(staples_path) %>
+                <%= active_if(new_staple_path) %>"
+           href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Staples
+        </a>
+        <div class='dropdown-menu'>
+          <%= link_to 'See all Staples', staples_path, class: 'dropdown-item' %>
+          <%= link_to 'Create a new Staple', new_staple_path, class: 'dropdown-item' %>
+        </div>
       </li>
       <% if current_user.admin? %>
-        <li class='nav-item nav-link <%= active_if(groceries_path) %>'>
-          <%= link_to 'See all groceries', groceries_path, class: 'nav-link ' %>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+                  <%= active_if(groceries_path) %>
+                  <%= active_if(new_grocery_path) %>"
+             href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Groceries
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See all Groceries', groceries_path, class: 'dropdown-item' %>
+            <%= link_to 'Create a Grocery', new_grocery_path, class: 'dropdown-item' %>
+          </div>
         </li>
-        <li class='nav-item nav-link <%= active_if(measurements_path) %>'>
-          <%= link_to 'See all measurements', measurements_path, class: 'nav-link ' %>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+                  <%= active_if(measurements_path) %>
+                  <%= active_if(new_measurement_path) %>"
+             href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Measurements
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See all Measurements', measurements_path, class: 'dropdown-item' %>
+            <%= link_to 'Create a Measurement', new_measurement_path, class: 'dropdown-item' %>
+          </div>
         </li>
-        <li class='nav-item nav-link <%= active_if(new_measurement_path) %>'>
-          <%= link_to 'Create a Measurement', new_measurement_path, class: 'nav-link' %>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+                  <%= active_if(ingredients_path) %>
+                  <%= active_if(new_ingredient_path) %>"
+             href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Ingredients
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See all Ingredients', ingredients_path, class: 'dropdown-item' %>
+            <%= link_to 'Create an Ingredient', new_ingredient_path, class: 'dropdown-item' %>
+          </div>
         </li>
-        <li class='nav-item nav-link  <%= active_if(ingredients_path) %>'>
-          <%= link_to 'See all ingerdients', ingredients_path, class: 'nav-link' %>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+                  <%= active_if(cuisines_path) %>
+                  <%= active_if(new_cuisine_path) %>"
+             href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Cuisines
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See Cuisines', cuisines_path, class: 'dropdown-item' %>
+            <%= link_to 'Create a Cuisine', new_cuisine_path, class: 'dropdown-item' %>
+          </div>
         </li>
-        <li class='nav-item nav-link <%= active_if(new_ingredient_path) %>'>
-          <%= link_to 'Create an ingredient', new_ingredient_path, class: 'nav-link' %>
-        </li>
-        <li class='nav-item nav-link <%= active_if(cuisines_path) %>'>
-          <%= link_to 'See Cuisines', cuisines_path, class: 'nav-link' %>
-        </li>
-        <li class='nav-item nav-link <%= active_if(side_categories_path) %>'>
-          <%= link_to 'See Side Categories', side_categories_path, class: 'nav-link' %>
-        </li>
-        <li class='nav-item nav-link <%= active_if(recipes_path) %>'>
-          <%= link_to 'See all Recipes', recipes_path, class: 'nav-link' %>
-        </li>
-        <li class='nav-item nav-link <%= active_if(new_recipe_path) %>'>
-          <%= link_to 'Create a recipe', new_recipe_path, class: 'nav-link' %>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+                  <%= active_if(recipes_path) %>
+                  <%= active_if(new_recipe_path) %>"
+             href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Recipes
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See Recipes', recipes_path, class: 'dropdown-item' %>
+            <%= link_to 'Create a Recipe', new_recipe_path, class: 'dropdown-item' %>
+          </div>
         </li>
       <% end %>
     </ul>
-    <span class='nav-item'>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link mr-sm-2' %>
-    </span>
   </div>
 </nav>
