@@ -16,6 +16,7 @@ ActiveStorage.start()
 require("./nested-forms/addFields");
 require("./nested-forms/removeFields");
 require("./dashboard");
+require("./recipe");
 
 import jquery from 'jquery';
 window.$ = window.jquery = jquery;

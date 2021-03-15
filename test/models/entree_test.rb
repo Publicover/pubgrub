@@ -102,4 +102,13 @@ class EntreeTest < ActiveSupport::TestCase
       assert_equal side.reload.side_category_id, entree.reload.side_category_ids[0]
     end
   end
+
+  test 'should get scope with no recipes' do
+    with_recipes = Entree.includes(:recipe).where.not(recipes: { id: nil }).count
+    with_no_recipes = Entree.with_no_recipes.count
+    total_count = Entree.count
+    assert_not_nil with_no_recipes
+    refute_equal total_count, with_no_recipes
+    assert_equal with_no_recipes + with_recipes, total_count
+  end
 end

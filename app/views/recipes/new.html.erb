@@ -1,7 +1,9 @@
-<p>
-  The entree for this recipe must exist in the database before you create this recipe.
-  If it doesn't exist yet, <%= link_to 'pop over real quick', new_entree_path %> to
-  create it.
-</p>
+<div class='row'>
+  <div class='col'>
+    The entree or side for this recipe must exist in the database before you create this recipe.
+    If it doesn't exist yet, <%= link_to 'pop over real quick', new_entree_path %> to
+    create it.
+  </div>
+</div>
 
 <%= render 'form' %>

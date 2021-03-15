@@ -116,8 +116,6 @@ Ingredient.create!(grocery: 'Garlic Bread', quantity: 1, measurement: 'loaf', in
 
 puts "Creating thirty groceries..."
 
-# grams_per_package: calories_per_package: calories_per_gram:
-
 Grocery.create!(name: 'Steak', calories_per_gram: 1.17)
 Grocery.create!(name: "Uncle Ben's rice", grams_per_package: 250, calories_per_package: 380, calories_per_gram: 1.52)
 Grocery.create!(name: 'Kidney Beans', grams_per_package: 250, calories_per_package: 277, calories_per_gram: 1.1)
@@ -149,8 +147,6 @@ Grocery.create!(name: 'Hoisin Sauce', calories_per_gram: 2.2)
 Grocery.create!(name: 'Scallions', calories_per_gram: 0.32)
 Grocery.create!(name: 'Sesame Seeds', calories_per_gram: 5.73)
 Grocery.create!(name: 'Olive Oil', calories_per_gram: 9)
-
-
 
 puts "Creating measurements..."
 
@@ -200,6 +196,31 @@ Staple.create!(name: 'Russian Bread', measurement: 'Bag', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock, calories_per_gram: 3.95,
                grams_per_package: 100, calories_per_package: 3.95)
+
+puts "Creating recipes for entrees..."
+
+Recipe.create!(recipeable_id: steak.id, recipeable_type: 'Entree', user_id: steak.user_id, body: 'This is steak. Grill it.')
+Recipe.create!(recipeable_id: jambalaya.id, recipeable_type: 'Entree', user_id: jambalaya.user_id, body: 'Basically just a big pan.')
+Recipe.create!(recipeable_id: stew.id, recipeable_type: 'Entree', user_id: stew.user_id, body: 'Instant Pot, yo.')
+Recipe.create!(recipeable_id: goj_chx.id, recipeable_type: 'Entree', user_id: goj_chx.user_id, body: 'Order it out, maybe?')
+Recipe.create!(recipeable_id: saus.id, recipeable_type: 'Entree', user_id: saus.user_id, body: 'Definitely uses a pan.')
+Recipe.create!(recipeable_id: cpc.id, recipeable_type: 'Entree', user_id: cpc.user_id, body: 'Ask Dana.')
+Recipe.create!(recipeable_id: carib_chx.id, recipeable_type: 'Entree', user_id: carib_chx.user_id, body: 'You need a grill pan to start.')
+Recipe.create!(recipeable_id: schnitzel.id, recipeable_type: 'Entree', user_id: schnitzel.user_id, body: 'Definitely ask Dana.')
+Recipe.create!(recipeable_id: freezer_meal.id, recipeable_type: 'Entree', user_id: freezer_meal.user_id, body: 'Dump it out, stove at 7.')
+Recipe.create!(recipeable_id: takeout.id, recipeable_type: 'Entree', user_id: takeout.user_id, body: 'Liferando will help here.')
+Recipe.create!(recipeable_id: general.id, recipeable_type: 'Entree', user_id: general.user_id, body: 'Still looking for a good recipe for this.')
+
+puts "Creating recipes for sides..."
+
+Recipe.create!(recipeable_id: bp.id, recipeable_type: 'Side', user_id: bp.id, body: 'Oven at 350F or 176C.')
+Recipe.create!(recipeable_id: mp.id, recipeable_type: 'Side', user_id: mp.id, body: 'Boil then mash with butter.')
+Recipe.create!(recipeable_id: ses.id, recipeable_type: 'Side', user_id: ses.id, body: 'Ask Dana for real.')
+Recipe.create!(recipeable_id: ed.id, recipeable_type: 'Side', user_id: ed.id, body: 'Put the thing in the microwave or boil it.')
+Recipe.create!(recipeable_id: mx.id, recipeable_type: 'Side', user_id: mx.id, body: 'Microwave.')
+Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: asp.id, body: 'Oil and a pan.')
+Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: fb.id, body: 'Get this from a bakery.')
+Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: gb.id, body: 'Oven. Texas Toast is preferable.')
 
 puts "Running RandomizeCurrentEntreesJob..."
 

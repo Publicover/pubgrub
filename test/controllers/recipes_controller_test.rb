@@ -28,7 +28,8 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
             name: 'Steak',
             body: 'Testing here this thing here.',
             user_id: users(:jim).id,
-            entree_id: entrees(:one).id
+            recipeable_id: entrees(:one).id,
+            recipeable_type: 'Entree'
           }
         }
       end

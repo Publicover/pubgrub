@@ -3,9 +3,17 @@
 one:
   name: Steak
   user: jim
-  entree: one
+  recipeable_type: Entree
+  recipeable_id: 980190962
 
 two:
   name: Jambalaya
   user: jim
-  entree: two
+  recipeable_type: Entree
+  recipeable_id: 298486374
+
+three:
+  name: Green Beans
+  user: jim
+  recipeable_type: Side
+  recipeable_id: 980190962

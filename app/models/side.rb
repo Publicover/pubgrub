@@ -2,6 +2,8 @@
 
 class Side < ApplicationRecord
   include Ingredientable
+  include Recipeable
+
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :pic
@@ -12,6 +14,8 @@ class Side < ApplicationRecord
   belongs_to :side_category, inverse_of: :sides
 
   delegate :name, to: :side_category, prefix: true
+
+  scope :with_no_recipes, -> { includes(:recipe).where(recipes: { id: nil }).order(name: :asc) }
 
   enum status: {
     archived: 0,

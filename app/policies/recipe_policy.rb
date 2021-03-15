@@ -39,6 +39,6 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    %i[name user_id entree_id body]
+    %i[name user_id recipeable_id recipeable_type body]
   end
 end

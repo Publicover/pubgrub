@@ -50,4 +50,13 @@ class SideTest < ActiveSupport::TestCase
     sides(:one).current!
     assert sides(:one).reload.current?
   end
+
+  test 'should get scope with no recipes' do
+    with_recipes = Side.includes(:recipe).where.not(recipes: { id: nil }).count
+    with_no_recipes = Side.with_no_recipes.count
+    total_count = Side.count
+    assert_not_nil with_no_recipes
+    refute_equal total_count, with_no_recipes
+    assert_equal with_no_recipes + with_recipes, total_count
+  end
 end
