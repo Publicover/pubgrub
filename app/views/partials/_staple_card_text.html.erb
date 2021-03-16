@@ -1,0 +1,21 @@
+<h5 class='card-header mt-auto'><%= staple.name %></h5>
+<% if staple.pic.attached? %>
+  <%= image_tag url_for(staple.pic), class: 'sized-image card-image-top' %>
+<% end %>
+<div class='card-body d-flex flex-column'>
+
+  <div class='card-text mt-auto'><%= staple.quantity %> <%= staple.measurement %></div>
+  <div class='card-text mt-auto'>Calories per gram: <%= staple.pretty_calories_per_gram %></div>
+  <div class='card-text mt-auto'>Calories per package: <%= staple.calories_per_package %></div>
+  <div class='card-text mt-auto'><%= staple.status.humanize %></div>
+</div>
+<div class='card-body d-flex flex-column'>
+  <%= link_to 'Change stock status', update_staple_card_status_staple_path(staple), remote: true %>
+</div>
+<% if staple.user_id == current_user.id %>
+  <div class='card-body d-flex flex-column'>
+    <div class='card-text mt-auto'>
+      <%= link_to 'Update', edit_staple_path(staple), class: 'card-link' %>
+    </div>
+  </div>
+<% end %>

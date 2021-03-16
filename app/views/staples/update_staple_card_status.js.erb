@@ -1,0 +1,2 @@
+var ingredient_id = "<%= j(params[:id]) %>";
+$("#js-staple-" + ingredient_id).html("<%= j(render partial: 'partials/staple_card_text', locals: { staple: @staple }) %>");

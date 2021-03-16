@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :staples do
     member do
       get :update_staple_status, as: 'update_staple_status'
+      get :update_staple_card_status, as: 'update_staple_card_status'
     end
   end
   resources :recipes

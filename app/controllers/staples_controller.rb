@@ -47,6 +47,18 @@ class StaplesController < ApplicationController
     end
   end
 
+  def update_staple_card_status
+    if @staple.out_of_stock?
+      @staple.update(status: :in_stock)
+    elsif @staple.in_stock?
+      @staple.update(status: :out_of_stock)
+    end
+    respond_to do |format|
+      format.html { redirect_to staples_path }
+      format.js { render layout: false }
+    end
+  end
+
   private
 
     def set_staple

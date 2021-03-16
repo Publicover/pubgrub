@@ -61,12 +61,23 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to staples_path
   end
 
-  test 'should flip status' do
+  test 'should flip status from grocery list' do
     staple = staples(:one)
     assert staple.in_stock?
     get update_staple_status_staple_path(staple)
     assert staple.reload.out_of_stock?
     get update_staple_status_staple_path(staple)
     assert staple.reload.in_stock?
+    assert_redirected_to ingredients_path
+  end
+
+  test 'should flip status from staple card' do
+    staple = staples(:one)
+    assert staple.in_stock?
+    get update_staple_card_status_staple_path(staple)
+    assert staple.reload.out_of_stock?
+    get update_staple_card_status_staple_path(staple)
+    assert staple.reload.in_stock?
+    assert_redirected_to staples_path
   end
 end

@@ -13,4 +13,8 @@ class Staple < ApplicationRecord
     in_stock: 0,
     out_of_stock: 1
   }
+
+  def pretty_calories_per_gram
+    calories_per_gram == calories_per_gram.to_i ? calories_per_gram.to_i : calories_per_gram
+  end
 end
