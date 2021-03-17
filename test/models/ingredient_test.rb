@@ -3,7 +3,7 @@ require "test_helper"
 class IngredientTest < ActiveSupport::TestCase
   test 'should have correct columns' do
     assert Ingredient.column_names.include?('quantity')
-    assert Ingredient.column_names.include?('grocery')
+    assert Ingredient.column_names.include?('grocery_id')
     assert Ingredient.column_names.include?('measurement')
     assert Ingredient.column_names.include?('ingredientable_id')
     assert Ingredient.column_names.include?('ingredientable_type')

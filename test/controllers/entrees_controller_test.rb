@@ -23,7 +23,6 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
 
     test 'should create with pic and ingredients' do
       ingredient_count = Ingredient.count
-      word = Faker::Lorem.word
       assert_difference('Entree.count') do
         post entrees_path, params: {
           entree: {
@@ -35,7 +34,7 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
             user_id: users(:jim).id,
             pic: fixture_file_upload('steak.jpg', 'image/jpg'),
             ingredients_attributes: [{
-              grocery: word,
+              grocery_id: groceries(:one).id,
               quantity: 12,
               ingredientable_type: Entree
             }]
@@ -43,7 +42,7 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
         }
       end
       assert_equal 'steak.jpg', Entree.last.pic.filename.to_s
-      assert_equal Ingredient.last.grocery, word
+      assert_equal Ingredient.last.grocery, groceries(:one)
       assert_equal Ingredient.count, ingredient_count + 1
       assert_redirected_to entrees_path
     end
@@ -94,7 +93,6 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
 
     test 'should create with pic and ingredients' do
       ingredient_count = Ingredient.count
-      word = Faker::Lorem.word
       assert_difference('Entree.count') do
         post entrees_path, params: {
           entree: {
@@ -106,7 +104,7 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
             user_id: users(:jim).id,
             pic: fixture_file_upload('steak.jpg', 'image/jpg'),
             ingredients_attributes: [{
-              grocery: word,
+              grocery_id: groceries(:one).id,
               quantity: 12,
               ingredientable_type: Entree
             }]
@@ -114,7 +112,7 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
         }
       end
       assert_equal 'steak.jpg', Entree.last.pic.filename.to_s
-      assert_equal Ingredient.last.grocery, word
+      assert_equal Ingredient.last.name, groceries(:one).name
       assert_equal Ingredient.count, ingredient_count + 1
       assert_redirected_to entrees_path
     end

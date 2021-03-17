@@ -6,7 +6,7 @@
   <hr />
   <p>
     <%= f.label 'Grocery' %>
-    <%= f.collection_select :grocery, Grocery.all.order(name: :asc), :name, :name, prompt: true %>
+    <%= f.collection_select :grocery_id, Grocery.all.order(name: :asc), :name, :id, prompt: true %>
   </p>
 
   <p>

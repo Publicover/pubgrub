@@ -1,6 +1,6 @@
 var ingredient_id = "<%= j(params[:id]) %>";
-"<%= j(key = @ingredient.grocery) %>"
-"<%= j(val = @grocery_list.grocery_quantity[@ingredient.grocery]) %>"
+"<%= j(key = @ingredient.name) %>"
+"<%= j(val = @grocery_list.grocery_quantity[@ingredient.name]) %>"
 $("#js-ingredient-" + ingredient_id).html(
     "<%= j(render partial: 'ingredients/simple_k_v', locals: {ingredient: @ingredient, k: key, v: val}) %>"
 );

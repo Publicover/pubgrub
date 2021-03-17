@@ -2,6 +2,7 @@
 
 class Ingredient < ApplicationRecord
   belongs_to :ingredientable, polymorphic: true
+  belongs_to :grocery, inverse_of: :ingredients
 
   validates :grocery, presence: true
 
@@ -25,6 +26,8 @@ class Ingredient < ApplicationRecord
     in_stock: 0,
     out_of_stock: 1
   }
+
+  delegate :name, to: :grocery
 
   def flip_status
     if in_stock?

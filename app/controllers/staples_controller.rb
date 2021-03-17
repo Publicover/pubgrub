@@ -2,7 +2,7 @@ class StaplesController < ApplicationController
   before_action :set_staple, except: %i[index new create]
 
   def index
-    @staples = Staple.all.order(name: :asc)
+    @staples = Staple.all
   end
 
   def show; end
@@ -66,8 +66,8 @@ class StaplesController < ApplicationController
     end
 
     def staple_params
-      params.require(:staple).permit(:name, :pic, :measurment, :quantity,
-                                     :user_id, :status, :calories_per_gram,
-                                     :calories_per_package, :grams_per_package)
+      params.require(:staple).permit(:grocery_id, :pic, :measurement, :quantity,
+                                     :user_id, :status, :calories_per_package,
+                                     :grams_per_package)
     end
 end

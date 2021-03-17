@@ -17,7 +17,7 @@
   <hr />
   <% @side.ingredients.each do |ingredient| %>
     <p>
-      <%= ingredient.grocery %><br />
+      <%= ingredient.name %><br />
       <%= ingredient.measurement unless ingredient.measurement.nil? %><br />
       <%= ingredient.quantity unless ingredient.quantity.nil? %><br />
     </p>

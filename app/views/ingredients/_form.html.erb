@@ -15,7 +15,7 @@
 
       <p>
         <%= f.label 'Grocery' %>
-        <%= f.collection_select :grocery, Grocery.all, :name, :name, prompt: true %>
+        <%= f.collection_select :grocery_id, Grocery.all, :name, :id, prompt: true %>
       </p>
 
       <p>

@@ -40,7 +40,7 @@ class EntreePolicy < ApplicationPolicy
 
   def permitted_attributes
     [:name, :pic, :number_of_sides, :present_sides, :status, :user_id, :cuisine_id, {
-      ingredients_attributes: %i[id grocery measurement quantity ingredientable_id ingredientable_type _destroy]
+      ingredients_attributes: %i[id grocery_id measurement quantity ingredientable_id ingredientable_type _destroy]
     }, { side_category_ids: [] }]
   end
 end

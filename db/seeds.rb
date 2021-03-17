@@ -29,6 +29,7 @@ asian = SideCategory.create!(name: 'Asian')
 vege = SideCategory.create!(name: 'Vegetable')
 bread = SideCategory.create!(name: 'Bread')
 german_cat = SideCategory.create!(name: 'German')
+carib = SideCategory.create!(name: 'Carribean')
 
 puts "Creating eight entreees..."
 
@@ -45,7 +46,7 @@ saus = Entree.create!(name: 'Sausage and Potatoes', cuisine_id: german.id, user_
 cpc = Entree.create!(name: 'Coconut Peanut Chicken', cuisine_id: asian_food.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 0, side_category_ids: [])
 carib_chx = Entree.create!(name: 'Caribbean Chicken', cuisine_id: caribbean.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
-               number_of_sides: 2, side_category_ids: [caribbean.id, caribbean.id])
+               number_of_sides: 2, side_category_ids: [carib.id, carib.id])
 schnitzel = Entree.create!(name: 'Chicken Schnitzel', cuisine_id: german.id, user_id: User.find_by(email: 'dana@pubgrub.com').id, status: 0, present_sides: [],
                number_of_sides: 2, side_category_ids: [vege.id, german_cat.id])
 freezer_meal = Entree.create!(name: 'Frozen Pan Dinner', cuisine_id: german.id, user_id: User.find_by(email: 'jim@pubgrub.com').id, status: 0, present_sides: [],
@@ -66,87 +67,102 @@ asp = Side.create!(name: 'Asparagus', user_id: User.find_by(email: 'jim@pubgrub.
 fb = Side.create!(name: 'French Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
 gb = Side.create!(name: 'Garlic Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
 
+puts "Creating forty groceries..."
+
+nysteak = Grocery.create!(name: 'Steak', calories_per_gram: 1.17)
+uben = Grocery.create!(name: "Uncle Ben's rice", grams_per_package: 250, calories_per_package: 380, calories_per_gram: 1.52)
+kb = Grocery.create!(name: 'Kidney Beans', grams_per_package: 250, calories_per_package: 277, calories_per_gram: 1.1)
+cel = Grocery.create!(name: 'celery', calories_per_gram: 0.14)
+rp = Grocery.create!(name: 'red pepper', calories_per_gram: 0.31)
+sb = Grocery.create!(name: 'Stew Beef', calories_per_gram: 2.5)
+carrot = Grocery.create!(name: 'Carrots', calories_per_gram: 0.41)
+onion = Grocery.create!(name: 'Onion', calories_per_gram: 0.4)
+fchx = Grocery.create!(name: 'Full Chicken', calories_per_gram: 1.8)
+goj = Grocery.create!(name: 'Gochujang Paste', calories_per_gram: 2.23)
+smpo = Grocery.create!(name: 'Small potatoes', calories_per_gram: 0.77)
+ssaus = Grocery.create!(name: 'Sweet Sausage', calories_per_gram: 3.37)
+peanuts = Grocery.create!(name: 'Peanuts', grams_per_package: 300, calories_per_package: 185400, calories_per_gram: 6.18)
+chxbr = Grocery.create!(name: 'Chicken Breast', calories_per_gram: 1.65)
+cocomlk = Grocery.create!(name: 'Coconut Milk', calories_per_gram: 2)
+plant = Grocery.create!(name: 'Plantain', calories_per_gram: 1.22)
+cumin = Grocery.create!(name: 'Cumin', calories_per_gram: 3.75)
+cocosug = Grocery.create!(name: 'Coconut Sugar', calories_per_gram: 1.36)
+panko = Grocery.create!(name: 'Panko', calories_per_gram: 3.95)
+soy = Grocery.create!(name: 'Soy Sauce', calories_per_gram: 0.53)
+rwine = Grocery.create!(name: 'Rice Wine', calories_per_gram: 1.34)
+cstarch = Grocery.create!(name: 'Cornstarch', calories_per_gram: 3.82)
+voil = Grocery.create!(name: 'Vegetable Oil', calories_per_gram: 8.84)
+garlic = Grocery.create!(name: 'Garlic', calories_per_gram: 1.5)
+ginger = Grocery.create!(name: 'Ginger', calories_per_gram: 0.8)
+dchili = Grocery.create!(name: 'Dried Chilis', calories_per_gram: 0.4)
+rwinev = Grocery.create!(name: 'Rice Wine Vinegar', calories_per_gram: 0)
+sugar = Grocery.create!(name: 'Sugar', calories_per_gram: 3.87)
+hoi = Grocery.create!(name: 'Hoisin Sauce', calories_per_gram: 2.2)
+scal = Grocery.create!(name: 'Scallions', calories_per_gram: 0.32)
+sseeds = Grocery.create!(name: 'Sesame Seeds', calories_per_gram: 5.73)
+evoo = Grocery.create!(name: 'Olive Oil', calories_per_gram: 9)
+idaho = Grocery.create!(name: 'Idaho Potato', calories_per_gram: 0.75)
+mash = Grocery.create!(name: 'Mashed Potato', calories_per_gram: 2)
+sesgreen = Grocery.create!(name: 'Sesame Green Beans', calories_per_gram: 1.5)
+edam = Grocery.create!(name: 'Edamame', calories_per_gram: 1)
+fveg = Grocery.create!(name: 'Frozen Mixed Vegetables', calories_per_gram: 0.75)
+aspar = Grocery.create!(name: 'Asparagus', calories_per_gram: 0.2)
+fbread = Grocery.create!(name: 'French Bread', calories_per_gram: 2.6)
+gbread = Grocery.create!(name: 'Garlic Bread', calories_per_gram: 3.75)
+irtea = Grocery.create!(name: 'Twinings Irish Breakfast Tea', calories_per_gram: 0)
+engtea = Grocery.create!(name: 'Twinings English Breakfast Tea', calories_per_gram: 0)
+kidbread = Grocery.create!(name: 'Kid Bread', calories_per_gram: 3)
+adult = Grocery.create!(name: 'Adult Bread', calories_per_gram: 3)
+rus = Grocery.create!(name: 'Russian Bread', calories_per_gram: 3.95)
+
+
 puts "Creating thirty-seven ingredients..."
 
-Ingredient.create!(grocery: 'steak', quantity: 1, measurement: 'NY Strip', ingredientable_id: steak.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: "Uncle Ben's rice", quantity: 1, measurement: 'bag', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'kidney beans', quantity: 1, measurement: "can", ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'celery', quantity: 1, measurement: 'stalk', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'red pepper', quantity: 1, ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'stew beef', quantity: 2, measurement: 'pound', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 907)
-Ingredient.create!(grocery: 'carrots', quantity: 4, measurement: 'bunch', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 240)
-Ingredient.create!(grocery: 'onion', quantity: 1, ingredientable_id: stew.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Full Chicken', quantity: 1, ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Gochujang Paste', quantity: 5, measurement: 'Tablespoons', ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Small potatoes', quantity: 1, measurement: 'pound', ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'onion', quantity: 1, ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Sweet Sausage', quantity: 1, measurement: 'pound', ingredientable_id: saus.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Small potatoes', quantity: 1, measurement: 'pound', ingredientable_id: saus.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'peanuts', quantity: 2, measurement: 'Cups', ingredientable_id: cpc.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Chicken Breast', quantity: 2, ingredientable_id: cpc.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Coconut milk', quantity: 1, measurement: 'Can', ingredientable_id: cpc.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Chicken Breast', quantity: 2, ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Plaintain', quantity: 1, ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Cumin', quantity: 1, measurement: 'Tablespoon', ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Coconut sugar', quantity: 4, measurement: 'Tablespoon', ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Chicken Breast', quantity: 2, ingredientable_id: schnitzel.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Panko', quantity: 3, measurement: 'Cup', ingredientable_id: schnitzel.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Chicken Breast', quantity: 2, measurement: 'Pounds', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Soy Sauce', quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Rice Wine', quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Cornstarch', quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Cornstarch', quantity: 1, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Vegetable Oil', quantity: 2, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Garlic', quantity: 2, measurement: 'Clove', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Ginger', quantity: 1, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Dried Chilis', quantity: 12, ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Rice Wine Vinegar', quantity: 0.25, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Sugar', quantity: 0.25, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Hoisin Sauce', quantity: 2, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Scallions', quantity: 2, ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'Sesame Seeds', quantity: 1, measurement: 'Teaspoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
-Ingredient.create!(grocery: 'baked potato', quantity: 1, ingredientable_id: bp.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'mashed potatoe', quantity: 1, ingredientable_id: mp.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'sesame green beans', quantity: 1, ingredientable_id: ses.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'Edamame', quantity: 1, measurement: 'bag', ingredientable_id: ed.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'Frozen Vege', quantity: 1, measurement: 'bag', ingredientable_id: mx.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'Asparagus', quantity: 1, ingredientable_id: asp.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'French Bread', quantity: 1, measurement: 'loaf', ingredientable_id: fb.id, ingredientable_type: 'Side')
-Ingredient.create!(grocery: 'Garlic Bread', quantity: 1, measurement: 'loaf', ingredientable_id: gb.id, ingredientable_type: 'Side')
-
-puts "Creating thirty groceries..."
-
-Grocery.create!(name: 'Steak', calories_per_gram: 1.17)
-Grocery.create!(name: "Uncle Ben's rice", grams_per_package: 250, calories_per_package: 380, calories_per_gram: 1.52)
-Grocery.create!(name: 'Kidney Beans', grams_per_package: 250, calories_per_package: 277, calories_per_gram: 1.1)
-Grocery.create!(name: 'celery', calories_per_gram: 0.14)
-Grocery.create!(name: 'red pepper', calories_per_gram: 0.31)
-Grocery.create!(name: 'stew beef', calories_per_gram: 2.5)
-Grocery.create!(name: 'carrots', calories_per_gram: 0.41)
-Grocery.create!(name: 'onion', calories_per_gram: 0.4)
-Grocery.create!(name: 'Full Chicken', calories_per_gram: 1.8)
-Grocery.create!(name: 'Gochujang Paste', calories_per_gram: 2.23)
-Grocery.create!(name: 'Small potatoes', calories_per_gram: 0.77)
-Grocery.create!(name: 'peanuts', grams_per_package: 300, calories_per_package: 185400, calories_per_gram: 6.18)
-Grocery.create!(name: 'chicken breast', calories_per_gram: 1.65)
-Grocery.create!(name: 'coconut milk', calories_per_gram: 2)
-Grocery.create!(name: 'plantain', calories_per_gram: 1.22)
-Grocery.create!(name: 'cumin', calories_per_gram: 3.75)
-Grocery.create!(name: 'coconut sugar', calories_per_gram: 1.36)
-Grocery.create!(name: 'Panko', calories_per_gram: 3.95)
-Grocery.create!(name: 'Soy Sauce', calories_per_gram: 0.53)
-Grocery.create!(name: 'Rice Wine', calories_per_gram: 1.34)
-Grocery.create!(name: 'Cornstarch', calories_per_gram: 3.82)
-Grocery.create!(name: 'Vegetable Oil', calories_per_gram: 8.84)
-Grocery.create!(name: 'Garlic', calories_per_gram: 1.5)
-Grocery.create!(name: 'Ginger', calories_per_gram: 0.8)
-Grocery.create!(name: 'Dried Chilis', calories_per_gram: 0.4)
-Grocery.create!(name: 'Rice Wine Vinegar', calories_per_gram: 0)
-Grocery.create!(name: 'Sugar', calories_per_gram: 3.87)
-Grocery.create!(name: 'Hoisin Sauce', calories_per_gram: 2.2)
-Grocery.create!(name: 'Scallions', calories_per_gram: 0.32)
-Grocery.create!(name: 'Sesame Seeds', calories_per_gram: 5.73)
-Grocery.create!(name: 'Olive Oil', calories_per_gram: 9)
+Ingredient.create!(grocery_id: nysteak.id, quantity: 1, measurement: 'NY Strip', ingredientable_id: steak.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: uben.id, quantity: 1, measurement: 'bag', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: kb.id, quantity: 1, measurement: "can", ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cel.id, quantity: 1, measurement: 'stalk', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: rp.id, quantity: 1, ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: sb.id, quantity: 2, measurement: 'pound', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 907)
+Ingredient.create!(grocery_id: carrot.id, quantity: 4, measurement: 'bunch', ingredientable_id: stew.id, ingredientable_type: 'Entree', total_grams: 240)
+Ingredient.create!(grocery_id: onion.id, quantity: 1, ingredientable_id: stew.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: fchx.id, quantity: 1, ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: goj.id, quantity: 5, measurement: 'Tablespoons', ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: ssaus.id, quantity: 1, measurement: 'pound', ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: onion.id, quantity: 1, ingredientable_id: goj_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: ssaus.id, quantity: 1, measurement: 'pound', ingredientable_id: saus.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: smpo.id, quantity: 1, measurement: 'pound', ingredientable_id: saus.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: peanuts.id, quantity: 2, measurement: 'Cups', ingredientable_id: cpc.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: chxbr.id, quantity: 2, ingredientable_id: cpc.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cocomlk.id, quantity: 1, measurement: 'Can', ingredientable_id: cpc.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: chxbr.id, quantity: 2, ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: plant.id, quantity: 1, ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cumin.id, quantity: 1, measurement: 'Tablespoon', ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cocosug.id, quantity: 4, measurement: 'Tablespoon', ingredientable_id: carib_chx.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: chxbr.id, quantity: 2, ingredientable_id: schnitzel.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: panko.id, quantity: 3, measurement: 'Cup', ingredientable_id: schnitzel.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: chxbr.id, quantity: 2, measurement: 'Pounds', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: soy.id, quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: rwine.id, quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cstarch.id, quantity: 0.5, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: cstarch.id, quantity: 1, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: voil.id, quantity: 2, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: garlic.id, quantity: 2, measurement: 'Clove', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: ginger.id, quantity: 1, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: dchili.id, quantity: 12, ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: rwinev.id, quantity: 0.25, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: sugar.id, quantity: 0.25, measurement: 'Cup', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: hoi.id, quantity: 2, measurement: 'Tablespoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: scal.id, quantity: 2, ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: sseeds.id, quantity: 1, measurement: 'Teaspoon', ingredientable_id: general.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: idaho.id, quantity: 1, ingredientable_id: bp.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: mash.id, quantity: 1, ingredientable_id: mp.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: sesgreen.id, quantity: 1, ingredientable_id: ses.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: edam.id, quantity: 1, measurement: 'bag', ingredientable_id: ed.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: fveg.id, quantity: 1, measurement: 'bag', ingredientable_id: mx.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: aspar.id, quantity: 1, ingredientable_id: asp.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: fbread.id, quantity: 1, measurement: 'loaf', ingredientable_id: fb.id, ingredientable_type: 'Side')
+Ingredient.create!(grocery_id: gbread.id, quantity: 1, measurement: 'loaf', ingredientable_id: gb.id, ingredientable_type: 'Side')
 
 puts "Creating measurements..."
 
@@ -177,24 +193,24 @@ Measurement.create!(measure: 'Clove')
 
 puts "Creating five staples..."
 
-Staple.create!(name: 'Twinings Tea', measurement: 'box', quantity: 1,
+Staple.create!(grocery_id: irtea.id, measurement: 'box', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
-               status: :in_stock, calories_per_gram: 0)
-Staple.create!(name: 'English Breakfast Tea',
+               status: :in_stock)
+Staple.create!(grocery_id: engtea.id,
                measurement: 'box', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
-               status: :in_stock, calories_per_gram: 0)
-Staple.create!(name: 'Kid Bread', measurement: 'Loaf', quantity: 1,
+               status: :in_stock)
+Staple.create!(grocery_id: kidbread.id, measurement: 'Loaf', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
-               status: :in_stock, calories_per_gram: 2.65,
+               status: :in_stock,
                grams_per_package: 500, calories_per_package: 1325)
-Staple.create!(name: 'Adult Bread', measurement: 'Loaf', quantity: 1,
+Staple.create!(grocery_id: adult.id, measurement: 'Loaf', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
-               status: :in_stock, calories_per_gram: 2.68,
+               status: :in_stock,
                grams_per_package: 500, calories_per_package: 1340)
-Staple.create!(name: 'Russian Bread', measurement: 'Bag', quantity: 1,
+Staple.create!(grocery_id: rus.id, measurement: 'Bag', quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
-               status: :in_stock, calories_per_gram: 3.95,
+               status: :in_stock,
                grams_per_package: 100, calories_per_package: 3.95)
 
 puts "Creating recipes for entrees..."
@@ -213,14 +229,14 @@ Recipe.create!(recipeable_id: general.id, recipeable_type: 'Entree', user_id: ge
 
 puts "Creating recipes for sides..."
 
-Recipe.create!(recipeable_id: bp.id, recipeable_type: 'Side', user_id: bp.id, body: 'Oven at 350F or 176C.')
-Recipe.create!(recipeable_id: mp.id, recipeable_type: 'Side', user_id: mp.id, body: 'Boil then mash with butter.')
-Recipe.create!(recipeable_id: ses.id, recipeable_type: 'Side', user_id: ses.id, body: 'Ask Dana for real.')
-Recipe.create!(recipeable_id: ed.id, recipeable_type: 'Side', user_id: ed.id, body: 'Put the thing in the microwave or boil it.')
-Recipe.create!(recipeable_id: mx.id, recipeable_type: 'Side', user_id: mx.id, body: 'Microwave.')
-Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: asp.id, body: 'Oil and a pan.')
-Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: fb.id, body: 'Get this from a bakery.')
-Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: gb.id, body: 'Oven. Texas Toast is preferable.')
+Recipe.create!(recipeable_id: bp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oven at 350F or 176C.')
+Recipe.create!(recipeable_id: mp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Boil then mash with butter.')
+Recipe.create!(recipeable_id: ses.id, recipeable_type: 'Side', user_id: jim.id, body: 'Ask Dana for real.')
+Recipe.create!(recipeable_id: ed.id, recipeable_type: 'Side', user_id: jim.id, body: 'Put the thing in the microwave or boil it.')
+Recipe.create!(recipeable_id: mx.id, recipeable_type: 'Side', user_id: jim.id, body: 'Microwave.')
+Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oil and a pan.')
+Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: jim.id, body: 'Get this from a bakery.')
+Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oven. Texas Toast is preferable.')
 
 puts "Running RandomizeCurrentEntreesJob..."
 

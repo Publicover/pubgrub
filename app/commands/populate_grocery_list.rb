@@ -16,7 +16,7 @@ class PopulateGroceryList
   end
 
   def assign_all_ingredients(ingredient, hash)
-    if hash.key?(ingredient.grocery)
+    if hash.key?(ingredient.name)
       assign_when_key(ingredient, hash)
     else
       assign_when_not_key(ingredient, hash)
@@ -24,21 +24,21 @@ class PopulateGroceryList
   end
 
   def assign_when_key(ingredient, hash)
-    if hash[ingredient.grocery].key?(ingredient.measurement)
-      hash[ingredient.grocery][ingredient.measurement] += ingredient.quantity
+    if hash[ingredient.name].key?(ingredient.measurement)
+      hash[ingredient.name][ingredient.measurement] += ingredient.quantity
     else
-      hash[ingredient.grocery][ingredient.measurement] = ingredient.quantity
+      hash[ingredient.name][ingredient.measurement] = ingredient.quantity
     end
-    hash[ingredient.grocery][:ingredient_id] = ingredient.id
+    hash[ingredient.name][:ingredient_id] = ingredient.id
   end
 
   def assign_when_not_key(ingredient, hash)
-    hash[ingredient.grocery] = if ingredient.measurement.nil?
+    hash[ingredient.name] = if ingredient.measurement.nil?
                                  ingredient.quantity
                                else
                                  { ingredient.measurement => ingredient.quantity }
                                end
-    hash[ingredient.grocery][:ingredient_id] = ingredient.id
+    hash[ingredient.name][:ingredient_id] = ingredient.id
   end
 
   def assign_all_staples(staple, hash)

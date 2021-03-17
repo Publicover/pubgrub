@@ -23,7 +23,7 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
   test 'should create' do
     assert_difference('Staple.count') do
       post staples_path, params: { staple: {
-          name: 'Thing',
+          grocery_id: groceries(:one).id,
           pic: fixture_file_upload('steak.jpg', 'image/jpg'),
           measurement: 'Whole',
           quantity: 1,
@@ -47,10 +47,10 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
   test 'should update' do
     name = Faker::Lorem.word
     patch staple_path(staples(:one)), params: { staple: {
-        name: name
+        measurement: name
       }
     }
-    assert_equal staples(:one).reload.name, name.titleize
+    assert_equal staples(:one).reload.measurement, name
     assert_redirected_to staple_path(staples(:one))
   end
 

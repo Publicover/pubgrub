@@ -23,7 +23,6 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
 
     test 'should create with pic and ingredients' do
       ingredient_count = Ingredient.count
-      word = Faker::Lorem.word
       assert_difference('Side.count') do
         post sides_path, params: {
           side: {
@@ -33,7 +32,7 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
             user_id: users(:jim).id,
             pic: fixture_file_upload('steak.jpg', 'image/jpg'),
             ingredients_attributes: [{
-              grocery: word,
+              grocery_id: groceries(:one).id,
               quantity: 12,
               ingredientable_type: Side
             }]
@@ -41,7 +40,7 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
         }
       end
       assert_equal 'steak.jpg', Side.last.pic.filename.to_s
-      assert_equal Ingredient.last.grocery, word
+      assert_equal Ingredient.last.grocery, groceries(:one)
       assert_equal Ingredient.count, ingredient_count + 1
       assert_redirected_to sides_path
     end
@@ -92,7 +91,6 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
 
     test 'should create with pic and ingredients' do
       ingredient_count = Ingredient.count
-      word = Faker::Lorem.word
       assert_difference('Side.count') do
         post sides_path, params: {
           side: {
@@ -102,7 +100,7 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
             user_id: users(:jim).id,
             pic: fixture_file_upload('steak.jpg', 'image/jpg'),
             ingredients_attributes: [{
-              grocery: word,
+              grocery_id: groceries(:one).id,
               quantity: 12,
               ingredientable_type: Side
             }]
@@ -110,7 +108,7 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
         }
       end
       assert_equal 'steak.jpg', Side.last.pic.filename.to_s
-      assert_equal Ingredient.last.grocery, word
+      assert_equal Ingredient.last.name, groceries(:one).name
       assert_equal Ingredient.count, ingredient_count + 1
       assert_redirected_to sides_path
     end

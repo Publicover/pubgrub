@@ -6,20 +6,20 @@
 
 one:
   quantity: 1.00
-  grocery: Onion
+  grocery: one
   ingredientable_id: 980190962
   ingredientable_type: Entree
 
 two:
   quantity: 3.5
-  grocery: Flour
+  grocery: flour
   measurement: Cup
   ingredientable_id: 298486374
   ingredientable_type: Entree
 
 three:
   quantity: 250
-  grocery: Green Beans
+  grocery: green_beans
   measurement: grams
   ingredientable_id: 980190962
   ingredientable_type: Side

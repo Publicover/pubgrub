@@ -17,3 +17,59 @@ three:
 four:
   name: Potato
   calories_per_gram: 3.4
+
+flour:
+  name: Flour
+  calories_per_gram: 4
+
+green_beans:
+  name: Green Beans
+  calories_per_gram: 0.31
+
+milk:
+  name: Milk
+  calories_per_gram: 0.42
+
+green_peppers:
+  name: Green Peppers
+  calories_per_gram: 0.2
+
+red_peppers:
+  name: Red Peppers
+  calories_per_gram: 0.3
+
+peppers:
+  name: Peppers
+  calories_per_gram: 0.4
+
+bag_of_chips:
+  name: Bag of Chips
+  calories_per_gram: 3.1
+
+then_a_big_bag_of_chips:
+  name: Then a Big Bag of Chips
+  calories_per_gram: 4.1
+
+dip:
+  name: Dip
+  calories_per_gram: 5.5
+
+pretzel_sticks:
+  name: Pretzel Sticks
+  calories_per_gram: 2.1
+
+lunch_meat:
+  name: Lunch Meat
+  calories_per_gram: 1.14
+
+coffee:
+  name: Coffee
+  calories_per_gram: 0
+
+tea:
+  name: Tea
+  calories_per_gram: 0
+
+russian_bread:
+  name: Russian Bread
+  calories_per_gram: 3.95

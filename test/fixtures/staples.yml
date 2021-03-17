@@ -1,21 +1,28 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Coffee
+  grocery: coffee
   measurement: Bag
   quantity: 1
   status: :in_stock
   user: jim
-  calories_per_gram: 0
   calories_per_package: 0
   grams_per_package: 100
 
 two:
-  name: Tea
+  grocery: tea
   measurement: Box
   quantity: 1
   status: 1
   user: jim
-  calories_per_gram: 0
   calories_per_package: 0
+  grams_per_package: 100
+
+three:
+  grocery: russian_bread
+  measurement: Bag
+  quantity: 1
+  status: 1
+  user: jim
+  calories_per_package: 395
   grams_per_package: 100

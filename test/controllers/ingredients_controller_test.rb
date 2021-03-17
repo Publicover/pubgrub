@@ -43,13 +43,13 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should update' do
-      word = Faker::Lorem.word
+      num = Faker::Number.number(digits: 3)
       patch ingredient_path(ingredients(:one)), params: {
         ingredient: {
-          grocery: word
+          total_grams: num
         }
       }
-      assert_equal word, ingredients(:one).reload.grocery
+      assert_equal num, ingredients(:one).reload.total_grams
       assert_redirected_to ingredient_path(ingredients(:one))
     end
 

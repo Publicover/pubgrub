@@ -46,6 +46,6 @@ class IngredientPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    %i[grocery measurement quantity meal_id status]
+    %i[grocery measurement quantity meal_id status total_grams]
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_083614) do
+ActiveRecord::Schema.define(version: 2021_03_17_090225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_083614) do
 
   create_table "ingredients", force: :cascade do |t|
     t.decimal "quantity", precision: 5, scale: 2
-    t.string "grocery"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ingredientable_type", null: false
@@ -103,6 +102,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_083614) do
     t.string "measurement", default: "Whole"
     t.integer "status", default: 1
     t.integer "total_grams"
+    t.bigint "grocery_id", null: false
+    t.index ["grocery_id"], name: "index_ingredients_on_grocery_id"
     t.index ["ingredientable_type", "ingredientable_id"], name: "index_ingredients_on_ingredientable"
   end
 
@@ -143,17 +144,16 @@ ActiveRecord::Schema.define(version: 2021_03_13_083614) do
   end
 
   create_table "staples", force: :cascade do |t|
-    t.string "name"
     t.string "measurement", default: "Whole"
     t.integer "quantity"
     t.integer "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "calories_per_gram", precision: 5, scale: 2
     t.integer "calories_per_package"
     t.integer "grams_per_package"
-    t.index ["name"], name: "index_staples_on_name", unique: true
+    t.bigint "grocery_id", null: false
+    t.index ["grocery_id"], name: "index_staples_on_grocery_id"
     t.index ["user_id"], name: "index_staples_on_user_id"
   end
 
@@ -175,8 +175,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_083614) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entrees", "cuisines"
   add_foreign_key "entrees", "users"
+  add_foreign_key "ingredients", "groceries"
   add_foreign_key "recipes", "users"
   add_foreign_key "sides", "side_categories"
   add_foreign_key "sides", "users"
+  add_foreign_key "staples", "groceries"
   add_foreign_key "staples", "users"
 end

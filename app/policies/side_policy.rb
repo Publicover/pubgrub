@@ -40,7 +40,7 @@ class SidePolicy < ApplicationPolicy
 
   def permitted_attributes
     [:name, :status, :pic, :user_id, :side_category_id, {
-      ingredients_attributes: %i[id grocery measurement quantity ingredientable_id ingredientable_type _destroy]
+      ingredients_attributes: %i[id grocery_id measurement quantity ingredientable_id ingredientable_type _destroy]
     }]
   end
 end
