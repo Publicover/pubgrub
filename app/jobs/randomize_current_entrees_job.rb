@@ -20,7 +20,8 @@ class RandomizeCurrentEntreesJob < ApplicationJob
   end
 
   def sort_sides(entree)
-    if entree.side_category_ids.uniq == 1
+
+    if entree.side_category_ids.uniq == [entree.side_category_ids[0]]
       entree.assign_new_sides_from_one_category
     else
       entree.assign_new_sides

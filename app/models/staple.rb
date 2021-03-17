@@ -5,6 +5,7 @@ class Staple < ApplicationRecord
 
   belongs_to :user, inverse_of: :staples
   belongs_to :grocery, inverse_of: :staples
+  belongs_to :measurement, inverse_of: :staples
 
   validates :name, presence: true
 
@@ -15,6 +16,7 @@ class Staple < ApplicationRecord
 
   delegate :name, to: :grocery
   delegate :calories_per_gram, to: :grocery
+  delegate :measure, to: :measurement
 
   def pretty_calories_per_gram
     calories_per_gram == calories_per_gram.to_i ? calories_per_gram.to_i : calories_per_gram

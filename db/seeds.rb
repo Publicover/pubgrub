@@ -66,6 +66,8 @@ mx = Side.create!(name: 'Mixed Frozen Vege', user_id: User.find_by(email: 'jim@p
 asp = Side.create!(name: 'Asparagus', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: vege.id)
 fb = Side.create!(name: 'French Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
 gb = Side.create!(name: 'Garlic Bread', user_id: User.find_by(email: 'jim@pubgrub.com').id, side_category_id: bread.id)
+crabe = Side.create!(name: 'Plaintain', user_id: User.find_by(email: 'dana@pubgrub.com').id, side_category_id: carib.id)
+craberice = Side.create!(name: 'Coconut Rice', user_id: User.find_by(email: 'dana@pubgrub.com').id, side_category_id: carib.id)
 
 puts "Creating forty groceries..."
 
@@ -184,31 +186,33 @@ Measurement.create!(measure: 'Quarter')
 Measurement.create!(measure: 'Half')
 Measurement.create!(measure: 'Three-quarters')
 Measurement.create!(measure: 'NY Strip')
-Measurement.create!(measure: 'bag')
-Measurement.create!(measure: 'can')
-Measurement.create!(measure: 'stalk')
-Measurement.create!(measure: 'bunch')
+bag = Measurement.create!(measure: 'Bag')
+Measurement.create!(measure: 'Can')
+Measurement.create!(measure: 'Stalk')
+Measurement.create!(measure: 'Bunch')
 Measurement.create!(measure: 'Pound')
 Measurement.create!(measure: 'Clove')
+box = Measurement.create!(measure: 'Box')
+loaf = Measurement.create!(measure: 'Loaf')
 
 puts "Creating five staples..."
 
-Staple.create!(grocery_id: irtea.id, measurement: 'box', quantity: 1,
+Staple.create!(grocery_id: irtea.id, measurement_id: box.id, quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock)
 Staple.create!(grocery_id: engtea.id,
-               measurement: 'box', quantity: 1,
+               measurement_id: box.id, quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock)
-Staple.create!(grocery_id: kidbread.id, measurement: 'Loaf', quantity: 1,
+Staple.create!(grocery_id: kidbread.id, measurement_id: loaf.id, quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock,
                grams_per_package: 500, calories_per_package: 1325)
-Staple.create!(grocery_id: adult.id, measurement: 'Loaf', quantity: 1,
+Staple.create!(grocery_id: adult.id, measurement_id: loaf.id, quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock,
                grams_per_package: 500, calories_per_package: 1340)
-Staple.create!(grocery_id: rus.id, measurement: 'Bag', quantity: 1,
+Staple.create!(grocery_id: rus.id, measurement_id: bag.id, quantity: 1,
                user_id: User.find_by(email: 'jim@pubgrub.com').id,
                status: :in_stock,
                grams_per_package: 100, calories_per_package: 3.95)

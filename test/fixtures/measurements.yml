@@ -11,3 +11,12 @@ three:
 
 four:
   measure: Teaspoon
+
+whole:
+  measure: Whole
+
+bag:
+  measure: Bag
+
+box:
+  measure: Box

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_090225) do
+ActiveRecord::Schema.define(version: 2021_03_17_123622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(version: 2021_03_17_090225) do
   end
 
   create_table "staples", force: :cascade do |t|
-    t.string "measurement", default: "Whole"
     t.integer "quantity"
     t.integer "status"
     t.bigint "user_id", null: false
@@ -153,7 +152,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_090225) do
     t.integer "calories_per_package"
     t.integer "grams_per_package"
     t.bigint "grocery_id", null: false
+    t.bigint "measurement_id", null: false
     t.index ["grocery_id"], name: "index_staples_on_grocery_id"
+    t.index ["measurement_id"], name: "index_staples_on_measurement_id"
     t.index ["user_id"], name: "index_staples_on_user_id"
   end
 
@@ -180,5 +181,6 @@ ActiveRecord::Schema.define(version: 2021_03_17_090225) do
   add_foreign_key "sides", "side_categories"
   add_foreign_key "sides", "users"
   add_foreign_key "staples", "groceries"
+  add_foreign_key "staples", "measurements"
   add_foreign_key "staples", "users"
 end

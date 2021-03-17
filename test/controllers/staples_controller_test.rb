@@ -25,7 +25,7 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
       post staples_path, params: { staple: {
           grocery_id: groceries(:one).id,
           pic: fixture_file_upload('steak.jpg', 'image/jpg'),
-          measurement: 'Whole',
+          measurement_id: measurements(:whole).id,
           quantity: 1,
           user_id: users(:jim).id,
           status: :in_stock,
@@ -45,12 +45,12 @@ class StaplesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update' do
-    name = Faker::Lorem.word
+    num = Faker::Number.number(digits: 3)
     patch staple_path(staples(:one)), params: { staple: {
-        measurement: name
+        quantity: num
       }
     }
-    assert_equal staples(:one).reload.measurement, name
+    assert_equal staples(:one).reload.quantity, num
     assert_redirected_to staple_path(staples(:one))
   end
 

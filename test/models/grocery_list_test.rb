@@ -50,8 +50,8 @@ class GroceryListTest < ActiveSupport::TestCase
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery_id: groceries(:then_a_big_bag_of_chips).id, quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery_id: groceries(:dip).id, measurement: 'HUGE', quantity: 1)
     Ingredient.create!(ingredientable_id: side.id, ingredientable_type: 'Side', grocery_id: groceries(:green_peppers).id, measurement: 'Bag', quantity: 1)
-    Staple.create!(grocery_id: groceries(:pretzel_sticks).id, quantity: 1, user_id: users(:jim).id, status: :out_of_stock, grams_per_package: 100, calories_per_package: 210)
-    Staple.create!(grocery_id: groceries(:lunch_meat).id, measurement: 'Bag', quantity: 1, user_id: users(:jim).id, status: :out_of_stock, grams_per_package: 100, calories_per_package: 114)
+    Staple.create!(grocery_id: groceries(:pretzel_sticks).id, measurement_id: measurements(:bag).id, quantity: 1, user_id: users(:jim).id, status: :out_of_stock, grams_per_package: 100, calories_per_package: 210)
+    Staple.create!(grocery_id: groceries(:lunch_meat).id, measurement_id: measurements(:bag).id, quantity: 1, user_id: users(:jim).id, status: :out_of_stock, grams_per_package: 100, calories_per_package: 114)
 
     list = GroceryList.create!
     # this will be 3 because it's two measurements and the id
@@ -64,7 +64,7 @@ class GroceryListTest < ActiveSupport::TestCase
     assert_equal list.grocery_quantity['Bag of Chips']['small'], "2.0"
     assert_equal list.grocery_quantity['Then a Big Bag of Chips']['Whole'], "1.0"
     assert_equal list.grocery_quantity['Dip']['HUGE'], "1.0"
-    assert_equal list.grocery_quantity['Pretzel Sticks']['Whole'], 1
+    assert_equal list.grocery_quantity['Pretzel Sticks']['Bag'], 1
     assert_equal list.grocery_quantity['Lunch Meat']['Bag'], 1
   end
 

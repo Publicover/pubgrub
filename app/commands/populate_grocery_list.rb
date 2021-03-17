@@ -50,19 +50,19 @@ class PopulateGroceryList
   end
 
   def assign_staple_when_key(staple, hash)
-    if hash[staple.name].key?(staple.measurement)
-      hash[staple.name][staple.measurement] += staple.quantity
+    if hash[staple.name].key?(staple.measure)
+      hash[staple.name][staple.measure] += staple.quantity
     else
-      hash[staple.name][staple.measurement] = staple.quantity
+      hash[staple.name][staple.measure] = staple.quantity
     end
     hash[staple.name][:staple_id] = staple.id
   end
 
   def assign_staple_when_not_key(staple, hash)
-    hash[staple.name] = if staple.measurement.nil?
+    hash[staple.name] = if staple.measure.nil?
                           staple.quantity
                         else
-                          { staple.measurement => staple.quantity }
+                          { staple.measure => staple.quantity }
                         end
     hash[staple.name][:staple_id] = staple.id
   end
