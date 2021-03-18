@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Cuisine < ApplicationRecord
-  before_save :tileize_name
+  before_save :titleize_name
 
   validates :name, uniqueness: true
 

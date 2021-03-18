@@ -3,7 +3,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def tileize_name
+  def titleize_name
     self.name = name.titleize
   end
 

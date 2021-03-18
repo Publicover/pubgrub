@@ -6,7 +6,7 @@ class Entree < ApplicationRecord
 
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
-  before_save :tileize_name
+  before_save :titleize_name
 
   has_one_attached :pic
 

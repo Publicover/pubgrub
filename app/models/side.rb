@@ -8,7 +8,7 @@ class Side < ApplicationRecord
 
   has_one_attached :pic
 
-  before_save :tileize_name
+  before_save :titleize_name
 
   belongs_to :user, inverse_of: :sides
   belongs_to :side_category, inverse_of: :sides
