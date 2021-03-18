@@ -7,6 +7,7 @@ class Ingredient < ApplicationRecord
   validates :grocery, presence: true
 
   delegate :name, to: :ingredientable, prefix: true
+  delegate :calories_per_gram, to: :grocery
 
   scope :current_with_entree, lambda {
     joins(

@@ -117,10 +117,9 @@ kidbread = Grocery.create!(name: 'Kid Bread', calories_per_gram: 3)
 adult = Grocery.create!(name: 'Adult Bread', calories_per_gram: 3)
 rus = Grocery.create!(name: 'Russian Bread', calories_per_gram: 3.95)
 
-
 puts "Creating thirty-seven ingredients..."
 
-Ingredient.create!(grocery_id: nysteak.id, quantity: 1, measurement: 'NY Strip', ingredientable_id: steak.id, ingredientable_type: 'Entree')
+Ingredient.create!(grocery_id: nysteak.id, quantity: 1, measurement: 'NY Strip', ingredientable_id: steak.id, ingredientable_type: 'Entree', total_grams: 345)
 Ingredient.create!(grocery_id: uben.id, quantity: 1, measurement: 'bag', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery_id: kb.id, quantity: 1, measurement: "can", ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')
 Ingredient.create!(grocery_id: cel.id, quantity: 1, measurement: 'stalk', ingredientable_id: jambalaya.id, ingredientable_type: 'Entree')

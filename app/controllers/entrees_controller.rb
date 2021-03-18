@@ -41,6 +41,17 @@ class EntreesController < ApplicationController
     redirect_to entrees_path, notice: 'Delet successful.'
   end
 
+  def finalize_calories
+    @entrees = policy_scope(Entree).order(created_at: :desc)
+    CalculateCalories.new.perform(@entree)
+
+    respond_to do |format|
+      format.html { redirect_to entrees_path }
+      format.js { render layout: false }
+    end
+
+  end
+
   private
 
     def set_entree

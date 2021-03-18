@@ -6,9 +6,10 @@
 
 one:
   quantity: 1.00
-  grocery: one
+  grocery: three
   ingredientable_id: 980190962
   ingredientable_type: Entree
+  total_grams: 342
 
 two:
   quantity: 3.5

@@ -1,0 +1,22 @@
+<h5 class='card-header mt-auto'><%= entree.name %></h5>
+<% if entree.pic.attached? %>
+  <%= image_tag url_for(entree.pic), class: 'sized-image card-image-top' %>
+<% end %>
+<div class='card-body d-flex flex-column'>
+  <div class='card-text mt-auto'>Calories per serving: <%= entree&.calories_per_gram %></div>
+  <%= link_to 'Update Calories', finalize_calories_entree_path(entree), remote: true, class: 'button card-text mt-auto' %>
+</div>
+<% unless entree.number_of_sides.zero? %>
+  <ul class='list-group list-group-flush'>
+    <% entree.sides.each do |side| %>
+      <li class="list-group-item"><%= link_to "#{side.name}", side_path(side) %></li>
+    <% end %>
+  </ul>
+<% end %>
+<% if entree.user_id == current_user.id %>
+  <div class='card-body d-flex flex-column'>
+    <div class='card-text mt-auto'>
+      <%= link_to 'Update', edit_entree_path(entree), class: 'card-link' %>
+    </div>
+  </div>
+<% end %>

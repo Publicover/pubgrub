@@ -1,0 +1,2 @@
+var entree_id = "<%= j(params[:id]) %>"
+$("#js-entree-" + entree_id).html("<%= j(render partial: 'entrees/entree_card_text', locals: { entree: @entree }) %>");

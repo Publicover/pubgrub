@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_123622) do
+ActiveRecord::Schema.define(version: 2021_03_17_162559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_123622) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "calories_per_gram", precision: 4, scale: 2
     t.index ["cuisine_id"], name: "index_entrees_on_cuisine_id"
     t.index ["name"], name: "index_entrees_on_name", unique: true
     t.index ["user_id"], name: "index_entrees_on_user_id"
@@ -101,8 +102,8 @@ ActiveRecord::Schema.define(version: 2021_03_17_123622) do
     t.bigint "ingredientable_id", null: false
     t.string "measurement", default: "Whole"
     t.integer "status", default: 1
-    t.integer "total_grams"
     t.bigint "grocery_id", null: false
+    t.integer "total_grams"
     t.index ["grocery_id"], name: "index_ingredients_on_grocery_id"
     t.index ["ingredientable_type", "ingredientable_id"], name: "index_ingredients_on_ingredientable"
   end

@@ -1,6 +1,7 @@
 <div>
   <h3><%= @entree.name %></h3>
-  <p><%= @entree.cuisine %></p>
+  <p>Cuisine: <%= @entree.cuisine.name %></p>
+  <p>Calories per Gram: <%= @entree.calories_per_gram %></p>
   <p>
     <% if @entree.pic.attached? %>
       <%= image_tag url_for(@entree.pic), class: 'sized-image' %>

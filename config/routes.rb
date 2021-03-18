@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   end
   resources :cuisines
   resources :side_categories
-  resources :entrees
+  resources :entrees do
+    member do
+      get :finalize_calories, as: 'finalize_calories'
+    end
+  end
   resources :sides
   resources :staples do
     member do

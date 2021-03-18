@@ -38,6 +38,10 @@ class EntreePolicy < ApplicationPolicy
     edit?
   end
 
+  def finalize_calories?
+    edit?
+  end
+
   def permitted_attributes
     [:name, :pic, :number_of_sides, :present_sides, :status, :user_id, :cuisine_id, {
       ingredients_attributes: %i[id grocery_id measurement quantity ingredientable_id ingredientable_type _destroy]

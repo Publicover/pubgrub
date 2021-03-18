@@ -30,4 +30,9 @@ class IngredientTest < ActiveSupport::TestCase
   test 'should get ingredients for all current sides' do
     assert_not_nil Ingredient.current_with_side
   end
+
+  test 'should delegate calories_per_gram from grocery' do
+    # it's brittle, yes, but i don't want to create new objects
+    assert_equal ingredients(:one).calories_per_gram, groceries(:three).calories_per_gram
+  end
 end

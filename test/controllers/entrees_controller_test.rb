@@ -69,6 +69,12 @@ class EntreesControllerTest < ActionDispatch::IntegrationTest
       end
       assert_redirected_to entrees_path
     end
+
+    test 'should save calories_per_gram' do
+      assert entrees(:one).calories_per_gram.nil?
+      get finalize_calories_entree_path(entrees(:one))
+      assert_not_nil entrees(:one).reload.calories_per_gram
+    end
   end
 
   class AsMember < EntreesControllerTest

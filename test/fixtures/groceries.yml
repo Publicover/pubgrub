@@ -73,3 +73,6 @@ tea:
 russian_bread:
   name: Russian Bread
   calories_per_gram: 3.95
+
+no_cal_info:
+  name: Milkshake
