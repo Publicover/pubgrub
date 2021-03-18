@@ -41,7 +41,7 @@ class SidesController < ApplicationController
     CalculateCalories.new.perform(@side)
 
     respond_to do |format|
-      format.html { redirect_to sides_path }
+      format.html { redirect_to side_path(@side) }
       format.js { render layout: false }
     end
   end

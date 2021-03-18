@@ -1,5 +1,7 @@
 <div>
-  <%= link_to 'Back to all sides', sides_path %>
+  <p><%= link_to 'Back to dashboard', root_path %> </p>
+  <p><%= link_to 'Back to all sides', sides_path %></p>
+  <p><%= link_to 'Calculate Calories', finalize_calories_side_path(@side) %></p>
 </div>
 <div>
   <h3><%= @side.name %></h3>
