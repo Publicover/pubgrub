@@ -9,7 +9,7 @@
 <% unless entree.number_of_sides.zero? %>
   <ul class='list-group list-group-flush'>
     <% entree.sides.each do |side| %>
-      <li class="list-group-item"><%= link_to "#{side.name}", side_path(side) %></li>
+      <li class="list-group-item"><%= link_to "#{side.name}", side_path(side) %> cal/g: <%= side.calories_per_gram %></li>
     <% end %>
   </ul>
 <% end %>
