@@ -232,14 +232,14 @@ Recipe.create!(recipeable_id: general.id, recipeable_type: 'Entree', user_id: ge
 
 puts "Creating recipes for sides..."
 
-Recipe.create!(recipeable_id: bp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oven at 350F or 176C.')
-Recipe.create!(recipeable_id: mp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Boil then mash with butter.')
-Recipe.create!(recipeable_id: ses.id, recipeable_type: 'Side', user_id: jim.id, body: 'Ask Dana for real.')
-Recipe.create!(recipeable_id: ed.id, recipeable_type: 'Side', user_id: jim.id, body: 'Put the thing in the microwave or boil it.')
-Recipe.create!(recipeable_id: mx.id, recipeable_type: 'Side', user_id: jim.id, body: 'Microwave.')
-Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oil and a pan.')
-Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: jim.id, body: 'Get this from a bakery.')
-Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: jim.id, body: 'Oven. Texas Toast is preferable.')
+Recipe.create!(recipeable_id: bp.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Oven at 350F or 176C.')
+Recipe.create!(recipeable_id: mp.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Boil then mash with butter.')
+Recipe.create!(recipeable_id: ses.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Ask Dana for real.')
+Recipe.create!(recipeable_id: ed.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Put the thing in the microwave or boil it.')
+Recipe.create!(recipeable_id: mx.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Microwave.')
+Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Oil and a pan.')
+Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Get this from a bakery.')
+Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Oven. Texas Toast is preferable.')
 
 puts "Running RandomizeCurrentEntreesJob..."
 
