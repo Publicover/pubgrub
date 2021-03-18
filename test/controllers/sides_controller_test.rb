@@ -67,6 +67,12 @@ class SidesControllerTest < ActionDispatch::IntegrationTest
       end
       assert_redirected_to side_path(sides(:one))
     end
+
+    test 'should save calories_per_gram' do
+      assert sides(:one).calories_per_gram.nil?
+      get finalize_calories_side_path(sides(:one))
+      assert_not_nil sides(:one).reload.calories_per_gram
+    end
   end
 
   class AsMember < SidesControllerTest

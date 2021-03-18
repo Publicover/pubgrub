@@ -1,0 +1,3 @@
+var side_id = "<%= j(params[:id]) %>"
+console.log(side_id);
+$("#js-side-" + side_id).html("<%= j(render partial: 'sides/side_card_text', locals: { side: @side }) %>");

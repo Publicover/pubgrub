@@ -38,6 +38,10 @@ class SidePolicy < ApplicationPolicy
     edit?
   end
 
+  def finalize_calories?
+    edit?
+  end
+
   def permitted_attributes
     [:name, :status, :pic, :user_id, :side_category_id, {
       ingredients_attributes: %i[id grocery_id measurement quantity ingredientable_id ingredientable_type _destroy]

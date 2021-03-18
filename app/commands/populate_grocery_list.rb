@@ -34,10 +34,10 @@ class PopulateGroceryList
 
   def assign_when_not_key(ingredient, hash)
     hash[ingredient.name] = if ingredient.measurement.nil?
-                                 ingredient.quantity
-                               else
-                                 { ingredient.measurement => ingredient.quantity }
-                               end
+                              ingredient.quantity
+                            else
+                              { ingredient.measurement => ingredient.quantity }
+                            end
     hash[ingredient.name][:ingredient_id] = ingredient.id
   end
 

@@ -36,6 +36,16 @@ class SidesController < ApplicationController
     redirect_to side_path(@side), notice: 'Destroy successful.'
   end
 
+  def finalize_calories
+    @sides = policy_scope(Side).order(created_at: :desc)
+    CalculateCalories.new.perform(@side)
+
+    respond_to do |format|
+      format.html { redirect_to sides_path }
+      format.js { render layout: false }
+    end
+  end
+
   private
 
     def set_side

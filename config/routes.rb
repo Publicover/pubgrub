@@ -21,7 +21,11 @@ Rails.application.routes.draw do
       get :finalize_calories, as: 'finalize_calories'
     end
   end
-  resources :sides
+  resources :sides do
+    member do
+      get :finalize_calories, as: 'finalize_calories'
+    end
+  end
   resources :staples do
     member do
       get :update_staple_status, as: 'update_staple_status'

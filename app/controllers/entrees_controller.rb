@@ -49,7 +49,6 @@ class EntreesController < ApplicationController
       format.html { redirect_to entrees_path }
       format.js { render layout: false }
     end
-
   end
 
   private
