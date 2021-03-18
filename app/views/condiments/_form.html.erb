@@ -1,0 +1,31 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @condiment do |f| %>
+      <% if @condiment.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@condiment.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @condiment.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+      </p>
+
+      <p>
+        <%= f.label 'Calories per Package' %>
+        <%= f.number_field :calories_per_gram, step: 0.1 %>
+      </p>
+
+      <p>
+        <%= f.submit %>
+      </p>
+
+    <% end %>
+  </div>
+</div>

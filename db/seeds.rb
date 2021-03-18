@@ -241,6 +241,14 @@ Recipe.create!(recipeable_id: asp.id, recipeable_type: 'Side', user_id: User.fin
 Recipe.create!(recipeable_id: fb.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Get this from a bakery.')
 Recipe.create!(recipeable_id: gb.id, recipeable_type: 'Side', user_id: User.find_by(email: 'jim@pubgrub.com').id, body: 'Oven. Texas Toast is preferable.')
 
+puts "Creating ten condiments..."
+
+Condiment.create!(name: 'Butter', calories_per_gram: 7.17)
+Condiment.create!(name: 'Bacon Bits', calories_per_gram: 4.71)
+Condiment.create!(name: 'Heinz Ketchup', calories_per_gram: 1.4)
+Condiment.create!(name: 'Mustard', calories_per_gram: 0.66)
+Condiment.create!(name: 'Thomy Mayonnaise', calories_per_gram: 7.21)
+
 puts "Running RandomizeCurrentEntreesJob..."
 
 RandomizeCurrentEntreesJob.new.perform_now

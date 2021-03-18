@@ -1,2 +1,17 @@
-<h1>Condiments#index</h1>
-<p>Find me in app/views/condiments/index.html.erb</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Calories Per Gram</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @condiments.each do |condiment| %>
+      <tr>
+        <td><%= condiment.name %></td>
+        <td><%= condiment.calories_per_gram %></td>
+        <td><%= link_to 'Show', condiment_path(condiment) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -115,6 +115,19 @@
             <%= link_to 'Create a Recipe', new_recipe_path, class: 'dropdown-item' %>
           </div>
         </li>
+        <li class='nav-item dropdown'>
+          <a class="nav-link dropdown-toggle
+            <%= active_if(recipes_path) %>
+            <%= active_if(new_recipe_path) %>"
+            href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Condiments
+          </a>
+          <div class='dropdown-menu'>
+            <%= link_to 'See Condiments', condiments_path, class: 'dropdown-item' %>
+            <%= link_to 'Create a Condiment', new_condiment_path, class: 'dropdown-item' %>
+          </div>
+        </li>
       <% end %>
       <span class='nav-item'>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link mr-sm-2' %>
