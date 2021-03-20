@@ -3,16 +3,20 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Created At</th>
+      <th>C/G</th>
+      <th>C/Package</th>
+      <th>G/Package</th>
+      <th>Links</th>
     </tr>
   </thead>
   <tbody>
     <% @groceries.each do |grocery| %>
       <tr>
         <td><%= grocery.name %></td>
-        <td><%= grocery.created_at %></td>
+        <td><%= grocery.calories_per_gram %></td>
+        <td><%= grocery.calories_per_package %></td>
+        <td><%= grocery.grams_per_package %></td>
         <td><%= link_to 'Show', grocery_path(grocery), remote: true, params: { groc_id: grocery.id } %></td>
-        <td id='magic-div-<%= "#{grocery.id}" %>'></td>
       </tr>
     <% end %>
   </tbody>
