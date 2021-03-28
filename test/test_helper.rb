@@ -13,6 +13,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def prepare_meals
+    Meal.all.each do |meal|
+      meal.update(entree_id: entrees(:one).id)
+      meal.update(side_ids: nil)
+      meal.update(side_ids: Side.pluck(:id).sample(2))
+    end
+  end
 end
 
 module ActionDispatch

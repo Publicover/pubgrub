@@ -9,6 +9,7 @@ class Entree < ApplicationRecord
   before_save :titleize_name
 
   has_one_attached :pic
+  has_many :meals, inverse_of: :entree, dependent: :destroy
 
   belongs_to :cuisine, inverse_of: :entrees
   belongs_to :user, inverse_of: :entrees
