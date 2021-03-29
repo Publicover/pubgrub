@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: jim
+  entree_calories: 275
+  side_calories: [100, 150]
+
+two:
+  user: jim
+  entree_calories: 375
+  side_calories: [10, 12]
+
+three:
+  user: dave
+  entree_calories: 555
+  side_calories: [15, 20]

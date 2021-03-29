@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :sides, inverse_of: :user, dependent: :destroy
   has_many :staples, inverse_of: :user, dependent: :destroy
   has_many :recipes, inverse_of: :user, dependent: :destroy
+  has_many :food_logs, inverse_of: :user, dependent: :destroy
 
   enum role: {
     admin: 0,

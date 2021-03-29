@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   end
   resources :recipes
   resources :condiments
+  resources :food_logs
 end
