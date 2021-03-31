@@ -13,13 +13,13 @@ class FoodLogsController < ApplicationController
   def new
     @food_log = FoodLog.new
     authorize @food_log
-    @meals = Meal.all
+    @sides = Side.all
   end
 
   def create
     @food_log = FoodLog.new(food_log_params)
     authorize @food_log
-    @meals = Meal.all
+    @sides = Side.all
 
     if @food_log.save
       redirect_to food_logs_path
@@ -29,9 +29,11 @@ class FoodLogsController < ApplicationController
   end
 
   def edit
+    @sides = Side.all
   end
 
   def update
+    @sides = Side.all
     @food_log.update(food_log_params)
     redirect_to food_logs_path
   end

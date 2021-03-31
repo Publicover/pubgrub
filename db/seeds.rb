@@ -9,9 +9,9 @@
 puts "Creating three users..."
 
 if Rails.env.development?
-  jim = User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password')
-  dana = User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password')
-  User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, password: 'password')
+  jim = User.create!(email: 'jim@pubgrub.com', fname: 'Jim', role: :admin, password: 'password', calorie_goal: 2000)
+  dana = User.create!(email: 'dana@pubgrub.com', fname: 'Dana', role: :admin, password: 'password', calorie_goal: 1300)
+  User.create!(email: 'someguy@somewhere.com', fname: 'Dave', role: :member, password: 'password', calorie_goal: 1800)
 end
 
 puts 'Creating five cuisine categories...'
@@ -256,5 +256,25 @@ RandomizeCurrentEntreesJob.new.perform_now
 puts 'Creating a GroceryList...'
 
 GroceryList.create!
+
+puts 'Creating some food logs'
+
+user_ids = [
+  User.find_by(email: 'jim@pubgrub.com').id,
+  User.find_by(email: 'dana@pubgrub.com').id,
+  User.find_by(email: 'someguy@somewhere.com').id
+]
+
+entree_ids = Entree.pluck(:id)
+
+15.times do
+  user_ids.each do |id|
+    FoodLog.create!(user_id: id, entree_calories: Faker::Number.number(digits: 3),
+                    side_calories: [Faker::Number.number(digits: 2), Faker::Number.number(digits: 3)],
+                    entree_id: entree_ids.sample
+                  )
+  end
+end
+
 
 puts "Seeds complete."

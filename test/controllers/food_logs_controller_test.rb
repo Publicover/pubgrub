@@ -27,7 +27,9 @@ class FoodLogsControllerTest < ActionDispatch::IntegrationTest
           food_log: {
             user_id: users(:jim).id,
             entree_calories: 500,
-            side_calories: [10, 11]
+            side_calories: [10, 11],
+            entree_id: entrees(:one).id,
+            side_ids: [sides(:one).id, sides(:two).id]
           }
         }
       end
@@ -82,7 +84,9 @@ class FoodLogsControllerTest < ActionDispatch::IntegrationTest
           food_log: {
             user_id: users(:jim).id,
             entree_calories: 500,
-            side_calories: [10, 11]
+            side_calories: [10, 11],
+            entree_id: entrees(:one).id,
+            side_ids: [sides(:one).id, sides(:two).id]
           }
         }
       end

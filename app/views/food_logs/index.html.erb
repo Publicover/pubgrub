@@ -1,2 +1,16 @@
-<h1>FoodLogs#index</h1>
-<p>Find me in app/views/food_logs/index.html.erb</p>
+<table>
+  <thead>
+    <tr>
+      <th>Entree Calories</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @food_logs.each do |log| %>
+      <tr>
+        <td><%= log.entree_calories %></td>
+        <td><%= log.created_at.strftime('%D%M%Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

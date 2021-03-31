@@ -41,6 +41,6 @@ class FoodLogPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:user_id, :entree_calories, side_calories: []]
+    [:user_id, :entree_calories, :entree_id, side_calories: [], side_ids: []]
   end
 end

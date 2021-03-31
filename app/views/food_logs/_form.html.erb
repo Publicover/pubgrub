@@ -1,0 +1,48 @@
+<div class='container-fluid'>
+  <div class='d-flex justify-content-center'>
+    <%= form_for @food_log do |f| %>
+      <% if @food_log.errors.any? %>
+        <div id="error_explanation">
+          <p>
+            <%= pluralize(@food_log.errors.count, "error") %> prohibited
+            this article from being saved:
+          </p>
+          <% @food_log.errors.full_messages.each do |msg| %>
+            <li><center><%= msg %></li>
+          <% end %>
+        </div>
+      <% end %>
+
+      <p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      </p>
+
+      <p>
+        <%= f.label 'Entree' %>
+        <%= f.collection_select :entree_id, Entree.all, :id, :name, prompt: true %>
+      </p>
+
+      <p>
+        <%= f.label 'Weight of Entree' %>
+        <%= f.number_field :entree_calories, step: 0.01 %>
+      </p>
+
+      <p>
+        <% @sides.each do |side| %>
+          <%= label_tag do %>
+            <%= check_box_tag "food_log[side_ids][]", side.id %>
+            <%= side.name %>
+          <% end %>
+        <% end %>
+      </p>
+
+      <p>
+        <%= f.label 'Weight of Sides' %>
+        <%= f.number_field :side_calories, step: 0.01, multiple: true %>
+        <%= f.number_field :side_calories, step: 0.01, multiple: true %>
+      </p>
+
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>

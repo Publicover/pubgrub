@@ -49,6 +49,21 @@
           <%= link_to 'Create a new Staple', new_staple_path, class: 'dropdown-item' %>
         </div>
       </li>
+
+      <li class='nav-item dropdown'>
+        <a class="nav-link dropdown-toggle
+                <%= active_if(food_logs_path) %>
+                <%= active_if(new_food_log_path) %>"
+           href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Food Log
+        </a>
+        <div class='dropdown-menu'>
+          <%= link_to 'See all Entries', food_logs_path, class: 'dropdown-item' %>
+          <%= link_to 'Create a new Entry', new_food_log_path, class: 'dropdown-item' %>
+        </div>
+      </li>
+
       <% if current_user.admin? %>
         <li class='nav-item dropdown'>
           <a class="nav-link dropdown-toggle
